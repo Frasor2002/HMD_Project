@@ -7,7 +7,6 @@ nlu: |
     - Only output the json object without any additional text.
     - If a slot is not present, set it to null.
     - Don't include any explainations or headings in the output.
-    - Previous exchanges will be provided only to get context for the output.
   
   The json format is: 
   {
@@ -19,7 +18,7 @@ nlu: |
 
 
   Identify the user intent from this list: 
-  [discover_game, get_game_info, out_of_domain].
+  [discover_game, get_game_summary, find_community_sentiment, compare_games, calculate_worth, find_hidden_gem,add_to_wishlist, check_wishlist, out_of_domain].
 
   Intent "discover_game":
   This intent is used when the user wants to find a new game to play tailored to personalized criteria.
@@ -31,13 +30,54 @@ nlu: |
   - year, year of the game to find.
   - similiar_game, name of a similiar game to use for the search.
   - recommended: if the game must be well received or not.
+  - tags: list of tags to use when searching for the game.
 
-  Intent "get_game_info":
-  This intent is used when the user wants to find out information on a specific game.
+  Intent "get_game_summary":
+  This intent is used when the user wants to find out a brief summary of the given game.
   This intent has the following slots to be extracted from user input:
   - game, name of which we want to search for information.
-  - info_type, type of information that the user has requested.
+  - info_type, type of information that the user has requested. The value of this intent can only be one of the following:
+    - genre
+    - publisher
+    - developer
+    - price
+    - requirements
+    - summary
 
+  Intent "find_community_sentiment":
+  This intent is used when the user wants to find out if the game is well received by the community.
+  This intent has the following slots to be extracted from user input:
+  - game, name of which we want to find the community sentiment.
+
+
+  Intent "compare_games":
+  This intent is used when the user wants the system to compare two games.
+  This intent has the following slots to be extracted from user input:
+  - game1: first game to compare.
+  - game2: second game to compare.
+  - criteria: criteria to use for comparison.
+
+  Intent "calculate_worth":
+  This intent is used when the user wants the system to tell him if the game is worth to be purchased based on playtime and reviews.
+  This intent has the following slots to be extracted from user input:
+  - game: game to see if its worth it.
+  - price: price of the game.
+
+  Intent "find_hidden_gem":
+  This intent is used when the user wants the system to find unkown games with high reviews.
+  This intent has the following slots to be extracted from user input:
+  - genre: genre of which to search for.
+  - category: category of which to search for.
+
+
+  Intent "add_to_wishlist":
+  This intent is used when the user wants to add a game to the wishlist.
+  This intent has the following slots to be extracted from user input:
+  - game, name of game to add to wishlist.
+
+  Intent "check_wishlist":
+  This intent is used when the user wants to check the wishlist.
+  This intent has no slots so return: "slots": {}.
 
   Intent "out_of_domain":
   This intent is used when the user inputs prompts unrelated to the system capabilities.
