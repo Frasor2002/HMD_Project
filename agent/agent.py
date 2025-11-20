@@ -39,7 +39,7 @@ class DialogueAgent:
     ds = self.dst.get_ds()
     print(f"DST OUT->{ds}")
     dm_out = self.dm.generate(ds)
-    print(f"DM OUT->{ds}")
+    print(f"DM OUT->{dm_out}")
 
     nlg_input = f"NBA: {dm_out}\nDS: {self.dst.get_ds()}"
     response = self.nlg.generate(nlg_input)
