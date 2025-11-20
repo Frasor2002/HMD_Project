@@ -1,4 +1,5 @@
 from copy import deepcopy
+import json
 
 # TODO clean and add methods for class
 
@@ -8,13 +9,15 @@ class DST:
 
     # Empty dialogue state at the start
     self.ds = {
-      "intent": "",
+      "intent": None,
       "slots": {}
     }
   
+  def get_ds(self) -> str:
+    return json.dumps(self.ds)
   
   @staticmethod
-  def clean_response(response: dict) -> dict:
+  def _clean_response(response: dict) -> dict:
     """Clean an NLU response for safe merging into the dialogue state.
     Args:
       response (str): NLU response to clean.
@@ -43,8 +46,13 @@ class DST:
     return _clean(deepcopy(response))
 
 
-  def update_ds(self, nlu_response: dict) -> dict:
+  def update_ds(self, nlu_response: dict) -> None:
     """Merge a cleaned NLU response into the dialogue state `ds`."""
+
+    # Convert response in dict
+    nlu_response = json.loads(nlu_response)
+    nlu_response = self._clean_response(nlu_response)
+    
     for key, value in nlu_response.items():
       if value is None:
         continue
@@ -58,4 +66,3 @@ class DST:
           self.ds[key][subk] = subv
       else:
         self.ds[key] = value
-    return self.ds

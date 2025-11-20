@@ -3,9 +3,11 @@ from dataset import GameDataset
 import argparse
 from argparse import ArgumentParser, Namespace
 import torch
+import yaml
 
-from models import MODELS, ModelLoader
-from components.nlu.nlu import NLU
+from models import MODELS, ModelLoader, LLMTask
+from agent.agent import DialogueAgent
+
 
 def parse_args() -> Namespace:
     """Parse and return command line args.
@@ -46,16 +48,15 @@ def chat(model):
     if user_input.lower() in {"exit", "quit"}:
       print("Closing...")
       break
-    response = model.extract_intent_slots(user_input)
+    response = model.chat(user_input)
     print(f"\nnlu: {response}")
 
 
 if __name__ == "__main__":
   args = parse_args()
 
-  data = GameDataset("dataset/steam_dataset.example.feather")
+  #data = GameDataset("dataset/steam_dataset.example.feather")
   #print(data.df.head())
+  dialogue_agent = DialogueAgent(args.model, args.device, args.n_exchanges)
 
-  model_loader = ModelLoader(args.model, args.device)
-  nlu = NLU(model_loader, n_exchanges=0) #No history to avoid allucination args.n_exchanges
-  chat(nlu)
+  chat(dialogue_agent)

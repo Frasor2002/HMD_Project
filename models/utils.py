@@ -6,8 +6,7 @@ from transformers import PreTrainedTokenizer
 def hf_prepare_text(
   prompt: str,
   tokenizer: PreTrainedTokenizer,
-  messages: Optional[List[Dict[str, str]]] = None,
-  n_exchanges: int = 2,
+  messages: Optional[List[Dict[str, str]]] = None
 ):
   """Prepare textual input for a hugging face model.
   Args:
@@ -22,7 +21,7 @@ def hf_prepare_text(
   messages.append({"role": "user", "content": prompt})
 
   text = tokenizer.apply_chat_template(
-    messages[-n_exchanges * 2 :],
+    messages,
     tokenize=False,
     add_generation_prompt=True,
   )

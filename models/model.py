@@ -56,7 +56,10 @@ class LLMTask:
       {"role": "system", "content": task_prompt}
     ]
 
-  
+  def change_task_prompt(self, task_prompt: str) -> None:
+    """Change system task prompt."""
+    self.task_prompt = task_prompt
+
   def prepare_text(self, prompt: str) -> str:
     """Prepare prompt for the model depending on the given model.
     Args:
@@ -66,8 +69,7 @@ class LLMTask:
     """
     return self.prepare_text_fun(prompt,
                                 self.tokenizer,
-                                self.messages,
-                                self.n_exchanges)
+                                self.messages)
   
 
   def generate(self, prompt: str, max_new_tokens: int = 10000) -> str:
@@ -78,6 +80,12 @@ class LLMTask:
     Returns:
       str: generated response.
     """
+    # Keep only n_exchanges and system prompt
+    max_messages = self.n_exchanges * 2 + 1
+    if len(self.messages) > max_messages:
+      self.messages = [self.messages[0]] + (self.messages[-self.n_exchanges * 2 :]
+                                            if self.n_exchanges > 0 else [])
+
     text = self.prepare_text(prompt)
     model_inputs = self.tokenizer([text], return_tensors="pt").to(self.device)
 
@@ -91,11 +99,6 @@ class LLMTask:
     # Update message history
     self.messages.append({"role": "user", "content": prompt})
     self.messages.append({"role": "assistant", "content": content})
-
-    # Clear message history after n_exchanges (keep system directive)
-    max_messages = self.n_exchanges * 2 + 1
-    if len(self.messages) > max_messages:
-      self.messages = [self.messages[0]] + self.messages[-self.n_exchanges * 2 :]
 
     return content
 

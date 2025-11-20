@@ -1,12 +1,14 @@
-from typing import List, Dict, Tuple, Any
+from typing import Any, Dict, Tuple, List
 import json
-from components.nlu.nlu import NLU
 from collections import defaultdict
+from eval.evaluator import Evaluator
+from models.model import LLMTask
 
-class NLU_Evaluator:
+
+class NLU_Evaluator(Evaluator):
   def __init__(
       self,
-      nlu: NLU,
+      nlu: LLMTask,
       filepath: str = "test_set/test.json",
       ):
     """Initialize evaluator.
@@ -14,30 +16,9 @@ class NLU_Evaluator:
       nlu (LLMTask): component to evaluate.
       filepath (str): test set filepath.
     """
-    self.nlu = nlu
+    super.__init__(nlu, filepath)
 
-    # Load test set
-    self.load_test_set(filepath)
-
-    # Get predictions
-
-
-
-  def load_test_set(self, filepath: str):
-    """Load a new test set."""
-    with open(filepath, "r") as f:
-      self.test_set = json.load(f)
-
-
-  def get_pred_gt(self):
-    """Compute all pred_states and extract gt_states from test set."""
-    self.pred_states = []
-    self.gt_states = []
-
-    for sample in self.test_set:
-      pred = self.nlu.extract_intent_slots(sample["utt"])
-      self.pred_states.append(pred)
-      self.gt_states.append(sample["annotation"])
+    
 
 
   @staticmethod
@@ -148,6 +129,6 @@ class NLU_Evaluator:
           correct_slots += 1
 
     return {
-      "intent_accuracy": intent_correct / n,
+      "intent_accuracy": intent_correct / len(self.gt_states),
       "slot_accuracy": (correct_slots / total_slots) if total_slots else 0.0
     }
