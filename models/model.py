@@ -1,8 +1,7 @@
 import torch
-from typing import List, Dict
+from typing import List, Dict, Any
 from transformers import AutoTokenizer
-
-from .registry import MODELS
+from models.registry import MODELS
 
 
 class ModelLoader:
@@ -37,10 +36,13 @@ class LLMTask:
   def __init__(
       self, 
       model_loader: ModelLoader,
-      task_prompt: str,
-      n_exchanges: int = 2
+      system_prompt: str
     ) -> None:
-    """Initialize LLM to be used."""
+    """Initialize LLM to be used.
+    Args:
+      model_loader (ModelLoader): model loader that handles loading model and tokenizer.
+      system_prompt (str): describes in detail the task that the llm must do.
+    """
     
     self.model = model_loader.model
     self.tokenizer = model_loader.tokenizer
@@ -48,31 +50,30 @@ class LLMTask:
     self.model_id = model_loader.model_id
     self.model_name = model_loader.model_name
     self.device = model_loader.device
+    self.system_prompt = system_prompt
 
-    self.n_exchanges = n_exchanges
+  def change_system_prompt(self, new_prompt: str) -> None:
+    """Change the system prompt to dynamically adjust the task based on intent.
+    Args:
+      new_prompt (str): new system prompt to load.
+    """
+    self.system_prompt = new_prompt
 
-    # Dialogue state initialization
-    self.messages: List[Dict[str, str]] = [
-      {"role": "system", "content": task_prompt}
-    ]
 
-  def change_task_prompt(self, task_prompt: str) -> None:
-    """Change system task prompt."""
-    self.task_prompt = task_prompt
 
-  def prepare_text(self, prompt: str) -> str:
+  def prepare_text(self, prompt: str) -> Any:
     """Prepare prompt for the model depending on the given model.
     Args:
       prompt (str): prompt to prepare.
     Returns:
-      str: model inputs.
+      Any: model inputs.
     """
     return self.prepare_text_fun(prompt,
                                 self.tokenizer,
                                 self.messages)
   
 
-  def generate(self, prompt: str, max_new_tokens: int = 10000) -> str:
+  def generate(self, prompt: str, history: list = [], max_new_tokens: int = 10000) -> str:
     """Generate output given user prompt.
     Args:
       prompt (str): user prompt after which the model generates.
@@ -80,11 +81,12 @@ class LLMTask:
     Returns:
       str: generated response.
     """
-    # Keep only n_exchanges and system prompt
-    max_messages = self.n_exchanges * 2 + 1
-    if len(self.messages) > max_messages:
-      self.messages = [self.messages[0]] + (self.messages[-self.n_exchanges * 2 :]
-                                            if self.n_exchanges > 0 else [])
+    # Reset conversation
+    self.messages: List[Dict[str, str]] = [
+      {"role": "system", "content": self.system_prompt}
+    ]
+    # Add history if passed
+    self.messages += history
 
     text = self.prepare_text(prompt)
     model_inputs = self.tokenizer([text], return_tensors="pt").to(self.device)
@@ -95,10 +97,6 @@ class LLMTask:
     # Decode ids
     output_ids = generated_ids[0][len(model_inputs.input_ids[0]) :].tolist()
     content = self.tokenizer.decode(output_ids, skip_special_tokens=True)
-
-    # Update message history
-    self.messages.append({"role": "user", "content": prompt})
-    self.messages.append({"role": "assistant", "content": content})
 
     return content
 

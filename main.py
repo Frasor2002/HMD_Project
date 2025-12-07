@@ -1,45 +1,42 @@
-from dataset import GameDataset
+from data.dataset import GameDataset
 
 import argparse
 from argparse import ArgumentParser, Namespace
 import torch
 import yaml
 
-from models import MODELS, ModelLoader, LLMTask
+from models.model import MODELS
 from agent.agent import DialogueAgent
 
 
 def parse_args() -> Namespace:
-    """Parse and return command line args.
-    Returns:
-        Namespace: command line args.
-    """
+  """Parse and return command line args.
+  Returns:
+    Namespace: command line args.
+  """
+  parser = ArgumentParser()
 
-    parser = ArgumentParser(
-        description="Execute dialogue agent.",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
+  parser.add_argument(
+    "-m", "--model",
+    type=str,
+    choices=MODELS.keys(),
+    default="qwen3",
+    help="Name of the llm model to use for each component.",
+  )
+  parser.add_argument(
+    "-d", "--device",
+    type=str,
+    default="cuda:0" if torch.cuda.is_available() else "cpu",
+    help="Device to run the model on.",
+  )
+  parser.add_argument(
+    "-n", "--n_exchanges",
+    type=int,
+    default=3,
+    help="Number of exchanges to keep in the conversation history.",
+  )
+  return parser.parse_args()
 
-    parser.add_argument(
-        "-m", "--model",
-        type=str,
-        choices=MODELS.keys(),
-        default="qwen3",
-        help="Name of the llm model to use for each component.",
-    )
-    parser.add_argument(
-        "-d", "--device",
-        type=str,
-        default="cuda:0" if torch.cuda.is_available() else "cpu",
-        help="Device to run the model on.",
-    )
-    parser.add_argument(
-        "-n", "--n_exchanges",
-        type=int,
-        default=2,
-        help="Number of exchanges to keep in the conversation history.",
-    )
-    return parser.parse_args()
 
 def chat(model):
   """Interactive CLI session."""
@@ -49,10 +46,11 @@ def chat(model):
       print("Closing...")
       break
     response = model.chat(user_input)
-    print(f"\nnlu: {response}")
+    print(f"Assistant: {response}")
 
 
-if __name__ == "__main__":
+def main() -> None:
+  """Execute the agent."""
   args = parse_args()
 
   #data = GameDataset("dataset/steam_dataset.example.feather")
@@ -60,3 +58,6 @@ if __name__ == "__main__":
   dialogue_agent = DialogueAgent(args.model, args.device, args.n_exchanges)
 
   chat(dialogue_agent)
+
+if __name__ == "__main__":
+  main()

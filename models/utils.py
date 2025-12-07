@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
 from transformers import PreTrainedTokenizer
 
@@ -7,21 +7,22 @@ def hf_prepare_text(
   prompt: str,
   tokenizer: PreTrainedTokenizer,
   messages: Optional[List[Dict[str, str]]] = None
-):
+) -> Any:
   """Prepare textual input for a hugging face model.
   Args:
     prompt (str): textual prompt.
     tokenizer (PreTrainedTokenizer): tokenizer to tokenize the text into tokens.
     messages (Optional[List[Dict[str, str]]]): dialogue state.
-    n_exchanges (int): number of previous exchanges to be used for context.
+  Returns:
+    Any: prepared input for the hugging face model.
   """
 
   if messages is None:
     messages = []
-  messages.append({"role": "user", "content": prompt})
+  conversation = messages + [{"role": "user", "content": prompt}]
 
   text = tokenizer.apply_chat_template(
-    messages,
+    conversation,
     tokenize=False,
     add_generation_prompt=True,
   )

@@ -7,18 +7,37 @@ from models.model import LLMTask
 
 class NLU_Evaluator(Evaluator):
   def __init__(
-      self,
-      nlu: LLMTask,
-      filepath: str = "test_set/test.json",
-      ):
+    self,
+    nlu: LLMTask,
+    filepath: str,
+    prompt: dict
+    ):
     """Initialize evaluator.
     Args:
       nlu (LLMTask): component to evaluate.
       filepath (str): test set filepath.
     """
-    super.__init__(nlu, filepath)
+    super().__init__(nlu, filepath, prompt)
+
+    # Get predictions
+    pred_states, gt_states = self.get_pred_gt()
+    self.pred_states = pred_states
+    self.gt_states = gt_states
 
     
+  def get_pred_gt(self) -> tuple:
+    """Compute all pred_states and extract gt_states from test set.
+    Returns:
+      tuple: predicitons and ground truths.
+    """
+    pred_states = []
+    gt_states = []
+
+    for sample in self.test_set:
+      pred = self.component.generate(sample["utt"], sample["history"])
+      pred_states.append(pred)
+      gt_states.append(sample["annotation"])
+    return pred_states, gt_states
 
 
   @staticmethod
@@ -42,6 +61,7 @@ class NLU_Evaluator(Evaluator):
       return v
     return v
 
+
   @staticmethod
   def _equal_slot(a: Any, b: Any) -> bool:
     """Compare slots to see if they are equal."""
@@ -49,86 +69,104 @@ class NLU_Evaluator(Evaluator):
     b_n = NLU_Evaluator._normalize_val(b)
     return a_n == b_n
   
+
   @staticmethod
   def _get_f1_precision_recall(tp: int, fp: int, fn: int):
     """Compute metrics from counts."""
-    precision = tp / (tp + fp) if tp + fp > 0 else 0.0
-    recall = tp / (tp + fn) if tp + fp > 0 else 0.0
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     f1_score = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
 
     return {
       "f1_score": f1_score,
       "precision": precision,
       "recall": recall,
-      "total_instances": tp + fn
+      "support": tp + fn
     }
 
     
-  def evaluate(self) -> Dict:
+  def evaluate(self) -> Dict[str, Any]:
     """
     Evaluate NLU predictions against ground-truth dialogue states.
-    Args:
-      pred_states: list of predicted dialogue states, each like {"intent": "...", "slots": {...}}.
-      gt_states:   list of ground-truth dialogue states, same format.
-    Returns:
-      dict:
-        - intent_accuracy: fraction of examples with correct intent.
-        - slot_accuracy: fraction of slot values correct (computed over all GT slots).
     """
     if len(self.pred_states) != len(self.gt_states):
       raise ValueError("pred_states and gt_states must have the same length")
 
     if len(self.gt_states) == 0:
-      return {"intent_accuracy": 0.0, "slot_accuracy": 0.0}
+      return {
+        "intent_accuracy": 0.0, 
+        "intents_by_type": {}, 
+        "slots_overall": {}, 
+        "slots_by_type": {}
+      }
 
-    # Store counts
-    intent_counts = defaultdict(lambda: {'tp': 0, 'fp': 0, 'fn': 0})
-    slot_counts = defaultdict(lambda: {'tp': 0, 'fp': 0, 'fn': 0})
-
-    # Global counters
-    intent_total = len(self.gt_states)
     intent_correct = 0
-    slot_tp = 0
-    slot_fp = 0
-    slot_fn = 0
+    intent_type_stats = defaultdict(lambda: {'total': 0, 'correct': 0})
+    slot_stats = defaultdict(lambda: {'tp': 0, 'fp': 0, 'fn': 0})
+    global_slot_stats = {'tp': 0, 'fp': 0, 'fn': 0}
 
-    # Iterate samples
     for pred, gt in zip(self.pred_states, self.gt_states):
-
       # Intent evaluation
-      gt_intent = gt.get("intent")
-      pred_intent = pred.get("intent")
+      gt_intent = gt.get("intent", "UNKNOWN")
+      pred_intent = pred.get("intent")            
+      intent_type_stats[gt_intent]['total'] += 1
       if pred_intent == gt_intent:
         intent_correct += 1
-        # Keep track of specific intent performance
-        intent_counts[gt_intent]['tp'] += 1
-      else: # Wrong intent prediction
-        # False negative for the true intent
-        intent_counts[gt_intent]['fn'] += 1
-        # False positive for predicted intent
-        intent_counts[pred_intent]['fp'] += 1
-
+        intent_type_stats[gt_intent]['correct'] += 1
       
-      # Slot evaluation
+      # Slot Evaluation
       gt_slots = gt.get("slots", {}) or {}
       pred_slots = pred.get("slots", {}) or {}
 
-      # All the slots present in this sample
+      # Union of slot names
       all_slots = set(pred_slots.keys()) | set(gt_slots.keys())
 
-      # Iterate on all slots
       for slot in all_slots:
-        #TODO slot eval
-        pass
+        gt_val = gt_slots.get(slot)
+        pred_val = pred_slots.get(slot)
 
-      for slot_name, gt_val in gt_slots.items():
-        total_slots += 1
-        # predicted might miss the slot key -> treat as None
-        pred_val = pred_slots.get(slot_name, None)
-        if self._equal_slot(pred_val, gt_val):
-          correct_slots += 1
+        # False negative
+        if slot in gt_slots and slot not in pred_slots:
+          slot_stats[slot]['fn'] += 1
+          global_slot_stats['fn'] += 1
+        # False positive
+        elif slot in pred_slots and slot not in gt_slots:
+          slot_stats[slot]['fp'] += 1
+          global_slot_stats['fp'] += 1
+        else:
+          if self._equal_slot(pred_val, gt_val):
+            slot_stats[slot]['tp'] += 1
+            global_slot_stats['tp'] += 1
+          else:
+            # wrong value predicted penalize both fp and fn
+            slot_stats[slot]['fp'] += 1
+            slot_stats[slot]['fn'] += 1
+            global_slot_stats['fp'] += 1
+            global_slot_stats['fn'] += 1
 
+    
+    intents_by_type = {}
+    for intent, counts in intent_type_stats.items():
+      total = counts['total']
+      correct = counts['correct']
+      intents_by_type[intent] = {
+        "accuracy": correct / total if total > 0 else 0.0,
+        "count": total,
+        "correct": correct
+      }
+
+    slots_by_type = {}
+    for slot_name, counts in slot_stats.items():
+      slots_by_type[slot_name] = self._get_f1_precision_recall(
+        counts['tp'], counts['fp'], counts['fn']
+      )
+    slots_overall = self._get_f1_precision_recall(
+      global_slot_stats['tp'], global_slot_stats['fp'], global_slot_stats['fn']
+    )
+    
     return {
       "intent_accuracy": intent_correct / len(self.gt_states),
-      "slot_accuracy": (correct_slots / total_slots) if total_slots else 0.0
+      "intents_by_type": intents_by_type,
+      "slots_overall": slots_overall,
+      "slots_by_type": slots_by_type
     }
