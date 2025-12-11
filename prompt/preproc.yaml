@@ -3,7 +3,11 @@ prompt: |
   
   Goal: Given user input break it in multiple sentences each rappresenting a single intent.
 
-  General rules:
+  Input: The input is the user message to be split update.
+
+  Output: The output is a list of splitted sentences ["sent1", "sent2", ...] where each has one intent.
+
+  Rules:
     - Provide a list of sentences each enclosed in double quotes and separated by commas.
     - Only provide list of sentences (not the intents) as outputs, without additional text.
 

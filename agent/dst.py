@@ -8,15 +8,16 @@ from typing import Any, Dict, Optional
 VALID_GENRES = [
   "action", "adventure", "casual", "early access", "education", 
   "free to play", "game development", "gore", "indie", 
-  "massively multiplayer", "movie", "nudity", "rpg", "racing", 
-  "sexual content", "simulation", "sports", "strategy", "violent"
+  "massively multiplayer", "movie", "rpg", "racing", 
+  "simulation", "sports", "strategy", "violent"
 ]
 VALID_PLATFORMS =  ["windows", "mac", "linux"]
 VALID_INFO_TYPES = [
-  "summary", "genre", "mode", "platform", "required_age", 
+  "summary", "genre", "mode", "platform", "required_age", "publisher", "developer",
   "review", "price"
 ]
-VALID_CRITERIA = ["price", "reviews", "genre"]
+VALID_CRITERIA = ["price", "review", "genre"]
+VALID_MODES = ["singleplayer", "multiplayer"]
 
 
 
@@ -89,6 +90,9 @@ class DST:
 
     if slot_name == "criteria":
       return val_str if val_str in VALID_CRITERIA else None
+    
+    if slot_name == "mode":
+      return val_str if val_str in VALID_MODES else None
 
     if isinstance(val, str):
       return val.strip()

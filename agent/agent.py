@@ -55,11 +55,15 @@ class DialogueAgent:
         file_path = os.path.join(prompt_dir, filename)
         key_name = os.path.splitext(filename)[0]
         
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
           prompts[key_name] = yaml.safe_load(file)
                 
     return prompts
   
+  def get_review_sa(self, reviews):
+    """Given list of reviews return a report of positive and negative."""
+    return {"positive": 0, "negative": 0}
+
   def get_knowledge(self, nba, ds) -> str:
     """Get external knowledge given nba and ds."""
     return ""

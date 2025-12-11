@@ -1,9 +1,6 @@
-from data.dataset import GameDataset
-
-import argparse
+from data.kb import KnowledgeBase
 from argparse import ArgumentParser, Namespace
 import torch
-import yaml
 
 from models.model import MODELS
 from agent.agent import DialogueAgent
