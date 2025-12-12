@@ -1,4 +1,3 @@
-from data.kb import KnowledgeBase
 from argparse import ArgumentParser, Namespace
 import torch
 
@@ -50,9 +49,15 @@ def main() -> None:
   """Execute the agent."""
   args = parse_args()
 
-  #data = GameDataset("dataset/steam_dataset.example.feather")
-  #print(data.df.head())
-  dialogue_agent = DialogueAgent(args.model, args.device, args.n_exchanges)
+  model = {
+    "default": "qwen3",
+    "preproc": "qwen3",
+    "nlu": "qwen3",
+    "dm": "qwen3",
+    "sa": "qwen3"
+  }
+
+  dialogue_agent = DialogueAgent(model, args.device, args.n_exchanges)
 
   chat(dialogue_agent)
 

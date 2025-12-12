@@ -6,7 +6,7 @@ prompt: |
 
   Input: The input is a videogame review.
 
-  Output: The output is a label ["positive","negative", "neutral"].
+  Output: The output is a label ["positive", "negative", "neutral"].
 
   Rules:
   - Provide the label in double quotes

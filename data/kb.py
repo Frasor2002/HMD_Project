@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import os
 from typing import Any, Optional
+import numpy as np
 
 
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,237 +15,269 @@ class KnowledgeBase:
   """KnowledgeBase class used to get data to return to the user."""
 
   def __init__(self):
-    """Initialize games dataset by reading feather file.
-    Args:
-      filepath (str): filepath to the feather file.
-    """
+    """Initialize external knowledge module."""
     # Load games dataset
-    self.df = pd.read_feather(GAMES_PATH)
+    self.game_database = pd.read_feather(GAMES_PATH)
     # Load user profile
     self.user_profile = self._load_json(USER_PROFILE_PATH)
     self.glossary = self._load_json(GLOSSARY_PATH)
   
   def _load_json(self, path: str) -> Any:
-    """Utility to load json files."""
+    """Utility to load json files.
+    Args:
+      path (str): path to load.
+    Returns:
+      Any: loaded data.
+    """
     with open(path, "r", encoding="utf-8") as file:
       return json.load(file)
 
   def _save_json(self, data:dict, path: str) -> None:
-    """Save json file."""
+    """Save json file.
+    Args:
+      data (dict): data to save.
+      path (str): path where to save it.
+    """
     with open(path, "w", encoding="utf-8") as file:
       json.dump(data, file, indent=2)
 
   def game_by_title(self, title: str) -> Optional[dict]:
-    """Get a game given the title"""
-    # assume title already normalize
-    # output must be always dict {}
-     
-    match = self.df[self.df['name_normalized'] == title]
-
-    if match.empty:
-      match = self.df[self.df['name_normalized'].str.contains(title, na=False)]
+    """Get a game given the title.
+    Args:
+      title (str): title of the game already normalized.
+    Returns:
+      Optional[dict]: returns the data of that game.
+    """
+    match = self.game_database[self.game_database['name_normalized'] == title]
       
     if match.empty:
       return None
     
-    result = match.sort_values(by='release_date', ascending=True).iloc[0]
+    result = match.iloc[0]
     return result.to_dict()
   
 
-  def get_data_by_intent(self, intent:str, slots: dict) -> dict:
-    """Retrieve data based on NLU intent."""
-    handlers = {
-      "get_game_info": self._handle_get_game_info,
-      "discover_game": self._handle_discover_game,
-      "compare_games": self._handle_compare_games,
-      "get_friend_games": self._handle_get_friend_games,
-      "get_term_explained": self._handle_get_term_explained,
-      "add_to_wishlist": self._handle_add_wishlist,
-      "remove_from_wishlist": self._handle_remove_wishlist,
-      "get_wishlist": self._handle_get_wishlist,
-    }
-
-    handler = handlers.get(intent)
-        
-    if handler:
-      return handler(slots)
-    else:
-      return {"error": f"Intent '{intent}' not implemented."}
-
-
-  def _handle_get_game_info(self, slots):
-    title = slots.get('title')
-    info_type = slots.get('info', 'summary') # Default to summary
-        
+  def get_game_info(self, title: str, info: str) -> dict:
+    """Extract information for get_game_info intent.
+    Args:
+      slots (dict): slots of the get_game_info intent.
+    Returns:
+      dict: requested information or errror message.
+    """
+    # First get game in the database 
     game = self.game_by_title(title)
     if not game:
-      return {"response": f"No game called '{title}'."}
+      # If there is no match, error message
+      return {"error": f"No game found with title '{title}'"}
 
-    # Map info -> column in database
-    mapping = {
-      "summary": "short_description",
-      "genre": "genres",
-      "mode": "categories",
-      "required_age": "required_age",
-      "price": "price",
-    }
+    # Based on info, different information is returned
+    match info:
+      case "summary":
+        data = game.get("about_the_game")
+      case "genre":
+        data = game.get("genres", np.ndarray(1))
+        data = data.tolist()
+      case "mode":
+        # Extract a dict telling which modes are available
+        data = game.get("categories", [])
+        data = {
+          "singleplayer": any("single" in c for c in data),
+          "multiplayer": any("multi" in c for c in data)
+        }
+      case "required_age":
+        data = game.get("required_age")
+      case "platform":
+        data = [p for p in ["windows", "mac", "linux"] if game.get(p) is True]
+      case "price":
+        data = game.get("price")
+      case "review":
+        id = game.get("appid", 0)
+        data = self.get_reviews(id)
+      case _:
+        data = {"error": "Invalid info"}
 
-
-    # If querying for platform we need to check for every device column    
-    if info_type == "platform":
-      platforms = [p for p in ["windows", "mac", "linux"] if game.get(p) is True]
-      return {"game": game['name'], "platforms": platforms}
-    
-    key = mapping.get(info_type)
-
-    val = game.get(key)
-    if info_type == "mode":
-      val = game.get("categories", [])
-      mode_info = {
-        "singleplayer": any("single" in c for c in val),
-        "multiplayer": any("multi" in c for c in val)
-      }
-      val = mode_info
-    return {"game": game['name'], info_type: val}
+    return {info: data}
         
   
-  def _handle_discover_game(self, slots):
-    """Filters dataset based on criteria."""
-    filtered_df = self.df.copy()
+  def discover_game(self, genre: Optional[str], price: Optional[float], release_year: Optional[int], platform: Optional[str], mode: Optional[str], required_age: Optional[int], publisher: Optional[str], developer: Optional[str]) -> dict:
+    """Get games that satisfy a set of characteristics.
+    Args:
+      genre (Optional[str]): genre of the games to discover.
+      price (Optional[float]): higher bound of the games to discover.
+      release_year (Optional[int]): year of release of the games to discover.
+      platform (Optional[str]): platform of the games to discover.
+      mode (Optional[str]): if the games must have either singleplayer or multiplayer.
+      required_age (Optional[int]): required age to play the games to discover.
+      publisher (Optional[str]): name of the publisher of the games to discover.
+      developer (Optional[str]): name of the developer of the games to discover.
+    Returns:
+      dict: result containing matches.
+    """
+    # Copy the game database
+    filtered_games = self.game_database.copy()
 
     # Filtering genre
-    if slots.get('genre'):
-      filtered_df = filtered_df[filtered_df['genres'].str.contains(slots['genre'], case=False, na=False)]
-
+    if genre:
+      filtered_games = filtered_games[filtered_games['genres'].astype(str).str.contains(genre, case=False, na=False)]
     # Filtering the price as an upper bound
-    if slots.get('price'):
-      price_limit = float(slots['price'])
-      filtered_df = filtered_df[filtered_df['price'] <= price_limit]
-
+    if price:
+      filtered_games = filtered_games[filtered_games['price'] <= price]
     # Filter release year
-    if slots.get('release_date'):
-      #TODO release_date is a string y-m-d in database i need to check year
-      year = str(slots['release_date'])
-      filtered_df['release_year'] = filtered_df['release_date'].str[:4]  # extract the year
-      filtered_df = filtered_df[filtered_df['release_year'] == year]
-
+    if release_year:
+      # From date take the year
+      filtered_games = filtered_games[filtered_games['release_date'].apply(lambda x: x.year) == release_year]
     # Filter platform
-    if slots.get('platform'):
-      plat = slots['platform']
-      filtered_df = filtered_df[filtered_df[plat] == True]
-
+    if platform:
+      filtered_games = filtered_games[filtered_games[platform] == True]
     # Filter game mode
-    if slots.get('mode'):
-      filtered_df = filtered_df[filtered_df['categories'].str.contains(slots['mode'], case=False, na=False)]
-
+    if mode:
+      filtered_games = filtered_games[filtered_games['categories'].astype(str).str.contains(mode, case=False, na=False)]
     # Filter required age
-    if slots.get('required_age'):
-      age = int(slots['required_age'])
-      filtered_df = filtered_df[filtered_df['required_age'] == age]
-
-
+    if required_age:
+      filtered_games = filtered_games[filtered_games['required_age'] == required_age]
     # Filter publisher and developer using the normalized fields
-    if slots.get('publisher'):
-      filtered_df = filtered_df[filtered_df['publishers_normalized'].str.contains(slots['publisher'], case=False, na=False)]
-    if slots.get('developer'):
-      filtered_df = filtered_df[filtered_df['developers_normalized'].str.contains(slots['developer'], case=False, na=False)]
+    if publisher:
+      filtered_games = filtered_games[filtered_games['publishers_normalized'].str.contains(publisher, case=False, na=False)]
+    if developer:
+      filtered_games = filtered_games[filtered_games['developers_normalized'].str.contains(developer, case=False, na=False)]
 
-    # Sort by price
-    results = filtered_df.sort_values(by='price', ascending=False).head(5)
+    # Take first 5 matches
+    results = filtered_games.head(5)
 
     if results.empty:
-      return {}
+      return {"error": "No matches found with characteristics."}
 
-    return {"proposals": results[['name', 'price', 'release_date']].to_dict()}
-
-
-  def _handle_compare_games(self, slots):
-    t1 = slots.get('title1')
-    t2 = slots.get('title2')
-    criteria = slots.get('criteria')
-
-    g1 = self.game_by_title(t1)
-    g2 = self.game_by_title(t2)
-
-    if not g1 or not g2:
-      return {}
-
-    if criteria == "price":
-      # TODO study if additional knowledge can be added
-      return {"comparison": f"{g1['name']} is ${g1.get('price')} vs {g2['name']} is ${g2.get('price')}"}
-    elif criteria == "genre":
-      return {"comparison": f"{g1['name']} is {g1.get('genres')} vs {g2['name']} is {g2.get('genres')}"}
+    return {"games": results['name'].tolist()}
 
 
-  def _handle_get_friend_games(self, slots):
-    friend_name = slots.get('name')
-        
+  def compare_games(self, title1: str, title2: str, criteria: str) -> dict:
+    """Get data to compare two games.
+    Args:
+      title1 (str): title of first game to compare.
+      title2 (str): title of the second game to compare.
+      criteria (str): criteria to use for comparison, either 'price', 'genre' or 'review'.
+    Returns:
+      dict: data to use for comparison.
+    """
+    # Get the two games data
+    game1 = self.game_by_title(title1)
+    game2 = self.game_by_title(title2)
+    # If one game was not found, return an error
+    if not game1 or not game2:
+      return {"error": "Could not retrieve data on one of the two titles"}
+
+    # Based on criteria, different info is returned
+    match criteria:
+      case "genre":
+        data = {title1: game1.get("genres", np.ndarray(1)).tolist(), title2: game2.get("genres", np.ndarray(1)).tolist()}
+      case "price":
+        data = {title1: game1.get('price'), title2: game2.get('price')}
+      case "review":
+        id1 = game1.get("appid", 0)
+        id2 = game2.get("appid", 0)
+        reviews1 = self.get_reviews(id1)
+        reviews2 = self.get_reviews(id2)
+        data = {title1: reviews1, title2: reviews2}
+      case _:
+        return {"error": "Invalid criteria"}
+
+    return {criteria: data}
+
+
+  def get_friend_games(self, name: str) -> dict:
+    """Get the games of a friend.
+    Args:
+      name (str): friend username.
+    Returns:
+      dict: friend games or error message.
+    """        
     # Search in loaded user profile mock
     friends = self.user_profile.get('friends', [])
         
-    # Simple match
+    # Search for friend
     for friend in friends:
-      if friend['username'].lower() == friend_name.lower():
-        return {"games_owned": friend.get('owned', [])}
+      if friend['username'].lower() == name.lower():
+        return {"friend_games": friend.get('owned', [])}
         
-    return {"response": f"Friend '{friend_name}' not found in your friends list."}
+    return {"error": f"Friend '{name}' not found in friends list"}
 
 
-  def _handle_get_term_explained(self, slots):
-    term = slots.get('term')
-        
+  def get_term_explained(self, term: str) -> dict:
+    """Get explaination of a term from the glossary.
+    Args:
+      term (str): term to explain.
+    Returns:
+      dict: explaination of a term or error message.
+    """        
     # Search for direct match
     definition = self.glossary.get(term)
         
     if not definition:
-      # Search harder for matches
-      for key, val in self.glossary.items():
-        if key.lower() == term.lower():
-          return {"term": key, "definition": val}
-        return {"response": f"I don't have a definition for '{term}'."}
+      return {"error": f"Invalid term '{term}'"}
         
-    return {"term": term, "definition": definition}
+    return {"definition": definition}
   
 
-  def _handle_add_wishlist(self, slots):
-    title = slots.get('title')
+  def add_wishlist(self, title: str) -> dict:
+    """Add a game to wishlist verifying it also exists.
+    Args:
+      title (str): title of game to add.
+    Returns:
+      dict: confirm or error message
+    """
+    # Search for game in database
     game = self.game_by_title(title)
         
     if not game:
-      return {"response": f"Cannot add '{title}' to wishlist as it was not found in the database."}
+      return {"error": f"No game found with title '{title}'"}
         
     # Check if already in wishlist
     current_wishlist = self.user_profile.get('wishlist', [])
-    if game['name'] not in current_wishlist:
-      self.user_profile['wishlist'].append(game['name'])
-      self._save_json(self.user_profile, USER_PROFILE_PATH)
-      return {"response": f"Added '{game['name']}' to your wishlist.", "status": "success"}
-        
-    return {"response": f"'{game['name']}' is already in your wishlist."}
+    if game['name_normalized'] in current_wishlist:
+      return {"error": f"'{game['name']}' is already in wishlist"}
+
+    self.user_profile['wishlist'].append(game['name_normalized'])
+    self._save_json(self.user_profile, USER_PROFILE_PATH)
+    return {"confirmation": f"Added '{game['name']}' to your wishlist"}
 
 
-  def _handle_remove_wishlist(self, slots):
-    title = slots.get('title')
+  def remove_wishlist(self, title: str) -> dict:
+    """Remove a game from wishlist.
+    Args:
+      title (str): title of game to remove.
+    Returns:
+      dict: confirm or error message
+    """
+
     current_wishlist = self.user_profile.get('wishlist', [])
-    # Check match (case insensitive)
-    match = next((g for g in current_wishlist if g.lower() == title.lower()), None)
+    # Find a match in current wishlist of the title
+    match = next((g for g in current_wishlist if g == title), None)
         
-    if match:
-      self.user_profile['wishlist'].remove(match)
-      self._save_json(self.user_profile, USER_PROFILE_PATH)
-      return {"response": f"Removed '{match}' from your wishlist.", "status": "success"}
-        
-    return {"response": f"'{title}' was not found in your wishlist."}
+    if not match:
+      return {"error": f"'{title}' was not found in your wishlist"}
+    
+    self.user_profile['wishlist'].remove(match)
+    self._save_json(self.user_profile, USER_PROFILE_PATH)
+    return {"confirmation": f"Removed '{match}' from your wishlist"}
+    
   
 
-  def _handle_get_wishlist(self, slots):
+  def get_wishlist(self) -> dict:
+    """Get user wishlist.
+    Returns:
+      dict: user wishlist.
+    """
     wl = self.user_profile.get('wishlist', [])
-    if not wl:
-        return {"response": "Your wishlist is empty."}
     return {"wishlist": wl}
 
-  def get_reviews(self, game):
-    """Using API get up to date reviews on a game"""
+
+  def get_reviews(self, id: int) -> list:
+    """Using API get up to date reviews on a game.
+    Args:
+      id (int): app id of game.
+    Returns:
+      list: list of recent reviews for that given game.
+    """
     return []
 
 
@@ -253,7 +286,23 @@ if __name__ == "__main__":
 
   #print(kb.game_by_title("darkwood"))
 
-  #intent = "get_game_info"
-  #slots = {"title": "postal 2", "info": "summary"}
+  #slots = {"title": "postal 2", "info": "release_date"}
+  #print(kb.get_game_info(**slots))
 
-  #print(kb.get_data_by_intent(intent, slots))
+  #slots = {"genre": None, "price": None, "release_year": 2021, "platform": "linux", 
+  #         "mode": "multiplayer", "required_age": None, "publisher": None, "developer": None}
+  #print(kb.discover_game(**slots))
+
+  #slots = {"title1": "terraria", "title2": "rust", "criteria": "price"}
+  #print(kb.compare_games(**slots))
+
+  #slots = {"name": "Alex"}
+  #print(kb.get_friend_games(**slots))
+
+  #slots = {"term": "adventure game"}
+  #print(kb.get_term_explained(**slots))
+
+  #slots = {"title": "stardew valley"}
+  #print(kb.get_wishlist())
+
+

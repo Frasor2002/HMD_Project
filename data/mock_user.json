@@ -1,10 +1,14 @@
 {
-  "wishlist": [],
-  
+  "wishlist": [
+    "stardew valley"
+  ],
   "friends": [
     {
-      "username": "Mark",
-      "owned": []
+      "username": "Alex",
+      "owned": [
+        "terraria",
+        "rust"
+      ]
     }
   ]
 }
