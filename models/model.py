@@ -49,7 +49,7 @@ class LLMTask:
     self.prepare_text_fun = model_loader.prepare_text_fun
     self.model_id = model_loader.model_id
     self.model_name = model_loader.model_name
-    self.device = model_loader.device
+    self.device = model_loader.model.device
     self.system_prompt = system_prompt
 
   def change_system_prompt(self, new_prompt: str) -> None:

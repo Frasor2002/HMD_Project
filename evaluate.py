@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 from models.utils import login_to_hub
 # TODO create code to evaluate each component
 
-# /eval
 PROJ_DIR = os.path.dirname(os.path.abspath(__file__))
 TEST_DIR = os.path.join(PROJ_DIR, "eval", "test_set")
 
@@ -57,7 +56,7 @@ def eval() -> None:
 
   args = parse_args()
 
-  device = "cuda:0" if torch.cuda.is_available() else "cpu"
+  device = "auto"
   component_name = args.component
 
   # Get test set path

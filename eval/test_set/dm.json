@@ -1,11 +1,12 @@
 [
   {
     "ds": {
-      "intent": "get_term_explained",
+      "intent": "get_game_info",
       "slots": {
-        "term": "fishing"
+        "title": "Terraria",
+        "info": "review"
       }
     },
-    "nba": "explain_term(term)"
+    "nba": "give_info(title, info)"
   }
 ]

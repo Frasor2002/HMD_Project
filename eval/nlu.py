@@ -35,9 +35,10 @@ class NLU_Evaluator(Evaluator):
     gt_states = []
 
     for sample in tqdm(self.test_set, desc="Evaluating NLU"):
-      print(sample["utt"], type(sample["history"]))
-      print(type(sample["utt"]))
+      #print(sample["utt"], type(sample["history"]))
+      #print(type(sample["utt"]))
       pred = self.component.generate(sample["utt"], list(sample["history"]))
+      pred = json.loads(pred)
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
     return pred_states, gt_states

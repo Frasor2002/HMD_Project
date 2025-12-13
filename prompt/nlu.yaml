@@ -64,7 +64,7 @@ prompt: |
       This intent has the following slots:
       - genre, genre of the game to find. Accepted values are [ "action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
       - price, higher bound price of the game to find. Expected float format but also words can be used i.e. cheap means < 15.
-      - release_date, release year of the game to find. Expect a year in complete format.
+      - release_year, release year of the game to find. Expect a year in complete format.
       - platform, on which platform we want the game to be playable. Accepted values are ["windows", "mac", "linux"].
       - mode, game modes supported by the game. Accepted values are ["singleplayer", "multiplayer"].
       - similiar_title, title of a similiar game to use for the search.
@@ -167,7 +167,7 @@ prompt: |
           "slots": {
             "genre": "RPG",
             "price": null,
-            "release_date": null
+            "release_year": null
             "platform": null,
             "mode": null,
             "similiar_title": null,
@@ -184,7 +184,7 @@ prompt: |
           "slots": {
             "genre": null,
             "price": "20.0",
-            "release_date": null
+            "release_year": null
             "platform": "linux",
             "mode": "singleplayer",
             "similiar_title": null,
@@ -201,28 +201,11 @@ prompt: |
           "slots": {
             "genre": null,
             "price": null,
-            "release_date": null
+            "release_year": null
             "platform": null,
             "mode": null,
             "similiar_title": "Vampire Survivors",
             "required_age": null,
-            "developer": null,
-            "publisher": null
-          }
-        }
-
-    - input: "I want a platformer, for ages 18 released in 2015!"
-      output:
-        {
-          "intent": "discover_game",
-          "slots": {
-            "genre": "platformer",
-            "price": null,
-            "release_date": "2015"
-            "platform": null,
-            "mode": null,
-            "similiar_title": null,
-            "required_age": "18",
             "developer": null,
             "publisher": null
           }
@@ -235,7 +218,7 @@ prompt: |
           "slots": {
             "genre": "indie",
             "price": null,
-            "release_date": "2021"
+            "release_year": "2021"
             "platform": null,
             "mode": "singleplayer",
             "similiar_title": null,
@@ -267,16 +250,6 @@ prompt: |
           }
         }
 
-    - input: "I want to compare Rust"
-      output:
-        {
-          "intent": "compare_games",
-          "slots": {
-            "title1": "Rust",
-            "title2": null,
-            "criteria": null
-          }
-        }
 
     - input: "What is the price difference between God of War and Batman: Arkham City?"
       output:
@@ -288,82 +261,6 @@ prompt: |
             "criteria": "price"
           }
         }
-
-    - input: "I want to compare two games"
-      output:
-        {
-          "intent": "compare_games",
-          "slots": {
-            "title1": null,
-            "title2": null,
-            "criteria": null
-          }
-        }
-    
-    - input: |
-      [
-        { "role": "user", "content": "Can you find me a game like Dark Souls?" },
-        { "role": "assistant", "content": "You might enjoy Elden Ring, it is by the same developers." },
-        { "role": "user", "content": "Add it to my wishlist" }
-      ]
-    output:
-      {
-        "intent": "add_to_wishlist",
-        "slots": {
-          "title": "Elden Ring"
-        }
-      }
-
-  - input: |
-      [
-        { "role": "user", "content": "How much does Terraria cost?" },
-        { "role": "assistant", "content": "Terraria costs $9.99." },
-        { "role": "user", "content": "Who is the developer?" }
-      ]
-    output:
-      {
-        "intent": "get_game_info",
-        "slots": {
-          "title": "Terraria",
-          "info": "developer"
-        }
-      }
-
-  - input: |
-      [
-        { "role": "user", "content": "I am torn between buying FIFA 24 and PES. Which is cheaper?" },
-      ]
-    output:
-      {
-        "intent": "compare_games",
-        "slots": {
-          "title1": "FIFA 24",
-          "title2": "PES",
-          "criteria": "price"
-        }
-      }
-
-  - input: |
-      [
-        { "role": "user", "content": "Search for a RPG on Windows." },
-        { "role": "assistant", "content": "I found Cyberpunk 2077." },
-        { "role": "user", "content": "I want something cheap." }
-      ]
-    output:
-      {
-        "intent": "discover_game",
-        "slots": {
-          "genre": "RPG",
-          "price": "15.0",
-          "release_date": null,
-          "platform": "windows",
-          "mode": null,
-          "similiar_title": null,
-          "required_age": null,
-          "developer": null,
-          "publisher": null
-        }
-      }
 
   - input: "Show me my wishlist"
     output:
@@ -378,15 +275,6 @@ prompt: |
         "intent": "remove_from_wishlist",
         "slots": {
           "title": "Hollow Knight"
-        }
-      }
-
-  - input: "I don't want Cyberpunk in my wishlist anymore"
-    output:
-      {
-        "intent": "remove_from_wishlist",
-        "slots": {
-          "title": "Cyberpunk"
         }
       }
 
@@ -418,20 +306,6 @@ prompt: |
       }
   
   - input: "Order a pizza pepperoni"
-    output:
-      {
-        "intent": "out_of_domain",
-        "slots": {}
-      }
-
-  - input: "What is the weather like in New York?"
-    output:
-      {
-        "intent": "out_of_domain",
-        "slots": {}
-      }
-
-  - input: "Write a poem about flowers"
     output:
       {
         "intent": "out_of_domain",

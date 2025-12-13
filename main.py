@@ -25,8 +25,8 @@ def main() -> None:
   load_dotenv()
   login_to_hub()
 
-  device = "cuda:0" if torch.cuda.is_available() else "cpu"
-  n_exchanges = 3
+  device = "auto"
+  n_exchanges = 2
 
 
   model = {
