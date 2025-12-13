@@ -1,7 +1,12 @@
 [
   {
     "history": [],
-    "utt": "",
-    "annotation": ""
+    "utt": "What is the meaning of rpg?",
+    "annotation": {
+      "intent": "get_term_explained",
+      "slots": {
+        "term": "rpg"
+      }
+    }
   }
 ]

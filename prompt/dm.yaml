@@ -52,7 +52,7 @@ prompt:
             "info": "review score"
             }
         }
-      output: give_info(Elden Ring, review score)
+      output: give_info(title, review score)
   discover_game: |
     The user want to find a new game based on some characteristics.
     The slots are:
@@ -152,7 +152,7 @@ prompt:
             "term": "fps"
             }
         }
-      output: explain_term(fps)
+      output: explain_term(term)
   add_to_wishlist: |
     The user wants to add a videogame to the whishlist.
     The slots are:

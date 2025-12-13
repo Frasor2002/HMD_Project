@@ -1,37 +1,10 @@
-from argparse import ArgumentParser, Namespace
 import torch
-
-from models.model import MODELS
+from dotenv import load_dotenv
+from models.utils import login_to_hub
 from agent.agent import DialogueAgent
 
 
-def parse_args() -> Namespace:
-  """Parse and return command line args.
-  Returns:
-    Namespace: command line args.
-  """
-  parser = ArgumentParser()
 
-  parser.add_argument(
-    "-m", "--model",
-    type=str,
-    choices=MODELS.keys(),
-    default="qwen3",
-    help="Name of the llm model to use for each component.",
-  )
-  parser.add_argument(
-    "-d", "--device",
-    type=str,
-    default="cuda:0" if torch.cuda.is_available() else "cpu",
-    help="Device to run the model on.",
-  )
-  parser.add_argument(
-    "-n", "--n_exchanges",
-    type=int,
-    default=3,
-    help="Number of exchanges to keep in the conversation history.",
-  )
-  return parser.parse_args()
 
 
 def chat(model):
@@ -47,7 +20,14 @@ def chat(model):
 
 def main() -> None:
   """Execute the agent."""
-  args = parse_args()
+
+  # Load hf 
+  load_dotenv()
+  login_to_hub()
+
+  device = "cuda:0" if torch.cuda.is_available() else "cpu"
+  n_exchanges = 3
+
 
   model = {
     "default": "qwen3",
@@ -57,7 +37,7 @@ def main() -> None:
     "sa": "qwen3"
   }
 
-  dialogue_agent = DialogueAgent(model, args.device, args.n_exchanges)
+  dialogue_agent = DialogueAgent(model, device, n_exchanges)
 
   chat(dialogue_agent)
 

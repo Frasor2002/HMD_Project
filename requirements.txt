@@ -3,3 +3,5 @@ transformers==4.57.0
 torch==2.8.0
 huggingface_hub[cli]
 pyarrow
+dotenv
+steamreviews

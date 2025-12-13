@@ -5,16 +5,17 @@ from argparse import ArgumentParser, Namespace
 import torch
 import yaml
 from eval.nlu import NLU_Evaluator
+from eval.dm import DM_Evaluator
 from typing import Any
+from dotenv import load_dotenv
+from models.utils import login_to_hub
 # TODO create code to evaluate each component
 
 # /eval
-EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
-FOLDER = "test_set"
-TEST_DIR = os.path.join(EVAL_DIR, FOLDER)
+PROJ_DIR = os.path.dirname(os.path.abspath(__file__))
+TEST_DIR = os.path.join(PROJ_DIR, "eval", "test_set")
 
-PROJ_DIR = os.path.dirname(EVAL_DIR)
-PROMPT_DIR = os.path.join(EVAL_DIR, "prompt")
+PROMPT_DIR = os.path.join(PROJ_DIR, "prompt")
 
 
 
@@ -33,12 +34,6 @@ def parse_args() -> Namespace:
     help="Name of the llm model to use.",
   )
   parser.add_argument(
-    "-d", "--device",
-    type=str,
-    default="cuda:0" if torch.cuda.is_available() else "cpu",
-    help="Device to run the model on.",
-  )
-  parser.add_argument(
     "-c", "--component",
     type=str,
     default="nlu",
@@ -48,7 +43,8 @@ def parse_args() -> Namespace:
 
 def get_evaluator(component) -> Any:
   name_to_class = {
-    "nlu": NLU_Evaluator
+    "nlu": NLU_Evaluator,
+    "dm": DM_Evaluator
   }
 
   return name_to_class[component]
@@ -56,22 +52,31 @@ def get_evaluator(component) -> Any:
 
 def eval() -> None:
   """Execute the agent."""
+  load_dotenv()
+  login_to_hub()
+
   args = parse_args()
 
+  device = "cuda:0" if torch.cuda.is_available() else "cpu"
+  component_name = args.component
+
   # Get test set path
-  test_set_path = os.path.join(TEST_DIR, args.component + ".json")
-  prompt_path = os.path.join(TEST_DIR, args.component + ".yaml")
-  base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+  test_set_path = os.path.join(TEST_DIR, component_name + ".json")
+  prompt_path = os.path.join(PROMPT_DIR, component_name + ".yaml")
   
-  with open(prompt_path, "r") as file:
+  with open(prompt_path, "r", encoding="utf-8") as file:
     prompt = yaml.safe_load(file)
   
   # Init component
-  model_loader = ModelLoader(args.model, args.device)
-  component = LLMTask(model_loader, prompt["prompt"])
+  model_loader = ModelLoader(args.model, device)
+
+  if component_name in ["dm", "nlg"]:
+    component = LLMTask(model_loader, prompt["prompt"]["main"])
+  else:
+    component = LLMTask(model_loader, prompt["prompt"])
 
   # Get evaluator class based on which component to evaluate
-  eval_class = get_evaluator(args.component)
+  eval_class = get_evaluator(component_name)
   evaluator = eval_class(component, test_set_path, prompt)
 
   # Initialize and run evaluator

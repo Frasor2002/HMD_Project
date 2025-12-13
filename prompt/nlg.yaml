@@ -37,9 +37,7 @@ prompt:
       - Output at most 50 words.
       - If MI is True add an apology at the start to tell the user we will do only an intent at once i.e. "Let's do things step by step,..."
       - Instead of simply answering the user's request or requesting more information, try to proactively suggest some options.
-      - Ask the user for confirmation e.g. "Is everything correct?"
-      - Acknowledge what the user said.
-      - Use conversational markers e.g. "Great!", "Perfect", "Last step".
+      - Use conversational markers e.g. "Great!", "Perfect", ...
   get_game_info: |
     The user wants to find information on a game.
     The slots in this context are:
@@ -72,14 +70,14 @@ prompt:
     - input:
         NBA: give_info(title, info)
         DS: { "intent": "get_game_info", "slots": { "title": "Hades", "info": "genre" } }
-        EK: ["roguelike", "action", "dungeon crawler"]
+        EK: {"genre": ["roguelike", "action", "dungeon crawler"]}
         MI: False
       Output:
-        Great choice. Hades is defined as a roguelike action dungeon crawler. Is this the information you were looking for?
+        Great choice. Hades is defined as a roguelike action dungeon crawler. Would you like to search for additional information or for another game?
 
       Input:
         NBA: ask_for(title)
-        DS: { "intent": "get_game_info", "slots": {} }
+        DS: { "intent": "get_game_info", "slots": { "title": null, "info": null} }
         EK: None
         MI: True
       Output:
@@ -108,7 +106,7 @@ prompt:
     Examples:
     - input:
         NBA: ask_for(genre)
-        DS: { "intent": "discover_game", "slots": { "genre":null, "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": null, "developer": null } }
+        DS: { "intent": "discover_game", "slots": { "genre": null, "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": null, "developer": null } }
         EK: None
         MI: False
       output:
@@ -117,7 +115,7 @@ prompt:
     - input:
         NBA: propose_game(genre, publisher)
         DS: { "intent": "discover_game", "slots": { "genre": "rpg", "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": "Bethesda", "developer": null }
-        EK: "["Starfield", "Skyrim", "Fallout 4"]"
+        EK: "{'games': ["Starfield", "Skyrim", "Fallout 4"]}"
         MI: False
       output:
         Based on your request for Bethesda RPGs, I suggest checking out "Starfield" or the classic "Skyrim". Do either of those sound appealing to you?
@@ -128,7 +126,7 @@ prompt:
         EK: None
         MI: False
     Output:
-      I apologize, but I am having trouble accessing the game database right now. Could you please try asking again in a moment?
+      I apologize, but I am having some troubles right now. Could you please try asking again in a moment?
 
   compare_games: |
     The user wants to get a comparison of two games.
@@ -155,7 +153,7 @@ prompt:
     - input:
         NBA: give_comparison(title1, title2, criteria)
         DS: { "intent": "compare_games", "slots": { "title1": "Overwatch 2", "title2": "Valorant", "criteria": "review" } }
-        EK: "{"game1": {"positive": 100, "negative": 50}, "game2": {"positive": 400, "negative": 500}}"
+        EK: "{"review": "title1_value": {"positive": 100, "negative": 50}, "title2_value": {"positive": 400, "negative": 500}}"
         MI: False
       output:
       Here is the breakdown: Overwatch 2 has less reviews but more positives while Valorant has more reviews and more negative ones. Does that help clarify the difference?
@@ -181,7 +179,7 @@ prompt:
     Examples:
     - input:
         NBA: ask_for(term)
-        DS: { "intent": "get_term_explained", "slots": {"term": null} }
+        DS: {"intent": "get_term_explained", "slots": {"term": null} }
         EK: None
         MI: False
       output:
@@ -190,7 +188,7 @@ prompt:
     - input:
         NBA: explain_term(term)
         DS: { "intent": "get_term_explained", "slots": { "term": "Nerf" } }
-        EK: "To reduce the power of a weapon or ability."
+        EK: {"definition": "To reduce the power of a weapon or ability."}
         MI: False
       Output:
         Great! "Nerf" means to reduce the power of a specific weapon, character, or ability in a game update. Does that clear it up?
@@ -217,7 +215,7 @@ prompt:
     - input:
         NBA: add_game(title)
         DS: { "intent": "add_to_wishlist", "slots": { "title": "Hollow Knight" } }
-        EK: Success
+        EK: {"confirmation": "Added to wishlist."}
         MI: False
       output:
         Perfect! "Hollow Knight" has been successfully added to your wishlist. Would you like to search for another game?
@@ -235,7 +233,7 @@ prompt:
     - input:
       NBA: add_game(title)
       DS: { "intent": "remove_from_wishlist", "slots": { "title": "Cyberpunk 2077" } }
-      EK: Success
+      EK: {"confirmation": "Removed from wishlist"}
       MI: False
       output:
         Understood. I have removed "Cyberpunk 2077" from your wishlist. Is there anything else you would like to do today?
@@ -262,7 +260,7 @@ prompt:
     - input:
         NBA: give_wishlist()
         DS: { "intent": "get_wishlist", "slots": {} }
-        EK: ["Zelda", "Mario Kart", "Splatoon"]
+        EK: {"wishlist": ["Zelda", "Mario Kart", "Splatoon"]}
         MI: False
       output:
         Here is your current wishlist: Zelda, Mario Kart, and Splatoon. Would you like to add or remove anything?
@@ -270,7 +268,7 @@ prompt:
     - input:
         NBA: give_wishlist()
         DS: { "intent": "get_wishlist", "slots": {} }
-        EK: []
+        EK: {"wishlist": []}
         MI: False
       output:
         Your wishlist is currently empty. Would you like to discover some new games to add?
@@ -298,7 +296,7 @@ prompt:
     - input:
       NBA: give_friend_games(name)
       DS: { "intent": "get_friend_games", "slots": { "name": "Alex" } }
-      EK: ["Dota 2", "CS:GO"]
+      EK: {"games": ["Dota 2", "CS:GO"]}
       MI: False
       output:
       Okay, checking Alex's library. They currently own Dota 2 and CS:GO. Would you like to add one to your whishlist?
@@ -309,7 +307,6 @@ prompt:
     The action to be chosen from this intent is:
     - fallback(): the assistant apologizes to the user of not being able to fullfill the request that was out of its capabilities.
       Try to propose an alternative action like searching for information on a game, explaining game knowledge or comparing two games.
-      If user is just answering yes to a question use context to propose him something.
 
     Examples:
     - input:

@@ -1,0 +1,11 @@
+[
+  {
+    "ds": {
+      "intent": "get_term_explained",
+      "slots": {
+        "term": "fishing"
+      }
+    },
+    "nba": "explain_term(term)"
+  }
+]

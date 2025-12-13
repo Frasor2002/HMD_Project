@@ -181,8 +181,12 @@ class DialogueAgent:
       for input in split_input[:-1]:
         self.history.append({"role": "user", "content": input})
     
-    # Agent will always attend to last user intent
-    nlu_input = split_input[-1]
+    # Handle the case where preproc discards entire input
+    if len(split_input) == 0:
+      nlu_input = user_input
+    else:
+      # Agent will always attend to last user intent
+      nlu_input = split_input[-1]
     
     # Pass through nlu to get intents
     nlu_out = self.nlu.generate(nlu_input, list(self.history))
@@ -199,7 +203,7 @@ class DialogueAgent:
     self.dm.change_system_prompt(self.system_prompt["dm"]["prompt"]["main"] + self.system_prompt["dm"]["prompt"][intent_name])
 
     # Pass through dm to get next best action
-    nba = self.dm.generate(ds, list(self.history))
+    nba = self.dm.generate(ds)
     print(f"DM OUT->{nba}")
 
     # Get external knowledge if needed
@@ -207,6 +211,8 @@ class DialogueAgent:
     # If error in request, action becomes fallback()
     if "error" in ek:
       nba = "fallback()"
+      # Error is not seen by the nlg
+      ek = None
 
     # Get intent based prompt for dm
     self.nlg.change_system_prompt(self.system_prompt["nlg"]["prompt"]["main"] + self.system_prompt["nlg"]["prompt"][intent_name])
@@ -214,7 +220,7 @@ class DialogueAgent:
     # Prepare the nlg input and get natural language output
     nlg_input = f"NBA: {nba}\nDS: {self.dst.get_ds()}\nEK: {ek}\n MI: {multiple_intents}"
     print("NLG Input -> ", nlg_input)
-    response = self.nlg.generate(nlg_input, list(self.history))
+    response = self.nlg.generate(nlg_input)
 
     # Update history
     self.history.append({"role": "user", "content": user_input})

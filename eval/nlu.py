@@ -3,7 +3,7 @@ import json
 from collections import defaultdict
 from eval.evaluator import Evaluator
 from models.model import LLMTask
-
+from tqdm import tqdm
 
 class NLU_Evaluator(Evaluator):
   def __init__(
@@ -16,6 +16,7 @@ class NLU_Evaluator(Evaluator):
     Args:
       nlu (LLMTask): component to evaluate.
       filepath (str): test set filepath.
+      prompt (dict): prompt for the task.
     """
     super().__init__(nlu, filepath, prompt)
 
@@ -33,8 +34,10 @@ class NLU_Evaluator(Evaluator):
     pred_states = []
     gt_states = []
 
-    for sample in self.test_set:
-      pred = self.component.generate(sample["utt"], sample["history"])
+    for sample in tqdm(self.test_set, desc="Evaluating NLU"):
+      print(sample["utt"], type(sample["history"]))
+      print(type(sample["utt"]))
+      pred = self.component.generate(sample["utt"], list(sample["history"]))
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
     return pred_states, gt_states
