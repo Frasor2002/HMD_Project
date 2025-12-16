@@ -38,7 +38,7 @@ class DM_Evaluator(Evaluator):
       intent = sample["ds"]["intent"]
       self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
 
-      pred = self.component.generate(sample["ds"])
+      pred = self.component.generate(json.dumps(sample["ds"]))
       print(sample['ds'])
       print(pred)
       pred_states.append(pred)
