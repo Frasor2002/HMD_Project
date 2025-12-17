@@ -1,43 +1,11 @@
-from dataset import GameDataset
-
-import argparse
-from argparse import ArgumentParser, Namespace
 import torch
+from dotenv import load_dotenv
+from models.utils import login_to_hub
+from agent.agent import DialogueAgent
 
-from models import MODELS, ModelLoader
-from components.nlu.nlu import NLU
 
-def parse_args() -> Namespace:
-    """Parse and return command line args.
-    Returns:
-        Namespace: command line args.
-    """
 
-    parser = ArgumentParser(
-        description="Execute dialogue agent.",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
 
-    parser.add_argument(
-        "-m", "--model",
-        type=str,
-        choices=MODELS.keys(),
-        default="qwen3",
-        help="Name of the llm model to use for each component.",
-    )
-    parser.add_argument(
-        "-d", "--device",
-        type=str,
-        default="cuda:0" if torch.cuda.is_available() else "cpu",
-        help="Device to run the model on.",
-    )
-    parser.add_argument(
-        "-n", "--n_exchanges",
-        type=int,
-        default=2,
-        help="Number of exchanges to keep in the conversation history.",
-    )
-    return parser.parse_args()
 
 def chat(model):
   """Interactive CLI session."""
@@ -46,16 +14,32 @@ def chat(model):
     if user_input.lower() in {"exit", "quit"}:
       print("Closing...")
       break
-    response = model.extract_intent_slots(user_input)
-    print(f"\nnlu: {response}")
+    response = model.chat(user_input)
+    print(f"Assistant: {response}")
 
+
+def main() -> None:
+  """Execute the agent."""
+
+  # Load hf 
+  load_dotenv()
+  login_to_hub()
+
+  device = "auto"
+  n_exchanges = 2
+
+
+  model = {
+    "default": "qwen3",
+    "preproc": "qwen3",
+    "nlu": "qwen3",
+    "dm": "qwen3",
+    "sa": "qwen3"
+  }
+
+  dialogue_agent = DialogueAgent(model, device, n_exchanges)
+
+  chat(dialogue_agent)
 
 if __name__ == "__main__":
-  args = parse_args()
-
-  data = GameDataset("dataset/steam_dataset.example.feather")
-  #print(data.df.head())
-
-  model_loader = ModelLoader(args.model, args.device)
-  nlu = NLU(model_loader, n_exchanges=0) #No history to avoid allucination args.n_exchanges
-  chat(nlu)
+  main()

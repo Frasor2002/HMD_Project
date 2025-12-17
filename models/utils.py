@@ -1,30 +1,51 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
 from transformers import PreTrainedTokenizer
-
+from huggingface_hub import login, whoami
+import os
 
 def hf_prepare_text(
   prompt: str,
   tokenizer: PreTrainedTokenizer,
-  messages: Optional[List[Dict[str, str]]] = None,
-  n_exchanges: int = 2,
-):
+  messages: Optional[List[Dict[str, str]]] = None
+) -> Any:
   """Prepare textual input for a hugging face model.
   Args:
     prompt (str): textual prompt.
     tokenizer (PreTrainedTokenizer): tokenizer to tokenize the text into tokens.
     messages (Optional[List[Dict[str, str]]]): dialogue state.
-    n_exchanges (int): number of previous exchanges to be used for context.
+  Returns:
+    Any: prepared input for the hugging face model.
   """
 
   if messages is None:
     messages = []
-  messages.append({"role": "user", "content": prompt})
+  conversation = messages + [{"role": "user", "content": prompt}]
 
   text = tokenizer.apply_chat_template(
-    messages[-n_exchanges * 2 :],
+    conversation,
     tokenize=False,
     add_generation_prompt=True,
   )
 
   return text
+
+
+def login_to_hub() -> None:
+  """Login to hugging face hub to load models."""
+  # Check if already logged in
+  try:
+    user = whoami()
+    print(f"hf user '{user['name']}' logged in.")
+    return
+  except Exception:
+    pass
+  
+  # Login
+  env_token = os.getenv("HF_TOKEN")
+  if env_token:
+    print("Logging in with HF_TOKEN...")
+    login(token=env_token)
+  else:
+    print("WARNING: No authentication found. Set 'HF_TOKEN'.")
+    

@@ -1,0 +1,12 @@
+[
+  {
+    "ds": {
+      "intent": "get_game_info",
+      "slots": {
+        "title": "Terraria",
+        "info": "review"
+      }
+    },
+    "nba": "give_info(title, info)"
+  }
+]
