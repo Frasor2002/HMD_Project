@@ -6,6 +6,7 @@ import torch
 import yaml
 from eval.nlu import NLU_Evaluator
 from eval.dm import DM_Evaluator
+from eval.nlg import NLG_Evaluator
 from typing import Any
 from dotenv import load_dotenv
 from models.utils import login_to_hub
@@ -43,7 +44,8 @@ def parse_args() -> Namespace:
 def get_evaluator(component) -> Any:
   name_to_class = {
     "nlu": NLU_Evaluator,
-    "dm": DM_Evaluator
+    "dm": DM_Evaluator,
+    "nlg": NLG_Evaluator
   }
 
   return name_to_class[component]

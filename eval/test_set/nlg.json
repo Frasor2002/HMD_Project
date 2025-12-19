@@ -1,0 +1,326 @@
+[
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"review\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can certainly check reviews for you. Which game title are you interested in?",
+      "To find the reviews, I first need the game's name. What title should I look up?",
+      "I'd be happy to find reviews. What is the game title?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Elden Ring\", \"info\": \"publisher\" } }\nEK: {\"publisher\": \"Bandai Namco\"}\n MI: False",
+    "annotation": [
+      "Elden Ring is published by Bandai Namco. Would you like to check the price or release date as well?",
+      "The publisher for Elden Ring is Bandai Namco. Do you need any other details?",
+      "I found that Bandai Namco published Elden Ring. Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Stardew Valley\", \"info\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I found Stardew Valley. What specific information do you need? I can provide the genre, platform, or current price.",
+      "Let's take it one step at a time. I have Stardew Valley selected. What details would you like to know about it?",
+      "Let's slow down. Regarding Stardew Valley, what information are you looking for? We could check the developer or reviews."
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Half-Life 3\", \"info\": \"release_date\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "I apologize, but I am having trouble accessing that information right now. Could you please try asking again?",
+      "I'm sorry, I encountered an internal error looking for that. Please try your request again.",
+      "My apologies, I couldn't process that request. Would you like to try searching for a different game?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": null, \"price\": null, \"release_date\": null, \"platform\": null, \"mode\": null, \"similiar_title\": null, \"required_age\": null, \"publisher\": null, \"developer\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "Great! To narrow the search down, do you have a preferred genre? We could look for indie, strategy, or perhaps a casual game.",
+      "I'd love to help you find a new game. What genre are you in the mood for? Maybe action or adventure?",
+      "To start discovering games, tell me your favorite genre. We can find RPGs, sports games, and more."
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"rpg\", \"price\": \"60\", \"release_date\": null, \"platform\": null, \"mode\": null, \"similiar_title\": null, \"required_age\": null, \"publisher\": null, \"developer\": null } }\nEK: {\"games\": [\"Baldur's Gate 3\", \"Cyberpunk 2077\"]}\n MI: False",
+    "annotation": [
+      "Based on your request for RPGs, I suggest checking out \"Baldur's Gate 3\" or \"Cyberpunk 2077\". Do either of those sound appealing?",
+      "I found \"Baldur's Gate 3\" and \"Cyberpunk 2077\" based on your criteria. Would you like to know more about them?",
+      "For RPGs under that price point, I recommend \"Baldur's Gate 3\" or \"Cyberpunk 2077\". Shall we look at their reviews?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": null, \"price\": null, \"release_date\": null, \"platform\": \"Switch\", \"mode\": null, \"similiar_title\": null, \"required_age\": null, \"publisher\": null, \"developer\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. To find a game for Switch, I first need to know what genre you prefer.",
+      "Let's take it slowly. First, tell me what genre you want to play on Switch. We can check prices later.",
+      "Let's handle this one by one. Which genre are you interested in for your Switch search?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(publisher)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": null, \"price\": null, \"publisher\": \"Bethesda\" } }\nEK: {\"games\": [\"Starfield\", \"Skyrim\"]}\n MI: False",
+    "annotation": [
+      "Checking Bethesda titles, I found \"Starfield\" and \"Skyrim\". Would you like to add one to your wishlist?",
+      "For Bethesda games, \"Starfield\" and \"Skyrim\" are top choices. Do either of these interest you?",
+      "I recommend \"Starfield\" or the classic \"Skyrim\" if you like Bethesda. Would you like to see more options?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"FIFA 23\", \"title2\": \"eFootball\", \"criteria\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "Comparing FIFA 23 and eFootball is interesting. What criteria should we use? We can compare their price, user reviews, or genre.",
+      "Those are big rivals. How do you want to compare them? We could look at the publisher or release date.",
+      "I can compare those football games. What aspect are you curious about? Perhaps the game modes?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Overwatch 2\", \"title2\": \"Valorant\", \"criteria\": \"review\" } }\nEK: {\"review\": {\"title1_value\": \"Mixed\", \"title2_value\": \"Very Positive\"}}\n MI: False",
+    "annotation": [
+      "Here is the breakdown: Overwatch 2 has Mixed reviews while Valorant is rated Very Positive. Does that help clarify the difference?",
+      "Comparing user reception: Overwatch 2 sits at Mixed, whereas Valorant is Very Positive. Would you like to compare their genres?",
+      "The reviews show a difference: Overwatch 2 is Mixed, but Valorant is Very Positive. Do you need more comparisons?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(title2)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Call of Duty\", \"title2\": null, \"criteria\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. To run a comparison, I need a second game title to compare against Call of Duty. What game do you have in mind?",
+      "Let's take it one step at a time. I have Call of Duty. What is the second game you want to compare it with?",
+      "Let's go slowly. First, please tell me which game you want to compare with Call of Duty."
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(title1)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": null, \"title2\": \"Fortnite\", \"criteria\": \"genre\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can compare the genre for you, but I need the first game to compare against Fortnite. What is the title?",
+      "To proceed with the comparison against Fortnite, I need another game title. Which one should I use?",
+      "I'm ready to compare, but I need the first title to match against Fortnite. What game is it?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: ask_for(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can clarify gaming lingo for you. What term would you like explained? I can define things like \"adventure game\", \"NPC\", or \"singleplayer\".",
+      "Happy to help with definitions. What gaming term are you curious about?",
+      "I can define game terminology. What word is confusing you? We could look up \"lag\" or \"buff\"."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Nerf\" } }\nEK: {\"definition\": \"To reduce the power of a weapon or ability.\"}\n MI: False",
+    "annotation": [
+      "Great! \"Nerf\" means to reduce the power of a specific weapon, character, or ability in a game update. Does that clear it up?",
+      "\"Nerf\" refers to developers reducing the power of an item or ability. Would you like another term explained?",
+      "Here is the meaning: To \"Nerf\" is to make something weaker in the game. Do you need any more definitions?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: ask_for(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. First, tell me exactly which term you want me to explain.",
+      "Let's take it one at a time. What specific gaming term do you need a definition for?",
+      "Let's go slowly. I can explain terms, but first I need to know the word you are asking about."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": {\"title\": null} }\nEK: None\n MI: False",
+    "annotation": [
+      "I can certainly update your wishlist. What is the title of the game you would like to add?",
+      "I'm ready to add a game to your list. Which title should I add? If you aren't sure, we can discover a new game together.",
+      "To add to your wishlist, I need the game's name. What are you adding today?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Hollow Knight\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "Perfect! \"Hollow Knight\" has been successfully added to your wishlist. Would you like to search for another game?",
+      "Done. \"Hollow Knight\" is now in your wishlist. Do you want to check your full list now?",
+      "I have added \"Hollow Knight\" to your wishlist. Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": {\"title\": null} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. To update your list, I first need the name of the game you want to add.",
+      "Let's take it slowly. First, tell me the title of the game you wish to add.",
+      "Let's handle this one by one. Which game title should I add to your wishlist?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: remove_game(title)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"Cyberpunk 2077\" } }\nEK: {\"confirmation\": \"Removed from wishlist\"}\n MI: False",
+    "annotation": [
+      "Understood. I have removed \"Cyberpunk 2077\" from your wishlist. Is there anything else you would like to do today?",
+      "Done. \"Cyberpunk 2077\" is no longer on your wishlist. Would you like to find a replacement game?",
+      "I've successfully removed \"Cyberpunk 2077\" from your list. Do you want to see what games remain?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": {\"title\": null} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do one thing at a time. Which game do you want me to remove from your list?",
+      "Let's proceed step by step. First, I need the title of the game to remove.",
+      "Let's go slowly. Please tell me the name of the game you wish to remove first."
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: give_wishlist()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: {\"wishlist\": [\"Zelda\", \"Mario Kart\", \"Splatoon\"]}\n MI: False",
+    "annotation": [
+      "Here is your current wishlist: Zelda, Mario Kart, and Splatoon. Would you like to add or remove anything?",
+      "You have Zelda, Mario Kart, and Splatoon on your list. Shall we look for more Nintendo games?",
+      "Your wishlist contains: Zelda, Mario Kart, and Splatoon. Do you need details on any of these?"
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: give_wishlist()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: {\"wishlist\": []}\n MI: False",
+    "annotation": [
+      "Your wishlist is currently empty. Would you like to discover some new games to add?",
+      "It looks like your wishlist is empty. Shall we search for some popular games to fill it?",
+      "You don't have any games in your wishlist yet. Can I suggest some genres to explore?"
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: None\n MI: False",
+    "annotation": [
+      "I apologize, but I'm having trouble retrieving your wishlist. Could you ask again in a moment?",
+      "I'm sorry, I cannot access your wishlist right now due to an error. Please try again.",
+      "My apologies, something went wrong fetching your list. Would you like to try searching for a game instead?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: ask_for(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": {\"name\": null} }\nEK: None\n MI: False",
+    "annotation": [
+      "I can help with that. What is the name of the friend whose games you want to see?",
+      "To check a library, I need your friend's name. Who should I look up?",
+      "I'd be happy to check. Which friend are you asking about?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Alex\" } }\nEK: {\"games\": [\"Dota 2\", \"CS:GO\"]}\n MI: False",
+    "annotation": [
+      "Okay, checking Alex's library. They currently own Dota 2 and CS:GO. Would you like to add one to your whishlist?",
+      "Alex owns Dota 2 and CS:GO. Do you want to compare your games with theirs?",
+      "I found that Alex plays Dota 2 and CS:GO. Shall we look up info on either of these?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: ask_for(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": {\"name\": null} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. First, I need the name of the friend you are interested in.",
+      "Let's take it slowly. Who is the friend you want to check? I need their name first.",
+      "Let's handle this one by one. Please provide your friend's name so I can check their games."
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: False",
+    "annotation": [
+      "I apologize, but I cannot help with that specific request. However, I can help you search for game info, explain terms, or compare titles.",
+      "I'm sorry, that is outside my capabilities. Would you like to discover a new game instead?",
+      "I apologize, I can't do that. But I can help you manage your wishlist or explain gaming terms. What would you like to do?"
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I cannot help with that request, but I can help you find game info. What game are you interested in?",
+      "Let's take it slowly. That request is out of my scope, but I can compare games for you. Do you have any titles in mind?",
+      "Let's go one by one. I can't do that, but I can explain gaming terms. Is there a word you need defined?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Tetris\", \"info\": \"genre\" } }\nEK: {\"genre\": [\"Puzzle\", \"Tile-matching\"]}\n MI: False",
+    "annotation": [
+      "Tetris is a classic Puzzle and Tile-matching game. Would you like to know the developer?",
+      "It is defined as a Puzzle and Tile-matching game. Can I help you find similar games?",
+      "Tetris falls under the Puzzle and Tile-matching genre. Do you need any other info?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"horror\", \"price\": null, \"publisher\": null } }\nEK: {\"games\": [\"Resident Evil\", \"Silent Hill\"]}\n MI: False",
+    "annotation": [
+      "If you like horror, I recommend \"Resident Evil\" or \"Silent Hill\". Dare to try one?",
+      "For horror fans, \"Resident Evil\" and \"Silent Hill\" are classics. Do either interest you?",
+      "I found \"Resident Evil\" and \"Silent Hill\". Would you like to add one to your wishlist?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Apex Legends\", \"title2\": \"Fortnite\", \"criteria\": \"price\" } }\nEK: {\"price\": {\"title1_value\": \"Free\", \"title2_value\": \"Free\"}}\n MI: False",
+    "annotation": [
+      "Comparing price: Both Apex Legends and Fortnite are Free to Play. Would you like to compare reviews instead?",
+      "Here is the breakdown: Both titles are Free. Shall we look at their genres?",
+      "Good news, both Apex Legends and Fortnite are Free. Do you need more comparisons?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Buff\" } }\nEK: {\"definition\": \"To increase the power of a weapon or ability.\"}\n MI: False",
+    "annotation": [
+      "\"Buff\" means to increase the power of a specific weapon or ability. It is the opposite of a Nerf. Does that help?",
+      "A \"Buff\" is an update that makes a character or item stronger. Would you like another definition?",
+      "To \"Buff\" something is to make it stronger or more effective. Do you have other terms to check?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"God of War\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "Success! \"God of War\" is now on your wishlist. Would you like to check for similar action games?",
+      "I've added \"God of War\" to your list. Would you like to view your full wishlist?",
+      "\"God of War\" has been successfully added. Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Sarah\" } }\nEK: {\"games\": []}\n MI: False",
+    "annotation": [
+      "I checked Sarah's library, but it appears to be empty. Would you like to check another friend?",
+      "It looks like Sarah hasn't shared any games or the library is empty. Shall we look for someone else?",
+      "Sarah's library is currently empty. Can I help you with your own wishlist instead?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"platform\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can check the platform availability for you. Which game are you interested in?",
+      "To check platforms, I need the game title. What are we looking for?",
+      "I'd be happy to see where you can play. What is the game's name?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"platform\" } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. First, I need the game title to check its platforms.",
+      "Let's take it slowly. Please tell me the game name first, then we can check the platforms.",
+      "Let's handle this one by one. Which game are you asking about?"
+    ]
+  }
+]

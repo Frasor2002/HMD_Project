@@ -6,23 +6,8 @@ prompt: |
   Goal: Your goal is taking user input and extracting intents and slots.
 
   Input: 
-    The input is in the following format (excluding the system prompt):
-    [
-      { 
-        "role": "user",
-        "content": history_utt1
-      },
-      {
-        "role": "assistant",
-        "content": history_utt2
-      },
-      ...,
-      {
-        "role": "user",
-        "content": user_prompt
-      }
-    ] 
-    It contains both a history of variable lenght and then the final object contains the user prompt used for extracting intents and slots.
+    The input is in natural language user prompt.
+    It can also contain a history of variable lenght.
     The history is also useful for adding context and gathering slots from previous exchanges.
 
   Output: The expected output is a json formatted as follows:

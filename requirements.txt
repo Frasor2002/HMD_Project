@@ -5,3 +5,6 @@ huggingface_hub[cli]
 pyarrow
 dotenv
 steamreviews
+bitsandbytes
+sacrebleu
+bertscore

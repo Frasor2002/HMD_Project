@@ -42,7 +42,7 @@ class DM_Evaluator(Evaluator):
       print(sample['ds'])
       print(pred)
       pred_states.append(pred)
-      gt_states.append(sample["nba"])
+      gt_states.append(sample["annotation"])
     return pred_states, gt_states
   
   @staticmethod
