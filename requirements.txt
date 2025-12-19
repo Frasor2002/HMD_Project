@@ -7,4 +7,4 @@ dotenv
 steamreviews
 bitsandbytes
 sacrebleu
-bertscore
+bert_score
