@@ -199,7 +199,7 @@ class DST:
     # If intent changes discard slots (context switch)
     if new_intent is not None and new_intent != current_intent:
       self.ds["intent"] = new_intent
-      self.ds["slots"] = {slot_name: None for slot_name in intent_schemas}
+      self.ds["slots"] = {slot_name: None for slot_name in intent_schemas[new_intent]}
 
     # Merge cleaned slots into the current slots
     if "slots" in cleaned:
