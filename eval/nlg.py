@@ -4,7 +4,6 @@ import json
 from collections import Counter
 import numpy as np
 import torch
-from  bert_score import score as bert_score
 import sacrebleu
 from typing import cast
 
@@ -80,7 +79,7 @@ class NLG_Evaluator(Evaluator):
     """Evaluate the nlg using reference strings."""
 
     if not self.gt_states:
-      return {"bleu": 0.0, "f1": 0.0, "bertscore": 0.0}
+      return {"bleu": 0.0, "f1": 0.0}
     
     # Computing f1 score
     f1_scores = [
@@ -103,21 +102,7 @@ class NLG_Evaluator(Evaluator):
     bleu = sacrebleu.corpus_bleu(self.pred_states, transposed_refs)
     bleu_score = bleu.score
 
-    # Compute BERTScore (semantic similarity)
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-    bert_score_val = 0.0
-    result = bert_score(
-                self.pred_states, 
-                self.gt_states, 
-                lang="en", 
-                verbose=False,
-                device=device
-              )
-    f1 = cast(torch.Tensor, result[2])
-    bert_score_val = f1.mean().item()
-
     return {
       "bleu": bleu_score,
-      "f1": avg_f1,
-      "bertscore": 0.0
+      "f1": float(avg_f1),
     }

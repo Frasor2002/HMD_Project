@@ -20,6 +20,43 @@ VALID_CRITERIA = ["price", "review", "genre"]
 VALID_MODES = ["singleplayer", "multiplayer"]
 
 
+intent_schemas = {
+  "get_game_info": [
+    "title", 
+    "info"
+  ],
+  "discover_game": [
+    "genre", 
+    "price", 
+    "release_year", 
+    "platform", 
+    "mode", 
+    "similar_title", 
+    "required_age", 
+    "publisher", 
+    "developer"
+  ],
+  "compare_games": [
+    "title1", 
+    "title2", 
+    "criteria"
+  ],
+  "get_friend_games": [
+    "name"
+  ],
+  "get_term_explained": [
+    "term"
+  ],
+  "add_to_wishlist": [
+    "title"
+  ],
+  "remove_from_wishlist": [
+    "title"
+  ],
+  "get_wishlist": [],
+  "out_of_domain": []
+}
+
 
 class DST:
   """Dialogue State Track to track current user requests."""
@@ -162,7 +199,7 @@ class DST:
     # If intent changes discard slots (context switch)
     if new_intent is not None and new_intent != current_intent:
       self.ds["intent"] = new_intent
-      self.ds["slots"] = {}
+      self.ds["slots"] = {slot_name: None for slot_name in intent_schemas}
 
     # Merge cleaned slots into the current slots
     if "slots" in cleaned:

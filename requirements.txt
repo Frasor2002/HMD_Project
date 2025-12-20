@@ -4,7 +4,7 @@ torch==2.8.0
 huggingface_hub[cli]
 pyarrow
 dotenv
-steamreviews
 bitsandbytes
 sacrebleu
-bert_score
+protobuf
+sentencepiece

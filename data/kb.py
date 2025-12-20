@@ -3,6 +3,7 @@ import json
 import os
 from typing import Any, Optional
 import numpy as np
+import requests
 
 
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -99,7 +100,7 @@ class KnowledgeBase:
     return {info: data}
         
   
-  def discover_game(self, genre: Optional[str], price: Optional[float], release_year: Optional[int], platform: Optional[str], mode: Optional[str], required_age: Optional[int], publisher: Optional[str], developer: Optional[str]) -> dict:
+  def discover_game(self, genre: Optional[str], price: Optional[float], release_year: Optional[int], platform: Optional[str], mode: Optional[str], similar_title: Optional[str], required_age: Optional[int], publisher: Optional[str], developer: Optional[str]) -> dict:
     """Get games that satisfy a set of characteristics.
     Args:
       genre (Optional[str]): genre of the games to discover.
@@ -107,6 +108,7 @@ class KnowledgeBase:
       release_year (Optional[int]): year of release of the games to discover.
       platform (Optional[str]): platform of the games to discover.
       mode (Optional[str]): if the games must have either singleplayer or multiplayer.
+      similar_title (Optional [str]): similar game.
       required_age (Optional[int]): required age to play the games to discover.
       publisher (Optional[str]): name of the publisher of the games to discover.
       developer (Optional[str]): name of the developer of the games to discover.
@@ -131,6 +133,10 @@ class KnowledgeBase:
       filtered_games = filtered_games[filtered_games[platform] == True]
     # Filter game mode
     if mode:
+      if mode == "singleplayer":
+        mode = "single-player"
+      elif mode == "multiplayer":
+        mode = "multi-player"
       filtered_games = filtered_games[filtered_games['categories'].astype(str).str.contains(mode, case=False, na=False)]
     # Filter required age
     if required_age:
@@ -140,8 +146,21 @@ class KnowledgeBase:
       filtered_games = filtered_games[filtered_games['publishers_normalized'].str.contains(publisher, case=False, na=False)]
     if developer:
       filtered_games = filtered_games[filtered_games['developers_normalized'].str.contains(developer, case=False, na=False)]
+    # Filter from genres of a similar game
+    if similar_title:
+      sim_game = self.game_by_title(similar_title)
+      if not sim_game:
+        return {"error": f"No similar game found of name {similar_title}"}
+      sim_genres = sim_game.get('genres', [])
+      # Take main 3 genres for query
+      top_3_genres = sim_genres[:10]
+      for g in top_3_genres:
+        filtered_games = filtered_games[filtered_games['genres'].astype(str).str.contains(g, case=False, na=False)]
+      # Exclude similar title from results
+      filtered_games = filtered_games[filtered_games['name_normalized'] != sim_game['name_normalized']]
 
-    # Take first 5 matches
+
+    # Take 5 matches
     results = filtered_games.head(5)
 
     if results.empty:
@@ -278,7 +297,26 @@ class KnowledgeBase:
     Returns:
       list: list of recent reviews for that given game.
     """
-    return []
+    url = f'https://store.steampowered.com/appreviews/{id}'
+    params = {
+      'json': 1,
+      'filter': 'recent',
+      'language': 'english',
+      'num_per_page': 50
+    }
+    try:
+      response = requests.get(url, params=params)
+      response.raise_for_status() # Raise error for bad responses (4xx, 5xx)
+      data = response.json()
+      # Check if 'reviews' key exists in case of empty response
+      if 'reviews' in data:
+        # Extract just the review text
+        return [rev["review"] for rev in data["reviews"]]
+      else:
+        return [] 
+    except requests.RequestException as e:
+      print(f"Error fetching reviews: {e}")
+      return []
 
 
 if __name__ == "__main__":
@@ -286,11 +324,12 @@ if __name__ == "__main__":
 
   #print(kb.game_by_title("darkwood"))
 
-  #slots = {"title": "postal 2", "info": "release_date"}
+  #slots = {"title": "darkwood", "info": "review"}
   #print(kb.get_game_info(**slots))
 
-  #slots = {"genre": None, "price": None, "release_year": 2021, "platform": "linux", 
-  #         "mode": "multiplayer", "required_age": None, "publisher": None, "developer": None}
+  #slots = {"genre": None, "price": None, "release_year": None, "platform": None, 
+  #         "mode": "singleplayer", "similar_title": "terraria" ,"required_age": None, 
+  #         "publisher": None, "developer": None}
   #print(kb.discover_game(**slots))
 
   #slots = {"title1": "terraria", "title2": "rust", "criteria": "price"}

@@ -7,6 +7,7 @@ import yaml
 import os
 import json
 import re
+from agent.utils import RuleBasedDM
 
 class DialogueAgent:
   def __init__(self, model: Dict[str, str], device: str = "cuda", n_exchanges: int = 3) -> None:
@@ -26,7 +27,6 @@ class DialogueAgent:
     # Load model
     # Model loader cache
     self.loaders = {}
-    #model_loader = ModelLoader(self.model_name, self.device)
 
     # Load prompts
     self.system_prompt = self._load_prompt()
@@ -34,7 +34,11 @@ class DialogueAgent:
     # Instantiate components
     self.preproc = LLMTask(self._get_loader("preproc"), self.system_prompt["preproc"]["prompt"])
     self.nlu = LLMTask(self._get_loader("nlu"), self.system_prompt["nlu"]["prompt"])
-    self.dm = LLMTask(self._get_loader("dm"), self.system_prompt["dm"]["prompt"]["main"])
+    # dm can be either llm or rule-based
+    if self.model_name.get("dm") == "rule_based":
+      self.dm = RuleBasedDM()
+    else:
+      self.dm = LLMTask(self._get_loader("dm"), self.system_prompt["dm"]["prompt"]["main"])
     self.nlg = LLMTask(self._get_loader("nlg"), self.system_prompt["nlg"]["prompt"]["main"])
     self.sa = LLMTask(self._get_loader("sa"), self.system_prompt["sa"]["prompt"])
 

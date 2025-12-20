@@ -1,5 +1,6 @@
 import os
 from models.model import LLMTask, ModelLoader
+from agent.utils import RuleBasedDM
 from models.registry import MODELS
 from argparse import ArgumentParser, Namespace
 import torch
@@ -29,7 +30,7 @@ def parse_args() -> Namespace:
   parser.add_argument(
     "-m", "--model",
     type=str,
-    choices=MODELS.keys(),
+    choices=list(MODELS.keys()) + ["rule_based"],
     default="qwen3",
     help="Name of the llm model to use.",
   )
@@ -53,28 +54,34 @@ def get_evaluator(component) -> Any:
 
 def eval() -> None:
   """Execute the agent."""
-  load_dotenv()
-  login_to_hub()
-
   args = parse_args()
-
-  device = "auto"
+  model_name = args.model
   component_name = args.component
-
   # Get test set path
   test_set_path = os.path.join(TEST_DIR, component_name + ".json")
+  # Get prompt path
   prompt_path = os.path.join(PROMPT_DIR, component_name + ".yaml")
-  
+    
   with open(prompt_path, "r", encoding="utf-8") as file:
     prompt = yaml.safe_load(file)
-  
-  # Init component
-  model_loader = ModelLoader(args.model, device)
 
-  if component_name in ["dm", "nlg"]:
-    component = LLMTask(model_loader, prompt["prompt"]["main"])
-  else:
-    component = LLMTask(model_loader, prompt["prompt"])
+  # Get rule_based
+  if model_name == "rule_based":
+    if component_name != "dm":
+      raise ValueError("Only the dm component has a 'rule-based' option.")
+    component = RuleBasedDM()
+  else: # Initialize LLM
+    load_dotenv()
+    login_to_hub()
+    device = "auto"
+    
+    # Init component
+    model_loader = ModelLoader(args.model, device)
+
+    if component_name in ["dm", "nlg"]:
+      component = LLMTask(model_loader, prompt["prompt"]["main"])
+    else:
+      component = LLMTask(model_loader, prompt["prompt"])
 
   # Get evaluator class based on which component to evaluate
   eval_class = get_evaluator(component_name)

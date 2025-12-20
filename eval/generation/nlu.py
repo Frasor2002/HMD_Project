@@ -10,8 +10,8 @@ DATASET_PATH = os.path.join(EVAL_DIR, "test_set", "nlu.json")
 
 # Templates for the data (generated from llm)
 intent_templates = {
-  "get_game_info": ["Tell me about {title}", "I want to know more about {title}", "Search for {title}", "What is the {info} of {title}?", "Show me the {info} for {title}", "Can you find the {info} for the game {title}?", "Does {title} have good {info}?", "I need the {info} for {title}"],
-  "discover_game": ["Find me some {genre} games", "I want to play a game on {platform}", "Show me games made by {developer}", "Are there any games from {release_year}?", "I am looking for {mode} games", "Find {genre} games under {price} dollars", "Show me {genre} games playable on {platform}", "I want a {mode} game released in {release_year}", "Do you know any games similar to {similar_title} for {platform}?", "List games by {publisher} that are {genre}","Search for {genre} games on {platform} that cost less than {price}","I need a {mode} {genre} game from {release_year}","Find a game by {developer} for {platform} with a {required_age} age rating","Show me {genre} games like {similar_title} under {price}","Find me a {genre} game on {platform} that is {mode} and costs {price}","I want a {genre} game from {release_year} developed by {developer} for {platform}"],
+  "get_game_info": ["Tell me about {title}", "I want to know more about {title}", "Search for {title}", "What is the {info} of {title}?"],
+  "discover_game": ["Find me some {genre} games", "I want to play a game on {platform}", "Show me games made by {developer}", "Are there any games from {release_year}?", "I am looking for {mode} games", "Find {genre} games under {price} dollars", "Show me {genre} games playable on {platform}", "I want a {mode} game released in {release_year}", "Do you know any games similar to {similar_title} for {platform}?", "List games by {publisher} that are {genre}","Search for {genre} games on {platform} that cost less than {price}"],
   "compare_games": ["Compare {title1} and {title2}","What is the difference between {title1} and {title2}?","Which is better, {title1} or {title2}?","Compare the {criteria} of {title1} and {title2}","Which has better {criteria}, {title1} or {title2}?","Tell me about the {criteria} differences between {title1} and {title2}"],
   "get_friend_games": ["What is {name} playing?","Show me the games {name} owns","Does {name} have any recommendations?","List games owned by {name}"],
   "get_term_explained": ["What does {term} mean?","Explain the term {term}","Define {term} in the context of gaming","What is {term}?"],
@@ -146,6 +146,9 @@ def generate_test_set(print_stats : bool = False) -> list:
     if print_stats:
       print(f"For intent {intent} {len(intent_data)} samples.")
     test_set.extend(intent_data)
+
+  if print_stats:
+    print(f"Total samples {len(test_set)}")
   
   return test_set
 

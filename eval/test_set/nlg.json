@@ -322,5 +322,725 @@
       "Let's take it slowly. Please tell me the game name first, then we can check the platforms.",
       "Let's handle this one by one. Which game are you asking about?"
     ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Doom Eternal\", \"info\": \"required_age\" } }\nEK: {\"required_age\": \"18+\", \"rating\": \"M for Mature\"}\n MI: False",
+    "annotation": [
+      "Doom Eternal is rated M for Mature, so it is suitable for ages 18+. Do you need to check the price?",
+      "The age requirement for Doom Eternal is 18+ (Rated M). Would you like to check the genre?",
+      "I found that Doom Eternal is rated 18+. Can I help you with anything else regarding this game?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"mode\" } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I can tell you if a game is single-player or multiplayer, but I need the title first.",
+      "Let's take it slowly. Please provide the game name so I can check its available game modes.",
+      "Let's handle this one by one. Which game are you wondering about regarding its player modes?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Minecraft\", \"info\": \"mode\" } }\nEK: {\"mode\": [\"Single-player\", \"Multiplayer\", \"Co-op\"]}\n MI: False",
+    "annotation": [
+      "Minecraft supports Single-player, Multiplayer, and Co-op modes. It's great for playing with friends!",
+      "You can play Minecraft in Single-player or join friends in Multiplayer and Co-op. Do you need platform info?",
+      "Minecraft features both Single-player and Multiplayer/Co-op modes. Would you like to add it to your wishlist?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(platform)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"Action\", \"platform\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "Action games are a great choice. Which platform do you play on? Xbox, PlayStation, or PC?",
+      "To find the best Action game for you, I need to know your preferred platform.",
+      "I can find some Action titles. What console or device are you using?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(price)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": null, \"price\": \"0\", \"platform\": null } }\nEK: {\"games\": [\"Rocket League\", \"Genshin Impact\"]}\n MI: False",
+    "annotation": [
+      "If you are looking for free games, I recommend \"Rocket League\" or \"Genshin Impact\". Do either interest you?",
+      "For a budget of zero, you can play \"Rocket League\" or \"Genshin Impact\". Shall I show you their reviews?",
+      "I found some great free-to-play options like \"Rocket League\" and \"Genshin Impact\". Would you like to try one?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(similiar_title)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"similiar_title\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. To find similar games, I first need to know which game you enjoyed playing.",
+      "Let's take it slowly. Tell me a game you like, and I will find others just like it.",
+      "Let's go one by one. What is the title of the game you want me to use as a reference?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Super Mario Wonder\", \"title2\": \"Sonic Frontiers\", \"criteria\": \"release_date\" } }\nEK: {\"release_date\": {\"title1_value\": \"2023\", \"title2_value\": \"2022\"}}\n MI: False",
+    "annotation": [
+      "Comparison complete: Sonic Frontiers came out in 2022, while Super Mario Wonder was released in 2023.",
+      "Looking at release dates: Sonic Frontiers (2022) is older than Super Mario Wonder (2023). Do you want to compare prices?",
+      "Super Mario Wonder is the newer title from 2023, whereas Sonic Frontiers released in 2022."
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Battlefield\", \"title2\": \"Call of Duty\", \"criteria\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I have both Battlefield and Call of Duty selected. What specifically do you want to compare?",
+      "Let's take it slowly. What feature are you comparing? We can check the publisher, genre, or reviews.",
+      "Let's handle this one by one. To proceed, please tell me the criteria for this comparison."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"NPC\" } }\nEK: {\"definition\": \"Non-Player Character. A character controlled by the game's AI.\"}\n MI: False",
+    "annotation": [
+      "\"NPC\" stands for Non-Player Character. It refers to any character controlled by the computer rather than a human. Clear enough?",
+      "An NPC is a Non-Player Character controlled by the game AI. Do you have other terms to define?",
+      "That stands for Non-Player Character. These are the characters you interact with that the computer controls."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: ask_for(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "I'm here to translate gamer speak. What word or acronym is confusing you?",
+      "I can explain definitions. Which term do you need help with?",
+      "Ask me about any gaming term. Is there a specific word you want explained?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Hades\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "Great choice. \"Hades\" has been added to your wishlist. Would you like to find more roguelikes?",
+      "Done. I've placed \"Hades\" on your wishlist. Do you want to review your list?",
+      "\"Hades\" is now in your wishlist. Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: inform(already_exists)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Celeste\" } }\nEK: {\"error\": \"Game already in wishlist\"}\n MI: False",
+    "annotation": [
+      "It looks like \"Celeste\" is already in your wishlist! You're one step ahead. Would you like to remove it instead?",
+      "You actually already have \"Celeste\" on your list. Do you want to check the price?",
+      "Good news, \"Celeste\" was already saved to your wishlist. Shall we look for a different game?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: remove_game(title)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"FIFA 22\" } }\nEK: {\"confirmation\": \"Removed from wishlist\"}\n MI: False",
+    "annotation": [
+      "I have removed \"FIFA 22\" from your wishlist. Are you looking for a newer sports game?",
+      "\"FIFA 22\" has been deleted from your list. Do you want to add the new version?",
+      "Done. \"FIFA 22\" is gone from your wishlist. Is there anything else?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Mike\" } }\nEK: {\"games\": \"Error: Private Profile\"}\n MI: False",
+    "annotation": [
+      "I tried to check Mike's games, but his profile seems to be private. Should I check someone else?",
+      "I cannot see Mike's games because his privacy settings are set to private. Do you have another friend to check?",
+      "It seems Mike keeps his game library private. I can't access it right now. Can I help with your own library?"
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: False",
+    "annotation": [
+      "I can't check the weather, but I can tell you if there is dynamic weather in a game like Forza Horizon 5!",
+      "I focus on video games, so I can't help with that. Would you like to talk about game genres instead?",
+      "That is outside my expertise. I am an assistant for gaming info and wishlists only."
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Dark Souls\", \"info\": \"developer\" } }\nEK: {\"developer\": \"FromSoftware\"}\n MI: False",
+    "annotation": [
+      "Dark Souls was developed by FromSoftware. They are known for high difficulty! Do you want to see their other games?",
+      "The developer behind Dark Souls is FromSoftware. Would you like to check the release date?",
+      "FromSoftware is the developer of Dark Souls. Can I provide more info?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(similiar_title)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"similiar_title\": \"The Legend of Zelda\" } }\nEK: {\"games\": [\"Okami\", \"Tunic\", \"Genshin Impact\"]}\n MI: False",
+    "annotation": [
+      "If you love Zelda, you might really enjoy \"Okami\", \"Tunic\", or \"Genshin Impact\".",
+      "Based on The Legend of Zelda, I suggest checking out \"Tunic\" or \"Okami\". Shall I add one to your wishlist?",
+      "Fans of Zelda often like \"Okami\" and \"Tunic\". Would you like more details on these?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Among Us\", \"title2\": \"Fall Guys\", \"criteria\": \"genre\" } }\nEK: {\"genre\": {\"title1_value\": \"Social Deduction\", \"title2_value\": \"Platform Battle Royale\"}}\n MI: False",
+    "annotation": [
+      "They are quite different: Among Us is a Social Deduction game, while Fall Guys is a Platform Battle Royale.",
+      "Comparing genres: Among Us focuses on Social Deduction, whereas Fall Guys is a Platform Battle Royale.",
+      "Among Us is about Social Deduction. Fall Guys is a Platform Battle Royale. Which style do you prefer?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Smurf\" } }\nEK: {\"definition\": \"A highly skilled player creating a new account to play against lower-ranked players.\"}\n MI: False",
+    "annotation": [
+      "A \"Smurf\" is a high-level player who uses a new account to play against easier opponents. It's often frowned upon.",
+      "In gaming, \"Smurfing\" means a skilled player plays on a low-rank account to dominate the match. Does that make sense?",
+      "\"Smurf\" refers to an experienced player posing as a beginner on a new account."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: ask_for(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I can explain the term, but you haven't told me what the word is yet.",
+      "Let's take it slowly. What is the specific slang or term you want defined?",
+      "Let's go one by one. Please input the term you want me to explain."
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: give_wishlist()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: {\"wishlist\": [\"Portal 2\"]}\n MI: False",
+    "annotation": [
+      "Your wishlist currently has just one game: Portal 2. Shall we find some more to add?",
+      "I only see Portal 2 on your wishlist. Would you like to search for similar puzzle games?",
+      "You have Portal 2 saved. Do you want to check if it's on sale?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(tag)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"tag\": \"Roguelike\" } }\nEK: {\"games\": [\"Enter the Gungeon\", \"Dead Cells\"]}\n MI: False",
+    "annotation": [
+      "For Roguelike fans, \"Enter the Gungeon\" and \"Dead Cells\" are top-tier choices. Want to try one?",
+      "I found \"Enter the Gungeon\" and \"Dead Cells\" under the Roguelike category. Do you need prices?",
+      "I recommend \"Enter the Gungeon\" or \"Dead Cells\" if you want a Roguelike challenge."
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"GTA V\", \"info\": \"review\" } }\nEK: {\"review\": \"Very Positive\"}\n MI: False",
+    "annotation": [
+      "GTA V has a rating of Very Positive. It is one of the most popular games ever. Need other stats?",
+      "The reviews are Very Positive for GTA V. Would you like to check the age rating?",
+      "Users have rated GTA V as Very Positive. Can I look up the developer for you?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: inform(not_found)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"Halo Infinite\" } }\nEK: {\"error\": \"Game not in wishlist\"}\n MI: False",
+    "annotation": [
+      "I couldn't remove \"Halo Infinite\" because it wasn't in your wishlist to begin with. Would you like to add it?",
+      "It seems \"Halo Infinite\" isn't in your list, so I couldn't remove it. Do you want to view your current list?",
+      "\"Halo Infinite\" was not found in your wishlist. Perhaps you meant a different title?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(title1)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": null, \"title2\": null, \"criteria\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. To compare games, I need the first title. What is it?",
+      "Let's take it slowly. I need two games to compare. Please start by giving me the first one.",
+      "Let's handle this one by one. Which is the first game you would like to use in the comparison?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"DPS\" } }\nEK: {\"definition\": \"Damage Per Second. A measure of how much damage a character or weapon deals.\"}\n MI: False",
+    "annotation": [
+      "\"DPS\" stands for Damage Per Second. It's used to measure the damage output of a weapon or character.",
+      "In RPGs and shooters, DPS means Damage Per Second. High DPS means you defeat enemies faster. Help?",
+      "That is Damage Per Second. It calculates how effective an attack is over time."
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(required_age)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"Shooter\", \"required_age\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can find a shooter for you. Are you looking for something family-friendly or for mature audiences?",
+      "To recommend a shooter, I need to know the age rating you are comfortable with.",
+      "Do you have an age preference for the shooter game? I can filter by PEGI or ESRB ratings."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. You want to add a game, but I need the name first. What is it?",
+      "Let's take it slowly. Please state the name of the game you wish to add.",
+      "Let's go one by one. I am ready to update your wishlist, but I need the game title."
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Final Fantasy VII\", \"info\": \"release_date\" } }\nEK: {\"release_date\": \"1997 (Original), 2020 (Remake)\"}\n MI: False",
+    "annotation": [
+      "The original Final Fantasy VII came out in 1997, but the Remake was released in 2020. Which one are you playing?",
+      "Final Fantasy VII has two main dates: 1997 for the classic and 2020 for the Remake. Need more info?",
+      "It was released in 1997, with a Remake following in 2020. Would you like to know the publisher?"
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I cannot help with that topic. However, I can help you find a game. What genre do you like?",
+      "Let's take it slowly. That is out of my domain. Let's switch to gaming. Do you have a wishlist?",
+      "Let's handle this one by one. I can't answer that, but I can define gaming terms. Try asking me about 'AFK'."
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Hollow Knight: Silksong\", \"info\": \"release_date\" } }\nEK: {\"release_date\": \"TBA (To Be Announced)\"}\n MI: False",
+    "annotation": [
+      "The release date for Hollow Knight: Silksong is still To Be Announced. We are all waiting patiently!",
+      "Unfortunately, there is no confirmed date yet; it is listed as TBA. Would you like to check the prequel instead?",
+      "Silksong is currently TBA. Can I help you find other Metroidvania games while you wait?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(tag)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"tag\": \"Cozy\" } }\nEK: {\"games\": [\"Unpacking\", \"Coffee Talk\", \"Animal Crossing\"]}\n MI: False",
+    "annotation": [
+      "If you need a cozy vibe, I recommend \"Unpacking\", \"Coffee Talk\", or \"Animal Crossing\".",
+      "For a relaxing experience, check out \"Unpacking\" or \"Coffee Talk\". Shall I add one to your wishlist?",
+      "I found some great cozy games: \"Animal Crossing\" and \"Unpacking\". Do either of those sound good?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Street Fighter 6\", \"title2\": \"Tekken 8\", \"criteria\": \"platform\" } }\nEK: {\"platform\": {\"title1_value\": \"PC, PS5, Xbox\", \"title2_value\": \"PC, PS5, Xbox\"}}\n MI: False",
+    "annotation": [
+      "Both Street Fighter 6 and Tekken 8 are available on PC, PS5, and Xbox Series X. No platform exclusives here!",
+      "Comparison: They share the same platforms (PC, PS5, Xbox). Would you like to compare their rosters?",
+      "Good news, both fighting games are on PC, PlayStation 5, and Xbox. Do you need price info?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Aggro\" } }\nEK: {\"definition\": \"To draw the attention or attacks of an enemy NPC.\"}\n MI: False",
+    "annotation": [
+      "\"Aggro\" means getting an enemy's attention so they attack you instead of your teammates.",
+      "To \"pull aggro\" is to make the enemy target you. Tanks usually do this in RPGs. Need another definition?",
+      "It refers to the aggression level of an enemy. If you have the aggro, the enemy is chasing you."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I am ready to write it down, but I need the game title first.",
+      "Let's take it slowly. Which specific game would you like me to add to the list?",
+      "Let's go one by one. Please tell me the name of the game to add."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Sekiro: Shadows Die Twice\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "Done! \"Sekiro: Shadows Die Twice\" is now on your wishlist. Good luck, you'll need it!",
+      "I've added \"Sekiro\" to your list. Would you like to check its current price?",
+      "\"Sekiro: Shadows Die Twice\" has been successfully added. Can I help you find similar challenging games?"
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Bob\" } }\nEK: {\"games\": [\"Roblox\", \"Fortnite\"]}\n MI: False",
+    "annotation": [
+      "Bob is currently playing Roblox and Fortnite. Would you like to compare your library with his?",
+      "I see that Bob owns Roblox and Fortnite. Do you play either of those?",
+      "Bob's library includes Roblox and Fortnite. Shall I look up another friend?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Terraria\", \"info\": \"price\" } }\nEK: {\"price\": \"$9.99\"}\n MI: False",
+    "annotation": [
+      "Terraria is currently priced at $9.99. It offers a lot of content for that price!",
+      "The price for Terraria is $9.99. Would you like to know the developer?",
+      "I found Terraria for $9.99. Do you want to add it to your wishlist?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: inform(empty_list)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"League of Legends\" } }\nEK: {\"error\": \"Wishlist is empty\"}\n MI: False",
+    "annotation": [
+      "I can't remove anything because your wishlist is currently empty. Would you like to add something instead?",
+      "Your wishlist is already empty, so there is nothing to remove. Shall we search for games?",
+      "There is nothing to remove; your list is empty. Can I help you discover new titles?"
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: False",
+    "annotation": [
+      "I apologize, but I don't know who won the Super Bowl. I only know about video games.",
+      "That is beyond my capabilities. I can help you compare game graphics or prices, though.",
+      "I can't answer general knowledge questions. Would you like to talk about the latest game releases?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"Strategy\", \"price\": null } }\nEK: {\"games\": [\"Civilization VI\", \"XCOM 2\"]}\n MI: False",
+    "annotation": [
+      "For Strategy lovers, \"Civilization VI\" and \"XCOM 2\" are essential. Do you prefer historical or sci-fi themes?",
+      "I recommend \"Civilization VI\" or \"XCOM 2\". Would you like to read their reviews?",
+      "\"Civilization VI\" and \"XCOM 2\" are top-rated strategy games. Which one interests you more?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Mass Effect\", \"info\": \"genre\" } }\nEK: {\"genre\": \"Sci-Fi RPG\"}\n MI: False",
+    "annotation": [
+      "Mass Effect is a Sci-Fi RPG. It is famous for its story choices. Need to know the release date?",
+      "It falls under the Sci-Fi RPG genre. Would you like to know about the Legendary Edition?",
+      "Mass Effect is a classic Sci-Fi RPG. Can I help you with anything else regarding this title?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Red Dead Redemption 2\", \"title2\": \"GTA V\", \"criteria\": \"score\" } }\nEK: {\"score\": {\"title1_value\": \"97\", \"title2_value\": \"96\"}}\n MI: False",
+    "annotation": [
+      "It's a close call: Red Dead Redemption 2 has a score of 97, slightly edging out GTA V at 96.",
+      "Comparing critical scores: RDR2 sits at 97, while GTA V is right behind at 96. Both are masterpieces.",
+      "Red Dead Redemption 2 scored 97, and GTA V scored 96. Do you want to compare their map sizes?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Hitbox\" } }\nEK: {\"definition\": \"The invisible shape used to detect collisions (like getting hit) on a character.\"}\n MI: False",
+    "annotation": [
+      "A \"Hitbox\" is the invisible area around a character that registers damage when hit. If you shoot the hitbox, it counts!",
+      "In gaming, the \"Hitbox\" determines where a character can be hit. Sometimes it's larger than the character model.",
+      "\"Hitbox\" refers to the collision detection zone. It decides if an attack lands or misses."
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: give_wishlist()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: {\"wishlist\": [\"Sekiro\", \"Hades\", \"Terraria\"]}\n MI: False",
+    "annotation": [
+      "Here is your updated wishlist: Sekiro, Hades, and Terraria. A very solid collection!",
+      "You currently have Sekiro, Hades, and Terraria saved. Do you want to remove any of them?",
+      "Your list contains: Sekiro, Hades, and Terraria. Would you like to see if any are on sale?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"dlc\" } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. Which game are you checking for DLC (Downloadable Content)?",
+      "Let's take it slowly. I need the game title to check for expansions or DLC.",
+      "Let's handle this one by one. Please tell me the game name."
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(title2)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Forza Horizon\", \"title2\": null, \"criteria\": \"graphics\" } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I have Forza Horizon, but I need a second racing game to compare graphics.",
+      "Let's take it slowly. What game should I compare against Forza Horizon?",
+      "Let's go one by one. Please provide the second title for the comparison."
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. That isn't something I can answer, but I can help you find a new game. Do you have a favorite genre?",
+      "Let's take it slowly. I can't help with that topic. Let's stick to video games. What are you playing lately?",
+      "Let's handle this one by one. I am limited to gaming assistance. Would you like to check a game review instead?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"The Witcher 3\", \"info\": \"dlc\" } }\nEK: {\"dlc\": [\"Hearts of Stone\", \"Blood and Wine\"]}\n MI: False",
+    "annotation": [
+      "The Witcher 3 has two major expansions: Hearts of Stone and Blood and Wine. Both are highly rated.",
+      "I found two DLCs: Hearts of Stone and Blood and Wine. Would you like to check the price for the bundle?",
+      "The available DLC content includes Hearts of Stone and Blood and Wine. Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Stray\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "\"Stray\" has been added to your wishlist. Enjoy playing as a cat!",
+      "Done. I've saved \"Stray\" to your list. Would you like to see reviews for it?",
+      "\"Stray\" is now in your wishlist. Do you want to look for more indie games?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Persona 5 Royal\", \"info\": \"platform\" } }\nEK: {\"platform\": [\"PS4\", \"PS5\", \"Switch\", \"Xbox\", \"PC\"]}\n MI: False",
+    "annotation": [
+      "Persona 5 Royal is widely available on PS4, PS5, Nintendo Switch, Xbox, and PC. No excuse not to play it!",
+      "You can play Persona 5 Royal on PlayStation, Switch, Xbox, and PC. Do you need price info?",
+      "Good news: Persona 5 Royal is on all modern platforms including Switch, Xbox, PC, and PlayStation."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"RNG\" } }\nEK: {\"definition\": \"Random Number Generation. It determines random events, loot drops, or critical hits.\"}\n MI: False",
+    "annotation": [
+      "\"RNG\" stands for Random Number Generation. It's the luck factor that decides loot drops and critical hits.",
+      "In gaming, RNG means Random Number Generation. If you have 'bad RNG', you are having bad luck with the game's math.",
+      "That refers to Random Number Generation. It controls everything random in a game, from loot to enemy spawns."
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": \"MMORPG\", \"platform\": null } }\nEK: {\"games\": [\"World of Warcraft\", \"Final Fantasy XIV\"]}\n MI: False",
+    "annotation": [
+      "The titans of the genre are \"World of Warcraft\" and \"Final Fantasy XIV\". Both have free trials available!",
+      "For MMORPGs, I highly recommend \"World of Warcraft\" or \"Final Fantasy XIV\". Which world do you prefer?",
+      "I found \"World of Warcraft\" and \"Final Fantasy XIV\". Would you like to check their subscription prices?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Gran Turismo 7\", \"title2\": \"Forza Horizon 5\", \"criteria\": \"platform\" } }\nEK: {\"platform\": {\"title1_value\": \"PlayStation Exclusive\", \"title2_value\": \"Xbox & PC Exclusive\"}}\n MI: False",
+    "annotation": [
+      "Here is the main difference: Gran Turismo 7 is a PlayStation exclusive, while Forza Horizon 5 is on Xbox and PC.",
+      "You can only play Gran Turismo 7 on PlayStation, whereas Forza Horizon 5 is for Xbox and PC users.",
+      "Comparing platforms: Gran Turismo is Sony/PlayStation only, and Forza is Microsoft/Xbox only."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: add_game(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Palworld\" } }\nEK: {\"confirmation\": \"Added to wishlist.\"}\n MI: False",
+    "annotation": [
+      "\"Palworld\" is now in your wishlist. Ready to catch some Pals?",
+      "Success. \"Palworld\" has been added. Do you want to see if it's in early access?",
+      "I have updated your wishlist with \"Palworld\". Can I help you with anything else?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"League of Legends\", \"info\": \"price\" } }\nEK: {\"price\": \"Free to Play\"}\n MI: False",
+    "annotation": [
+      "League of Legends is completely Free to Play, though it offers cosmetic purchases.",
+      "It costs nothing to start; League of Legends is Free to Play. Shall I explain what a MOBA is?",
+      "You can download League of Legends for free. Do you want to check the system requirements?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(mode)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"mode\": \"Co-op\" } }\nEK: {\"games\": [\"It Takes Two\", \"Portal 2\"]}\n MI: False",
+    "annotation": [
+      "For a great Co-op experience, you have to try \"It Takes Two\" or \"Portal 2\". They are classics!",
+      "I suggest \"It Takes Two\" or \"Portal 2\" for cooperative play. \"It Takes Two\" even won Game of the Year.",
+      "If you want to work together, check out \"It Takes Two\" and \"Portal 2\". Would you like to add one to your list?"
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: remove_game(title)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"Anthem\" } }\nEK: {\"confirmation\": \"Removed from wishlist\"}\n MI: False",
+    "annotation": [
+      "\"Anthem\" has been removed from your wishlist. Would you like to find a better loot-shooter?",
+      "Done. \"Anthem\" is no longer on your list. Anything else to remove?",
+      "I've successfully deleted \"Anthem\" from your wishlist. Do you want to check your remaining games?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": null, \"info\": \"review\" } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I can check reviews, but I need the game title first.",
+      "Let's take it slowly. Which game's review score are you looking for?",
+      "Let's go one by one. Please tell me the name of the game."
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: False",
+    "annotation": [
+      "I can't help with cooking recipes, but I can tell you about the cooking mechanics in \"Breath of the Wild\"!",
+      "That is outside my scope. I focus strictly on video game information and wishlists.",
+      "I apologize, I am not trained to answer that. Let's talk about video games instead."
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Charlie\" } }\nEK: {\"games\": [\"Rust\", \"DayZ\"]}\n MI: False",
+    "annotation": [
+      "Charlie seems to like survival games; they have Rust and DayZ. Do you play those?",
+      "Checking Charlie's library: found Rust and DayZ. Would you like to compare achievements?",
+      "Charlie owns Rust and DayZ. Should I check the price of Rust for you?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: ask_for(criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Dota 2\", \"title2\": \"League of Legends\", \"criteria\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I have Dota 2 and LoL selected. What do you want to compare? Characters, difficulty, or publisher?",
+      "Let's take it slowly. What aspect of these MOBAs are you comparing?",
+      "Let's handle this one by one. Please specify the criteria for the comparison."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"AoE\" } }\nEK: {\"definition\": \"Area of Effect. An attack or spell that affects a specific area rather than a single target.\"}\n MI: False",
+    "annotation": [
+      "\"AoE\" stands for Area of Effect. It refers to attacks that hit everyone in a certain zone, like a grenade.",
+      "In gaming, AoE means Area of Effect. It's great for clearing out groups of enemies. Need more info?",
+      "That is Area of Effect. Use AoE spells when enemies are clumped together!"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Baldur's Gate 3\", \"info\": \"score\" } }\nEK: {\"score\": \"96 (Metacritic)\"}\n MI: False",
+    "annotation": [
+      "Baldur's Gate 3 has an incredible score of 96 on Metacritic. It is a must-play RPG.",
+      "With a score of 96, Baldur's Gate 3 is one of the highest-rated games of all time. Want to check the price?",
+      "Critics gave Baldur's Gate 3 a 96. Would you like to know about the developer, Larian Studios?"
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: inform(already_exists)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": \"Elden Ring\" } }\nEK: {\"error\": \"Game already in wishlist\"}\n MI: False",
+    "annotation": [
+      "You already have \"Elden Ring\" in your wishlist! You're ready to become Elden Lord. Shall we check another game?",
+      "\"Elden Ring\" is already saved in your list. Do you want to view your full wishlist?",
+      "No need to add it again; \"Elden Ring\" is already there. Can I help you with a different title?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(tag)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"tag\": \"Souls-like\" } }\nEK: {\"games\": [\"Lies of P\", \"Nioh 2\"]}\n MI: False",
+    "annotation": [
+      "If you want a challenge like Dark Souls, try \"Lies of P\" or \"Nioh 2\".",
+      "I found \"Lies of P\" and \"Nioh 2\" under the Souls-like tag. Do you have a preference for setting?",
+      "I recommend \"Lies of P\" or \"Nioh 2\". Would you like to check the reviews for \"Lies of P\"?"
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Minecraft\", \"title2\": \"Roblox\", \"criteria\": \"required_age\" } }\nEK: {\"required_age\": {\"title1_value\": \"7+\", \"title2_value\": \"7+ (Varies by user content)\"}}\n MI: False",
+    "annotation": [
+      "Both are generally rated 7+, though Roblox varies more because users create the content.",
+      "Comparison: Minecraft is rated 7+. Roblox is also 7+, but parents should monitor user-created games.",
+      "They have similar age ratings starting at 7+, but Roblox content can change dynamically."
+    ]
+  },
+  {
+    "intent": "get_wishlist",
+    "input": "NBA: give_wishlist()\nDS: { \"intent\": \"get_wishlist\", \"slots\": {} }\nEK: {\"wishlist\": [\"Metroid Dread\", \"Hollow Knight\"]}\n MI: False",
+    "annotation": [
+      "Your list contains two great Metroidvanias: Metroid Dread and Hollow Knight.",
+      "You have saved Metroid Dread and Hollow Knight. Would you like to find a third game?",
+      "Here is your wishlist: Metroid Dread and Hollow Knight. Do you want to remove one?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Valorant\", \"info\": \"developer\" } }\nEK: {\"developer\": \"Riot Games\"}\n MI: False",
+    "annotation": [
+      "Valorant is developed by Riot Games, the same creators of League of Legends.",
+      "The developer is Riot Games. Would you like to check the release date?",
+      "Riot Games developed Valorant. Can I help you find similar tactical shooters?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: ask_for(genre)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"genre\": null, \"similiar_title\": \"Skyrim\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "Since you like Skyrim, are you looking specifically for another Fantasy RPG or just any Open World game?",
+      "Skyrim is a masterpiece. To find a match, should we stick to the RPG genre?",
+      "To help me recommend something like Skyrim, tell me if you prefer the Fantasy genre or the Open World aspect."
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: explain_term(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": \"Gank\" } }\nEK: {\"definition\": \"To ambush or gang up on a player, usually with superior numbers.\"}\n MI: False",
+    "annotation": [
+      "\"Gank\" means to ambush an enemy, often with help from teammates. Watch out for ganks in the jungle!",
+      "It refers to a surprise attack or gang-up. \"Getting ganked\" usually means you were outnumbered.",
+      "To \"Gank\" is to flank and attack an unsuspecting player to secure an easy kill."
+    ]
+  },
+  {
+    "intent": "add_to_wishlist",
+    "input": "NBA: ask_for(title)\nDS: { \"intent\": \"add_to_wishlist\", \"slots\": { \"title\": null } }\nEK: None\n MI: False",
+    "annotation": [
+      "I can update your wishlist. What is the game you have your eye on?",
+      "I'm ready to add a new entry. Which game title should I write down?",
+      "Please tell me the name of the game you want to add to your collection."
+    ]
+  },
+  {
+    "intent": "remove_from_wishlist",
+    "input": "NBA: inform(not_found)\nDS: { \"intent\": \"remove_from_wishlist\", \"slots\": { \"title\": \"Half-Life 3\" } }\nEK: {\"error\": \"Game not in wishlist\"}\n MI: False",
+    "annotation": [
+      "\"Half-Life 3\" isn't in your wishlist... or anywhere else, sadly. I couldn't remove it.",
+      "I can't remove \"Half-Life 3\" because it's not in your list. Do you want to check your actual list?",
+      "That game was not found in your wishlist. Are you sure you added it?"
+    ]
+  },
+  {
+    "intent": "out_of_domain",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"out_of_domain\", \"slots\": {} }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I can't help with that. Let's return to gaming. What title are you playing now?",
+      "Let's take it slowly. That is out of my domain. Do you want to discover a new game instead?",
+      "Let's go one by one. I am a gaming assistant. Please ask me about games, wishlists, or terminology."
+    ]
+  },
+  {
+    "intent": "compare_games",
+    "input": "NBA: give_comparison(title1, title2, criteria)\nDS: { \"intent\": \"compare_games\", \"slots\": { \"title1\": \"Apex Legends\", \"title2\": \"Call of Duty: Warzone\", \"criteria\": \"mode\" } }\nEK: {\"mode\": {\"title1_value\": \"Battle Royale\", \"title2_value\": \"Battle Royale\"}}\n MI: False",
+    "annotation": [
+      "Both games focus heavily on the Battle Royale mode. Apex has heroes, while Warzone has loadouts.",
+      "They are both Battle Royales. Do you want to compare their squad sizes?",
+      "Both Apex Legends and Warzone are primary Battle Royale experiences. Which style do you prefer?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: fallback()\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Star Citizen\", \"info\": \"release_date\" } }\nEK: None\n MI: False",
+    "annotation": [
+      "I'm sorry, I'm having trouble pinpointing a concrete release date for Star Citizen. Please ask again later.",
+      "I encountered an error looking that up. Star Citizen is a complex topic! Would you like to check a different game?",
+      "Apologies, I couldn't retrieve that data right now. Would you like to check the developer instead?"
+    ]
+  },
+  {
+    "intent": "discover_game",
+    "input": "NBA: propose_game(publisher)\nDS: { \"intent\": \"discover_game\", \"slots\": { \"publisher\": \"Capcom\" } }\nEK: {\"games\": [\"Resident Evil 4\", \"Monster Hunter Rise\"]}\n MI: False",
+    "annotation": [
+      "Capcom has been on a roll! I recommend \"Resident Evil 4\" or \"Monster Hunter Rise\".",
+      "For Capcom games, you can't go wrong with \"Resident Evil 4\" or \"Monster Hunter Rise\".",
+      "I found \"Resident Evil 4\" and \"Monster Hunter Rise\". Would you like to add one to your wishlist?"
+    ]
+  },
+  {
+    "intent": "get_term_explained",
+    "input": "NBA: ask_for(term)\nDS: { \"intent\": \"get_term_explained\", \"slots\": { \"term\": null } }\nEK: None\n MI: True",
+    "annotation": [
+      "Let's do things step by step. I need to know which word is confusing you before I can explain it.",
+      "Let's take it slowly. What is the gaming term you want defined?",
+      "Let's handle this one by one. Please input the term (e.g., 'Camping', 'Diff')."
+    ]
+  },
+  {
+    "intent": "get_friend_games",
+    "input": "NBA: give_friend_games(name)\nDS: { \"intent\": \"get_friend_games\", \"slots\": { \"name\": \"Alice\" } }\nEK: {\"games\": \"Error: User not found\"}\n MI: False",
+    "annotation": [
+      "I couldn't find a user named Alice in your friends list. Could it be under a different Gamertag?",
+      "User 'Alice' was not found. Please check the spelling or try a different friend.",
+      "I was unable to locate Alice. Would you like to check your own library instead?"
+    ]
+  },
+  {
+    "intent": "get_game_info",
+    "input": "NBA: give_info(title, info)\nDS: { \"intent\": \"get_game_info\", \"slots\": { \"title\": \"Rust\", \"info\": \"genre\" } }\nEK: {\"genre\": \"Survival\"}\n MI: False",
+    "annotation": [
+      "Rust is a hardcore Survival game. You start with nothing and have to build everything.",
+      "It is defined as a Survival game. Would you like to know about its multiplayer servers?",
+      "Rust is a Survival game. Can I help you find similar titles like Ark or DayZ?"
+    ]
   }
 ]

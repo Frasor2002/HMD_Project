@@ -1,6 +1,5 @@
 import json
 import itertools
-from typing import Callable, Optional
 import os
 
 GEN_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -140,6 +139,31 @@ def get_action(intent: str, slots: dict) -> str:
 
   return action
 
+
+def get_strided_combinations(iter_data: itertools.product, limit: int) -> list:
+  """Skip some combations according to a step to limit samples maximizing variety.
+  Args:
+    iter_data: combo.
+    limit: limit of samples per combo.
+  Returns:
+    list: new combos to iterate on.
+  """
+  all_combos = list(iter_data)
+  total = len(all_combos)
+  
+  if total == 0:
+    return []
+  
+  if total <= limit:
+    return all_combos
+  
+  step = total / limit
+  indices = [int(i * step) for i in range(limit)]
+  
+  unique_indices = sorted(list(set(indices)))
+  
+  return [all_combos[i] for i in unique_indices]
+
 def generate_test_set(intent_schemas: dict, slot_values: dict, print_stats: bool = False) -> list:
   """Generate test set given schemas of intents and values.
   Args:
@@ -166,66 +190,66 @@ def generate_test_set(intent_schemas: dict, slot_values: dict, print_stats: bool
           "annotation": nba
         }
       )
-      continue # Skip code for intents with slots
+    # discover_game
+    elif intent=="discover_game":
+      # Reduce the amount of values used for generating a single combination
+      max_samples_per_combo = 10
+      
+      for r in range(1, 4): # From 1 to 3 active slots
+        slot_combinations = list(itertools.combinations(slots_name_list, r))
 
-    # discover_game has too many combination and often the user only provides maximum 3 slots
-    if intent=="discover_game":
-      seen_states = set()
-      for active_slots in itertools.combinations(slots_name_list, 3):
-        active_values_list = [slot_values[s] for s in active_slots]
-        for combination in itertools.product(*active_values_list):
-          slot_data = {s: None for s in slots_name_list}     
-          for s_name, s_val in zip(active_slots, combination):
-            slot_data[s_name] = s_val
+        for filled_slots in slot_combinations:
+          # get values for currently active slots
+          filled_values_list = [slot_values[s] for s in filled_slots]
+          value_combo = itertools.product(*filled_values_list)
+          value_combo = get_strided_combinations(value_combo, max_samples_per_combo)
 
-          state_hash = tuple(slot_data[s] for s in slots_name_list)
-                    
-          if state_hash in seen_states:
+          for values in value_combo:
+            slot_data = {s: None for s in slots_name_list}     
+            for s_name, s_val in zip(filled_slots, values):
+              slot_data[s_name] = s_val
+            nba = get_action(intent, slot_data)
+            test_set.append({
+              "ds": {
+                "intent": intent,
+                "slots": slot_data
+              },
+              "annotation": nba
+            })
+            stats[intent] += 1
+    else:
+      # For every other intent
+      values_list = []
+      for slot_name in slots_name_list:
+        # get slot values
+        values = slot_values[slot_name]
+        values_list.append(values)
+      
+      for combination in itertools.product(*values_list):
+        slot_data = dict(zip(slots_name_list, combination))
+
+        # Constraint for compare games
+        if intent == "compare_games":
+          t1 = slot_data.get("title1")
+          t2 = slot_data.get("title2")
+          if t1 is not None and t2 is not None and t1 == t2: # Skip if constraint not respected
             continue
-          seen_states.add(state_hash)
-
-          nba = get_action(intent, slot_data)
-          test_set.append({
-            "ds": {
-              "intent": intent,
-              "slots": slot_data
-            },
-            "annotation": nba
-          })
-          stats[intent] += 1
-      continue
-
-    values_list = []
-    for slot_name in slots_name_list:
-      # get slot values
-      values = slot_values[slot_name]
-      values_list.append(values)
-    
-    for combination in itertools.product(*values_list):
-      slot_data = dict(zip(slots_name_list, combination))
-
-      # Constraint for compare games
-      if intent == "compare_games":
-        t1 = slot_data.get("title1")
-        t2 = slot_data.get("title2")
-        if t1 is not None and t2 is not None and t1 == t2:
-          continue
-
-      nba = get_action(intent, slot_data)
-      # Create and save samples
-
-      sample = {
-        "ds": {
-          "intent": intent,
-          "slots": slot_data
-        },
-        "annotation": nba
-      }
-      stats[intent] += 1
-      test_set.append(sample)
+        nba = get_action(intent, slot_data)
+        # Create and save samples
+        sample = {
+          "ds": {
+            "intent": intent,
+            "slots": slot_data
+          },
+          "annotation": nba
+        }
+        stats[intent] += 1
+        test_set.append(sample)
 
   if print_stats:
-    print(stats)
+    for intent, number in stats.items():
+      print(f"For intent {intent} {number} samples")
+    print(f"Total samples {len(test_set)}")
   return test_set
 
 if __name__ == "__main__":

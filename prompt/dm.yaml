@@ -72,7 +72,7 @@ prompt:
     - release_year, release year of the game to find.
     - platform, on which platform we want the game to be playable.
     - mode, game modes supported by the game.
-    - similiar_title, title of a similiar game to use for the search.
+    - similar_title, title of a similar game to use for the search.
     - required_age, required age to play the game. We expect a int format age.
     - publisher, publisher of the game.
     - developer, developer of the game.
@@ -86,7 +86,7 @@ prompt:
         {
           "intent": "discover_game", 
           "slots": {
-            "genre": null, "price": null, "release_year": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": null, "developer": null
+            "genre": null, "price": null, "release_year": null, "platform": null, "mode": null, "similar_title": null, "required_age": null, "publisher": null, "developer": null
             }
         }
       output: ask_for(genre)
@@ -94,7 +94,7 @@ prompt:
         {
           "intent": "discover_game", 
           "slots": {
-            "genre": "Horror", "price": null, "release_year": null, "platform": "windows", "mode": null, "similiar_title": null, "required_age": null, "publisher": null, "developer": null
+            "genre": "Horror", "price": null, "release_year": null, "platform": "windows", "mode": null, "similar_title": null, "required_age": null, "publisher": null, "developer": null
             }
         }
       output: propose_game(genre, platform)
@@ -102,7 +102,7 @@ prompt:
         {
           "intent": "discover_game", 
           "slots": {
-            "genre": null, "price": "20", "release_year": null, "platform": null, "mode": "multiplayer", "similiar_title": null, "required_age": null, "publisher": null, "developer": null
+            "genre": null, "price": "20", "release_year": null, "platform": null, "mode": "multiplayer", "similar_title": null, "required_age": null, "publisher": null, "developer": null
             }
         }
       output: propose_game(price, mode)

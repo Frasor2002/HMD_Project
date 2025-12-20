@@ -91,8 +91,12 @@ class LLMTask:
     text = self.prepare_text(prompt)
     model_inputs = self.tokenizer([text], return_tensors="pt").to(self.device)
 
+    pad_token_id = self.tokenizer.pad_token_id
+    if pad_token_id is None:
+        pad_token_id = self.tokenizer.eos_token_id
+
     with torch.no_grad():
-      generated_ids = self.model.generate(**model_inputs, max_new_tokens=max_new_tokens).cpu()
+      generated_ids = self.model.generate(**model_inputs, max_new_tokens=max_new_tokens, pad_token_id=pad_token_id).cpu()
 
     # Decode ids
     output_ids = generated_ids[0][len(model_inputs.input_ids[0]) :].tolist()

@@ -39,8 +39,8 @@ class DM_Evaluator(Evaluator):
       self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
 
       pred = self.component.generate(json.dumps(sample["ds"]))
-      print(sample['ds'])
-      print(pred)
+      #print(sample['ds'])
+      #print(pred)
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
     return pred_states, gt_states

@@ -52,7 +52,7 @@ prompt: |
       - release_year, release year of the game to find. Expect a year in complete format.
       - platform, on which platform we want the game to be playable. Accepted values are ["windows", "mac", "linux"].
       - mode, game modes supported by the game. Accepted values are ["singleplayer", "multiplayer"].
-      - similiar_title, title of a similiar game to use for the search.
+      - similar_title, title of a similar game to use for the search.
       - required_age, required age to play the game. We expect a int format age.
       - publisher, publisher of the game.
       - developer, developer of the game.
@@ -155,7 +155,7 @@ prompt: |
             "release_year": null
             "platform": null,
             "mode": null,
-            "similiar_title": null,
+            "similar_title": null,
             "required_age": null,
             "developer": null,
             "publisher": "Bethesda"
@@ -172,7 +172,7 @@ prompt: |
             "release_year": null
             "platform": "linux",
             "mode": "singleplayer",
-            "similiar_title": null,
+            "similar_title": null,
             "required_age": null,
             "developer": null,
             "publisher": null
@@ -189,7 +189,7 @@ prompt: |
             "release_year": null
             "platform": null,
             "mode": null,
-            "similiar_title": "Vampire Survivors",
+            "similar_title": "Vampire Survivors",
             "required_age": null,
             "developer": null,
             "publisher": null
@@ -206,7 +206,7 @@ prompt: |
             "release_year": "2021"
             "platform": null,
             "mode": "singleplayer",
-            "similiar_title": null,
+            "similar_title": null,
             "required_age": null,
             "developer": null,
             "publisher": null

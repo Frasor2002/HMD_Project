@@ -91,7 +91,7 @@ prompt:
     - release_date, release year of the game to find.
     - platform, on which platform we want the game to be playable.
     - mode, game modes supported by the game.
-    - similiar_title, title of a similiar game to use for the search.
+    - similar_title, title of a similar game to use for the search.
     - required_age, required age to play the game. We expect a int format age.
     - publisher, publisher of the game.
     - developer, developer of the game.
@@ -106,7 +106,7 @@ prompt:
     Examples:
     - input:
         NBA: ask_for(genre)
-        DS: { "intent": "discover_game", "slots": { "genre": null, "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": null, "developer": null } }
+        DS: { "intent": "discover_game", "slots": { "genre": null, "price": null, "release_date": null, "platform": null, "mode": null, "similar_title": null, "required_age": null, "publisher": null, "developer": null } }
         EK: None
         MI: False
       output:
@@ -114,7 +114,7 @@ prompt:
 
     - input:
         NBA: propose_game(genre, publisher)
-        DS: { "intent": "discover_game", "slots": { "genre": "rpg", "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": "Bethesda", "developer": null }
+        DS: { "intent": "discover_game", "slots": { "genre": "rpg", "price": null, "release_date": null, "platform": null, "mode": null, "similar_title": null, "required_age": null, "publisher": "Bethesda", "developer": null }
         EK: "{'games': ["Starfield", "Skyrim", "Fallout 4"]}"
         MI: False
       output:
@@ -122,7 +122,7 @@ prompt:
 
     - input:
         NBA: fallback()
-        DS: { "intent": "discover_game", "slots": { "genre": "action", "price": null, "release_date": null, "platform": null, "mode": null, "similiar_title": null, "required_age": null, "publisher": "Bethesda", "developer": null  } }
+        DS: { "intent": "discover_game", "slots": { "genre": "action", "price": null, "release_date": null, "platform": null, "mode": null, "similar_title": null, "required_age": null, "publisher": "Bethesda", "developer": null  } }
         EK: None
         MI: False
     Output:
