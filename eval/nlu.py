@@ -4,6 +4,11 @@ from collections import defaultdict
 from eval.evaluator import Evaluator
 from models.model import LLMTask
 from tqdm import tqdm
+import os
+
+EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_PATH = os.path.join(EVAL_DIR, "results", "nlu_results.json")
+STATE_PATH = os.path.join(EVAL_DIR, "temp", "nlu_state.json")
 
 class NLU_Evaluator(Evaluator):
   def __init__(
@@ -31,16 +36,31 @@ class NLU_Evaluator(Evaluator):
     Returns:
       tuple: predicitons and ground truths.
     """
-    pred_states = []
-    gt_states = []
+    # Resume state from file
+    start_idx, pred_states, gt_states = self.resume_eval_state(STATE_PATH)
+    # Check if eval is already done
+    if start_idx >= len(self.test_set):
+      return pred_states, gt_states
+    
+    remaining_samples = self.test_set[start_idx:]
 
-    for sample in tqdm(self.test_set, desc="Evaluating NLU"):
-      #print(sample["utt"], type(sample["history"]))
-      #print(type(sample["utt"]))
+    for sample in tqdm(remaining_samples, desc="Evaluating NLU", initial=start_idx, total=len(self.test_set)):
       pred = self.component.generate(sample["utterance"])
-      pred = json.loads(pred)
+      try:
+        pred = json.loads(pred)
+      except Exception:
+        pred = {"intent": "invalid_format", "slots": {}}
+        
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
+
+      # Save state every k samples
+      if len(pred_states) % 1 == 0:
+        self.save_eval_state(pred_states, gt_states, STATE_PATH)
+    
+    # Save last batch of samples
+    self.save_eval_state(pred_states, gt_states, STATE_PATH)
+
     return pred_states, gt_states
 
 
@@ -168,9 +188,14 @@ class NLU_Evaluator(Evaluator):
       global_slot_stats['tp'], global_slot_stats['fp'], global_slot_stats['fn']
     )
     
-    return {
+    metrics = {
       "intent_accuracy": intent_correct / len(self.gt_states),
       "intents_by_type": intents_by_type,
       "slots_overall": slots_overall,
       "slots_by_type": slots_by_type
     }
+
+    # Save to file
+    self.save_results(metrics, RESULTS_PATH)
+
+    return metrics

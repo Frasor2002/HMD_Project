@@ -4,9 +4,6 @@ from models.utils import login_to_hub
 from agent.agent import DialogueAgent
 
 
-
-
-
 def chat(model):
   """Interactive CLI session."""
   while True:
@@ -26,7 +23,7 @@ def main() -> None:
   login_to_hub()
 
   device = "auto"
-  n_exchanges = 2
+  n_exchanges = 1
 
 
   model = {

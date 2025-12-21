@@ -3,11 +3,14 @@ from tqdm import tqdm
 import json
 from collections import Counter
 import numpy as np
-import torch
 import sacrebleu
-from typing import cast
 
 from models.model import LLMTask
+import os
+
+EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_PATH = os.path.join(EVAL_DIR, "results", "nlg_results.json")
+STATE_PATH = os.path.join(EVAL_DIR, "temp", "nlg_state.json")
 
 class NLG_Evaluator(Evaluator):
   def __init__(self, component: LLMTask, filepath: str, prompt: dict) -> None:
@@ -25,16 +28,28 @@ class NLG_Evaluator(Evaluator):
     Returns:
       tuple: predicitons and ground truths.
     """
-    pred_states = []
-    gt_states = []
+    # Resume state from file
+    start_idx, pred_states, gt_states = self.resume_eval_state(STATE_PATH)
+    # Check if eval is already done
+    if start_idx >= len(self.test_set):
+      return pred_states, gt_states
 
-    for sample in tqdm(self.test_set, desc="Evaluating NLG"):
+    remaining_samples = self.test_set[start_idx:]
+
+    for sample in tqdm(remaining_samples, desc="Evaluating NLG", initial=start_idx, total=len(self.test_set)):
       intent = sample["intent"]
       self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
 
       pred = self.component.generate(json.dumps(sample["input"]))
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
+
+      # Save state every k samples
+      if len(pred_states) % 10 == 0:
+        self.save_eval_state(pred_states, gt_states, STATE_PATH)
+    
+    # Save last batch of samples
+    self.save_eval_state(pred_states, gt_states, STATE_PATH)
 
     return pred_states, gt_states
 
@@ -102,7 +117,12 @@ class NLG_Evaluator(Evaluator):
     bleu = sacrebleu.corpus_bleu(self.pred_states, transposed_refs)
     bleu_score = bleu.score
 
-    return {
+    metrics = {
       "bleu": bleu_score,
       "f1": float(avg_f1),
     }
+
+    self.save_results(metrics, RESULTS_PATH)
+
+
+    return metrics

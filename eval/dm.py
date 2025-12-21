@@ -1,9 +1,14 @@
-from typing import Any, Dict, Tuple, List
+from typing import Dict
 import json
 from collections import defaultdict
 from eval.evaluator import Evaluator
 from models.model import LLMTask
 from tqdm import tqdm
+import os
+
+EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_PATH = os.path.join(EVAL_DIR, "results", "dm_results.json")
+STATE_PATH = os.path.join(EVAL_DIR, "temp", "dm_state.json")
 
 class DM_Evaluator(Evaluator):
   def __init__(
@@ -30,19 +35,31 @@ class DM_Evaluator(Evaluator):
     Returns:
       tuple: predicitons and ground truths.
     """
-    pred_states = []
-    gt_states = []
+    # Resume state from file
+    start_idx, pred_states, gt_states = self.resume_eval_state(STATE_PATH)
+    # Check if eval is already done
+    if start_idx >= len(self.test_set):
+      return pred_states, gt_states
 
-    for sample in tqdm(self.test_set, desc="Evaluating DM"):
+    remaining_samples = self.test_set[start_idx:]
+
+    for sample in tqdm(remaining_samples, desc="Evaluating DM", initial=start_idx, total=len(self.test_set)):
       # Adapt prompt based on intent
       intent = sample["ds"]["intent"]
       self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
 
       pred = self.component.generate(json.dumps(sample["ds"]))
-      #print(sample['ds'])
-      #print(pred)
+      
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
+
+      # Save state every k samples
+      if len(pred_states) % 10 == 0:
+        self.save_eval_state(pred_states, gt_states, STATE_PATH)
+    
+    # Save last batch of samples
+    self.save_eval_state(pred_states, gt_states, STATE_PATH)
+
     return pred_states, gt_states
   
   @staticmethod
@@ -83,10 +100,14 @@ class DM_Evaluator(Evaluator):
       acc = hits / count if count > 0 else 0.0
       class_accuracy[action] = acc
 
-    return {
+    metrics = {
       "total_accuracy": total_accuracy,
       "class_accuracy": class_accuracy,
     }
+
+    self.save_results(metrics, RESULTS_PATH)
+
+    return metrics
   
 
 

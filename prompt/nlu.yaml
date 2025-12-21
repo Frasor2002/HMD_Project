@@ -22,7 +22,7 @@ prompt: |
   Rules:
     - Don't include any explainations or headings in the output.
     - Only output the json object without any additional text.
-    - If a slot is not present, set it to null.
+    - If a slot value is not present, set it to null.
 
   Intent and slot definition:
   The intents are:
@@ -78,7 +78,7 @@ prompt: |
       This intent is used when the user wants to check the wishlist.
       This intent has no slots.
 
-    7. "remove_from_whishlist":
+    7. "remove_from_wishlist":
       This intent is used when the user wants to remove a game from the wishlist.
       This intent has the following slots:
       - title, name of game to remove from wishlist.
@@ -145,14 +145,14 @@ prompt: |
           }
         }
 
-    - input: "I am searching for a RPG game by Bethesda"
+    - input: "I am searching for a RPG game published by Bethesda"
       output: 
         {
           "intent": "discover_game",
           "slots": {
             "genre": "RPG",
             "price": null,
-            "release_year": null
+            "release_year": null,
             "platform": null,
             "mode": null,
             "similar_title": null,
@@ -186,7 +186,7 @@ prompt: |
           "slots": {
             "genre": null,
             "price": null,
-            "release_year": null
+            "release_year": null,
             "platform": null,
             "mode": null,
             "similar_title": "Vampire Survivors",
@@ -196,16 +196,16 @@ prompt: |
           }
         }
 
-    - input: "Single-player Indie 2021 game"
+    - input: "I want a single-player Indie game from 2021"
       output:
         {
           "intent": "discover_game",
           "slots": {
             "genre": "indie",
             "price": null,
-            "release_year": "2021"
+            "release_year": "2021",
             "platform": null,
-            "mode": "singleplayer",
+            "mode": "single-player",
             "similar_title": null,
             "required_age": null,
             "developer": null,
@@ -219,7 +219,7 @@ prompt: |
           "intent": "compare_games",
           "slots": {
             "title1": "Spore",
-            "title2": "Civilization V"
+            "title2": "Civilization V",
             "criteria": "review"
           }
         }
@@ -229,8 +229,8 @@ prompt: |
         {
           "intent": "compare_games",
           "slots": {
-            "game1": "Half Life 1",
-            "game2": "Half Life 2",
+            "title1": "Half Life 1",
+            "title2": "Half Life 2",
             "criteria": null
           }
         }

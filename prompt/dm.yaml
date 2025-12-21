@@ -165,7 +165,7 @@ prompt:
         }
       output: explain_term(term)
   add_to_wishlist: |
-    The user wants to add a videogame to the whishlist.
+    The user wants to add a videogame to the wishlist.
     The slots are:
     - title, title of game to add to wishlist.
     

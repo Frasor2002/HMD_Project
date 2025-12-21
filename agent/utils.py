@@ -1,4 +1,5 @@
 import json
+import re
 
 def get_action(intent: str, slots: dict) -> str:
   """Given a ds return the action annotation.
@@ -85,3 +86,102 @@ class RuleBasedDM:
       """
       ds = json.loads(input_str)
       return get_action(**ds)
+    
+
+# Output validation for LLMs
+def validate_preproc(preproc_out: str, user_input: str) -> list:
+  """Validate the output of the preprocessor.
+  Args:
+    preproc_out (str): output of the preprocessor.
+    user_input (str): user input for fallback.
+  Return:
+    list: validated output.
+  """
+  try:
+    cleaned_out = preproc_out.strip()
+    # Clean formatting artifacts
+    if "```" in cleaned_out:
+      match = re.search(r"```(?:json)?(.*?)```", cleaned_out, re.DOTALL)
+      if match:
+        cleaned_out = match.group(1).strip()
+    
+    # Parse json
+    parsed = json.loads(cleaned_out)
+    # Check that it is a list of strings as expected
+    if not isinstance(parsed, list) or not all(isinstance(p, str) for p in parsed):
+      print("Wrong preproc output type")
+      return [user_input]
+    # If user input is not an empty string, the list should not be empty
+    if len(parsed) == 0 and len(user_input.strip()) > 0:
+      print("Preproc returned empty output from user input")
+      return [user_input]
+
+    # Return parsed
+    return parsed
+  except Exception:
+    print("Preproc wrong output format")
+    return [user_input]
+
+def validate_nlu(nlu_out: str) -> dict:
+  """Validate the nlu output.
+  Args:
+    nlu_out (str): nlu output to be validated to get dialogue state.
+  Returns:
+    dict: validated nlu output.
+  """
+  fallback_out = {"intent": "out_of_domain", "slots": {}}
+  try:
+    cleaned_out = nlu_out.strip()
+    # Clean artifacts
+    if "```" in cleaned_out:
+      match = re.search(r"```(?:json)?(.*?)```", cleaned_out, re.DOTALL)
+      if match:
+        cleaned_out = match.group(1).strip()
+    # Try parsing
+    parsed = json.loads(cleaned_out)
+    # Check that the output schema is correct
+    if isinstance(parsed, dict) and "intent" in parsed:
+      # Make sure slots exist
+      if "slots" not in parsed:
+        parsed["slots"] = {}
+      return parsed
+    else:
+      print("nlu output format incorrect")
+      return fallback_out
+  except Exception:
+    print("nlu wrong output")
+    return fallback_out
+
+def validate_dm(dm_out: str) -> str:
+  """Validate dm output.
+  Args:
+    dm_out (str): dm output.
+  Returns:
+    str: validated output.
+  """
+  fallback_nba = "fallback()"
+  # Regex for how we expect action_name(input_slots)
+  pattern = r'^([a-zA-Z_]\w*)\s*\('
+  cleaned_out = dm_out.strip()
+  match = re.match(pattern, cleaned_out)
+  if match:
+    return cleaned_out
+  else:
+    print("wrong dm output")
+    return fallback_nba
+  
+def validate_sa(sa_out: str) -> str:
+  """Validate sentiment analysis output.
+  Args.
+    sa_out (str): sentiment analysis output.
+  Returns:
+    str: validated output.
+  """
+  fallback_sentiment = "neutral"
+  cleaned_out = sa_out.lower().strip()
+  valid_labels = {"positive", "negative", "neutral"}
+  if isinstance(cleaned_out, str) and cleaned_out in valid_labels:
+    return cleaned_out
+
+  print("wrong sa output")
+  return fallback_sentiment

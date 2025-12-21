@@ -7,7 +7,7 @@ import yaml
 import os
 import json
 import re
-from agent.utils import RuleBasedDM
+from agent.utils import RuleBasedDM, validate_preproc, validate_nlu, validate_dm, validate_sa
 
 class DialogueAgent:
   def __init__(self, model: Dict[str, str], device: str = "cuda", n_exchanges: int = 3) -> None:
@@ -94,7 +94,8 @@ class DialogueAgent:
     """
     report = {"positive": 0, "negative": 0, "neutral": 0}
     for review in reviews:
-      label = self.sa.generate(review)
+      raw_label = self.sa.generate(review)
+      label = validate_sa(raw_label)
       report[label] += 1
 
     return report
@@ -115,7 +116,7 @@ class DialogueAgent:
       return {}
     action_name = match.group(1)
     # If action does not require knowledge, agent does not request it.
-    if action_name in ["get_info", "fallback"]:
+    if action_name in ["ask_for", "fallback"]:
       return {}
     
     # Handle different intents
@@ -165,17 +166,13 @@ class DialogueAgent:
     Returns:
       str: assistant response.
     """
-    print(user_input, list(self.history))
-
     # Keep track if there are multiple intents
     multiple_intents = False
 
     # Go through the preprocess to split multiple intents
-    preproc_out = self.preproc.generate(user_input)
-    
-    # Convert preproc_out from string to list
-    split_input = json.loads(preproc_out)
-    print("PREPROC->", split_input)
+    raw_preproc_out = self.preproc.generate(user_input)
+    split_input = validate_preproc(raw_preproc_out, user_input)
+    print(f"SPLITTED -> {split_input}")
 
     # If there are multiple intents the agent will only attend to the last one
     # For better user experience the agent will know when there are multiple intents with a 
@@ -185,21 +182,18 @@ class DialogueAgent:
       for input in split_input[:-1]:
         self.history.append({"role": "user", "content": input})
     
-    # Handle the case where preproc discards entire input
-    if len(split_input) == 0:
-      nlu_input = user_input
-    else:
-      # Agent will always attend to last user intent
-      nlu_input = split_input[-1]
+    # Agent will always attend to last user intent
+    nlu_input = split_input[-1]
     
     # Pass through nlu to get intents
-    nlu_out = self.nlu.generate(nlu_input, list(self.history))
+    raw_nlu_out = self.nlu.generate(nlu_input, list(self.history))
+    nlu_out = validate_nlu(raw_nlu_out)
 
-    print(f"NLU OUT->{nlu_out}")
+    print(f"Extracted DS -> {nlu_out}")
     # Merge dialogue state and get new state
     self.dst.update_ds(nlu_out)
     ds = self.dst.get_ds()
-    print(f"DST OUT->{ds}")
+    print(f"DST -> {ds}")
 
 
     # Get intent based prompt for dm
@@ -207,8 +201,9 @@ class DialogueAgent:
     self.dm.change_system_prompt(self.system_prompt["dm"]["prompt"]["main"] + self.system_prompt["dm"]["prompt"][intent_name])
 
     # Pass through dm to get next best action
-    nba = self.dm.generate(ds)
-    print(f"DM OUT->{nba}")
+    raw_nba = self.dm.generate(ds)
+    nba = validate_dm(raw_nba)
+    print(f"NBA -> {nba}")
 
     # Get external knowledge if needed
     ek = self.get_knowledge(nba, self.dst.ds)
@@ -223,7 +218,7 @@ class DialogueAgent:
 
     # Prepare the nlg input and get natural language output
     nlg_input = f"NBA: {nba}\nDS: {self.dst.get_ds()}\nEK: {ek}\n MI: {multiple_intents}"
-    print("NLG Input -> ", nlg_input)
+    #print(f"NLG Input -> {nlg_input}")
     response = self.nlg.generate(nlg_input)
 
     # Update history

@@ -15,13 +15,13 @@ prompt: |
   
   Examples:
   - input: "The graphics are absolutely stunning and the storyline had me crying at the end. 10/10."
-    output: ["positive"]
+    output: "positive"
 
   - input: "I wasted 60 dollars on this trash. The combat is clunky and the servers are always down."
-    output: ["negative"]
+    output: "negative"
 
   - input: "I really wanted to like this, but the microtransactions are just too predatory to ignore."
-    output: ["negative"]
+    output: "negative"
 
   - input: "Best RPG I have played in years, instant classic."
-    output: ["positive"]
+    output: "positive"

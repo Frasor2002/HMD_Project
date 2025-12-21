@@ -194,12 +194,12 @@ prompt:
         Great! "Nerf" means to reduce the power of a specific weapon, character, or ability in a game update. Does that clear it up?
     
   add_to_wishlist: |
-    The user wants to add a videogame to the whishlist.
+    The user wants to add a videogame to the wishlist.
     The slots are:
     - title, title of game to add to wishlist.
     
     The actions available in this context are:
-    - ask_for(title), assistant asks for what game to add to whishlist. Try to propose to discover a game with the user.
+    - ask_for(title), assistant asks for what game to add to wishlist. Try to propose to discover a game with the user.
     - add_game(title), assistants confirms having added the game successfully to wishlist. Try to propose to either search another game.
     - fallback(): the assistant apologizes to the user of not being able to fullfill the request due to an internal error and asks them to try again.
 
@@ -225,7 +225,7 @@ prompt:
     - title, title of game to remove from wishlist.
     
     The actions available in this context are:
-    - ask_for(title), assistant asks for what game to remove from whishlist. Try to propose to discover a game with the user.
+    - ask_for(title), assistant asks for what game to remove from wishlist. Try to propose to discover a game with the user.
     - remove_game(title), assistants confirms having removed the game successfully to wishlist. Try to propose to either search another game.
     - fallback(): the assistant apologizes to the user of not being able to fullfill the request due to an internal error and asks them to try again.
 
@@ -299,7 +299,7 @@ prompt:
       EK: {"games": ["Dota 2", "CS:GO"]}
       MI: False
       output:
-      Okay, checking Alex's library. They currently own Dota 2 and CS:GO. Would you like to add one to your whishlist?
+      Okay, checking Alex's library. They currently own Dota 2 and CS:GO. Would you like to add one to your wishlist?
   out_of_domain: |
     The request is outside of system capabilities.
     There are no slots.

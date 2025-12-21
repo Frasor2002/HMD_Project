@@ -183,14 +183,12 @@ class DST:
     return clean_data
 
 
-  def update_ds(self, nlu_response: str) -> None:
+  def update_ds(self, nlu_response: dict) -> None:
     """Update dialogue state by validating the nlu response.
     Args:
-      nlu_response (str): nlu response string.
+      nlu_response (dict): valid nlu response dict.
     """
-    parsed = json.loads(nlu_response)
-
-    cleaned = self._clean_response(parsed)
+    cleaned = self._clean_response(nlu_response)
 
     # Get intents
     new_intent = cleaned.get("intent")
@@ -199,9 +197,15 @@ class DST:
     # If intent changes discard slots (context switch)
     if new_intent is not None and new_intent != current_intent:
       self.ds["intent"] = new_intent
-      self.ds["slots"] = {slot_name: None for slot_name in intent_schemas[new_intent]}
+      self.ds["slots"] = {slot_name: None for slot_name in intent_schemas.get(new_intent, [])}
+
+    # Get slots that should be there for current intent
+    valid_intent = self.ds["intent"]
+    schema_slots = intent_schemas.get(valid_intent, [])
 
     # Merge cleaned slots into the current slots
     if "slots" in cleaned:
       for k, v in cleaned["slots"].items():
-        self.ds["slots"][k] = v
+        # Add slot only if is in schema slot to avoid hallucination
+        if k in schema_slots:
+          self.ds["slots"][k] = v

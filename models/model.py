@@ -73,7 +73,7 @@ class LLMTask:
                                 self.messages)
   
 
-  def generate(self, prompt: str, history: list = [], max_new_tokens: int = 512) -> str:
+  def generate(self, prompt: str, history: Any = None, max_new_tokens: int = 512) -> str:
     """Generate output given user prompt.
     Args:
       prompt (str): user prompt after which the model generates.
@@ -86,7 +86,8 @@ class LLMTask:
       {"role": "system", "content": self.system_prompt}
     ]
     # Add history if passed
-    self.messages += history
+    if history:
+      self.messages.extend(history)
 
     text = self.prepare_text(prompt)
     model_inputs = self.tokenizer([text], return_tensors="pt").to(self.device)

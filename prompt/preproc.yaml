@@ -3,24 +3,15 @@ prompt: |
   
   Goal: Given user input break it in multiple sentences each rappresenting a single intent.
 
-  Input: The input is the user message to be split update.
+  Input: The input is the user message to be split.
 
   Output: The output is a list of splitted sentences ["sent1", "sent2", ...] where each has one intent.
 
   Rules:
     - Provide a list of sentences each enclosed in double quotes and separated by commas.
-    - Only provide list of sentences (not the intents) as outputs, without additional text.
+    - Only provide list of sentences as outputs, without additional text.
+    - Don't output sentences, headings but a valid json list.
 
-  System intents:
-    - get_game_info: user wants to collect infor an a game.
-    - discover_game: user wants to find a game to satisfy his needs.
-    - compare_games: user want to get a comparison of two games.
-    - explain_terminology: user wants the system to explain some gaming-related terms.
-    - add_to_wishlist: user wants to add a game to wishlist.
-    - remove_from_wishlist: user wants to remove a game from wishlist.
-    - view_wishlist: user wants to know what they have in wishlist.
-    - list_friend_games: user wants to know what his friends games are.
-    - out_of_domain: user makes a request outside of system capabilities.
 
   Examples:
     -  input: "I want to see what is the price of Batman Arkham City and add it to wishlist."
@@ -33,7 +24,7 @@ prompt: |
       output: ["I want to find a new RPG to play", "tell me what NPC stands for"]
 
     - input: "Compare the reviews of FIFA 24 and PES, then add the better one to my wishlist."
-      output: ["Compare the graphics of FIFA 24 and PES", "add the better one to my wishlist"]
+      output: ["Compare the reviews of FIFA 24 and PES", "add the better one to my wishlist"]
 
     - input: "Remove Cyberpunk from my saved games and list what I have left in there."
       output: ["Remove Cyberpunk from my saved games", "list what I have left in there"]
