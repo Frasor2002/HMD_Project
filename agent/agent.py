@@ -84,6 +84,21 @@ class DialogueAgent:
                 
     return prompts
   
+  def set_intent_based_prompt(self, component: str, intent_name: str) -> None:
+    """For a specific component set an intent-based prompt.
+    Args:
+      component (str): component name of which to change the prompt.
+      intent_name (str): current intent name.
+    """
+    match component:
+      case "dm":
+        self.dm.change_system_prompt(self.system_prompt[component]["prompt"]["main"] + self.system_prompt[component]["prompt"][intent_name])
+      case "nlg":
+        self.nlg.change_system_prompt(self.system_prompt[component]["prompt"]["main"] + self.system_prompt[component]["prompt"][intent_name])
+      case _:
+        raise ValueError("Component name not valid.")
+
+    
 
   def get_review_sa(self, reviews: list) -> dict:
     """Given list of reviews return a report of positive and negative.
@@ -158,6 +173,65 @@ class DialogueAgent:
     
     return data
 
+  def handle_intent(self, nlu_input: str, mi: bool) -> str:
+    """Handle a single intent given user input.
+    Args:
+      user_request (str): request on a single intent.
+      mi (bool): flag to tell the system if the user requested multiple intents at once.
+    Returns:
+      str: nlg output.
+    """
+    # Go through NLU to extract intents
+    raw_nlu_out = self.nlu.generate(nlu_input, list(self.history))
+    nlu_out = validate_nlu(raw_nlu_out)
+    print(f"Extracted DS -> {nlu_out}")
+
+    # Merge DS and get the updated one
+    self.dst.update_ds(nlu_out)
+    ds = self.dst.get_ds()
+    print(f"DST -> {ds}")
+
+    # Set intent-based prompt for dm
+    intent_name = self.dst.ds["intent"]
+    self.set_intent_based_prompt("dm", intent_name)
+
+    # Go through DM to get nba
+    raw_nba = self.dm.generate(ds)
+    nba = validate_dm(raw_nba)
+    print(f"NBA -> {nba}")
+
+    # Get external knowledge if needed
+    ek = self.get_knowledge(nba, self.dst.ds)
+    # If error in request, action becomes fallback()
+    if "error" in ek:
+      print(f"Knowledge error: {ek["error"]}")
+      nba = "fallback()"
+      ek = None
+
+    # Set intent-based prompt for nlg
+    self.set_intent_based_prompt("nlg", intent_name)
+
+    # Prepare the nlg input and get natural language output
+    nlg_input = f"NBA: {nba}\nDS: {ds}\nEK: {ek}\n MI: {mi}"
+    print(f"NLG Input -> {nlg_input}")
+    nlg_out = self.nlg.generate(nlg_input)
+
+    return nlg_out
+
+  def handle_two_intents(self, split_input: list) -> str:
+    responses = []
+            
+    for sub_input in split_input:
+      nlg_out = self.handle_intent(sub_input, mi=False)
+      responses.append(nlg_out)
+                
+      # Give context to next request
+      self.history.append({"role": "user", "content": sub_input})
+      self.history.append({"role": "assistant", "content": nlg_out})
+
+    # Combine outputs      
+    return " ".join(responses)
+
 
   def chat(self, user_input: str) -> str:
     """Chat with the model giving a user input.
@@ -169,60 +243,28 @@ class DialogueAgent:
     # Keep track if there are multiple intents
     multiple_intents = False
 
-    # Go through the preprocess to split multiple intents
+    # Go through the preprocess to split input based on intents
     raw_preproc_out = self.preproc.generate(user_input)
     split_input = validate_preproc(raw_preproc_out, user_input)
     print(f"SPLITTED -> {split_input}")
 
-    # If there are multiple intents the agent will only attend to the last one
-    # For better user experience the agent will know when there are multiple intents with a 
-    # flag and also add to history other inputs for context
-    if len(split_input) > 1:
+    # Based on intent number the agent has different behaviour
+    intent_number = len(split_input)
+    if intent_number == 2:
+      return self.handle_two_intents(split_input)
+
+    if intent_number > 2:
       multiple_intents = True
       for input in split_input[:-1]:
         self.history.append({"role": "user", "content": input})
     
     # Agent will always attend to last user intent
     nlu_input = split_input[-1]
-    
-    # Pass through nlu to get intents
-    raw_nlu_out = self.nlu.generate(nlu_input, list(self.history))
-    nlu_out = validate_nlu(raw_nlu_out)
-
-    print(f"Extracted DS -> {nlu_out}")
-    # Merge dialogue state and get new state
-    self.dst.update_ds(nlu_out)
-    ds = self.dst.get_ds()
-    print(f"DST -> {ds}")
-
-
-    # Get intent based prompt for dm
-    intent_name = self.dst.ds["intent"]
-    self.dm.change_system_prompt(self.system_prompt["dm"]["prompt"]["main"] + self.system_prompt["dm"]["prompt"][intent_name])
-
-    # Pass through dm to get next best action
-    raw_nba = self.dm.generate(ds)
-    nba = validate_dm(raw_nba)
-    print(f"NBA -> {nba}")
-
-    # Get external knowledge if needed
-    ek = self.get_knowledge(nba, self.dst.ds)
-    # If error in request, action becomes fallback()
-    if "error" in ek:
-      nba = "fallback()"
-      # Error is not seen by the nlg
-      ek = None
-
-    # Get intent based prompt for dm
-    self.nlg.change_system_prompt(self.system_prompt["nlg"]["prompt"]["main"] + self.system_prompt["nlg"]["prompt"][intent_name])
-
-    # Prepare the nlg input and get natural language output
-    nlg_input = f"NBA: {nba}\nDS: {self.dst.get_ds()}\nEK: {ek}\n MI: {multiple_intents}"
-    #print(f"NLG Input -> {nlg_input}")
-    response = self.nlg.generate(nlg_input)
+  
+    response = self.handle_intent(nlu_input, mi=multiple_intents)
 
     # Update history
-    self.history.append({"role": "user", "content": user_input})
+    self.history.append({"role": "user", "content": nlu_input})
     self.history.append({"role": "assistant", "content": response})
 
     return response

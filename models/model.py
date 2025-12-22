@@ -73,7 +73,7 @@ class LLMTask:
                                 self.messages)
   
 
-  def generate(self, prompt: str, history: Any = None, max_new_tokens: int = 512) -> str:
+  def generate(self, prompt: str, history: Any = None, max_new_tokens: int = 1000) -> str:
     """Generate output given user prompt.
     Args:
       prompt (str): user prompt after which the model generates.

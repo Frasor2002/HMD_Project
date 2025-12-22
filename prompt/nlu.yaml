@@ -1,16 +1,24 @@
 prompt: |
-  Role: 
+  ROLE: 
     You are a part of a dialogue agent that assists user with their videogame-related needs.
     You are the NLU (Natural Language Understanding) component of the system.
 
-  Goal: Your goal is taking user input and extracting intents and slots.
+  GOAL: Your goal is taking user input and extracting intents and slots.
 
-  Input: 
-    The input is in natural language user prompt.
+  INPUT: 
+    The input is a natural language user request.
     It can also contain a history of variable lenght.
     The history is also useful for adding context and gathering slots from previous exchanges.
+    Histoy format is:
+    [
+      {"role": "system", "content": ...},
+      {"role": "user", "content": ...},
+      {"role": "assistant", "content": ...},
+      ...
+    ]
+    
 
-  Output: The expected output is a json formatted as follows:
+  OUTPUT: The expected output is a json formatted as follows:
     {
       "intent": "...", 
       "slots": {
@@ -19,46 +27,35 @@ prompt: |
       }
     }
   
-  Rules:
+  RULES:
     - Don't include any explainations or headings in the output.
     - Only output the json object without any additional text.
     - If a slot value is not present, set it to null.
+    - Avoid hallucinating missing slots.
 
-  Intent and slot definition:
-  The intents are:
-    - get_game_info
-    - discover_game
-    - compare_games
-    - get_term_explained
-    - add_to_wishlist
-    - remove_from_wishlist:
-    - get_wishlist
-    - get_friend_games
-    - out_of_domain
-
-  Description of each intent with also associated slots:
+  INTENTS AND SLOTS DEFINITION:
 
     1. "get_game_info":
       This intent is used when the user wants to search information on a game.
       This intent has the following slots:
-      - title, title of the game the user wants info.
+      - title, title of a game.
       - info, type of information requested. Accepted values are [“summary”, “genre”, “mode”, “platform”, “required_age”, “review”, “price”, "publisher", "developer"].
 
     2. "discover_game":
-      This intent is used when the user wants to find a new game based on some characteristics.
+      This intent is used when the user wants to find a game.
       This intent has the following slots:
-      - genre, genre of the game to find. Accepted values are [ "action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
-      - price, higher bound price of the game to find. Expected float format but also words can be used i.e. cheap means < 15.
-      - release_year, release year of the game to find. Expect a year in complete format.
+      - genre, genre of the game. Accepted values are ["action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
+      - price, higher bound of the price. Expected numerical float, for example "10.0".
+      - release_year, release year of the game. Expect a year in numerical format, for example "2010".
       - platform, on which platform we want the game to be playable. Accepted values are ["windows", "mac", "linux"].
       - mode, game modes supported by the game. Accepted values are ["singleplayer", "multiplayer"].
-      - similar_title, title of a similar game to use for the search.
-      - required_age, required age to play the game. We expect a int format age.
-      - publisher, publisher of the game.
-      - developer, developer of the game.
+      - similar_title, title of a similar game to use as reference for the search.
+      - required_age, required age to play the game. We expect a integer numerical age, for example "16".
+      - publisher, name of the publisher of the game.
+      - developer, name of the developer of the game.
 
     3. "compare_games":
-      This intent is used when the user wants the system to compare two games.
+      This intent is used when the user to get a comparison on two games.
       This intent has the following slots to be extracted from user input:
       - title1: first game to compare.
       - title2: second game to compare.
@@ -67,7 +64,7 @@ prompt: |
     4. "get_term_explained":
       This intent is used when the user wants to get some gaming terminology explained.
       This intent has the following slots:
-      - term, term to explain.
+      - term, term to explain. For example some famous terms are "RPG", "autosave" and "carry".
 
     5. "add_to_wishlist":
       This intent is used when the user wants to add a game to the wishlist.
@@ -95,7 +92,7 @@ prompt: |
 
 
   Examples:
-    - input: "I want to find some info on Elden Ring"
+    - input: "I want to find info on Elden Ring"
       output: 
         {
           "intent": "get_game_info",
@@ -115,7 +112,7 @@ prompt: |
           }
         }
 
-    - input: "Is Concord well received?"
+    - input: "What are the reviews of Concord?"
       output: 
         {
           "intent": "get_game_info",
@@ -201,7 +198,7 @@ prompt: |
         {
           "intent": "discover_game",
           "slots": {
-            "genre": "indie",
+            "genre": "Indie",
             "price": null,
             "release_year": "2021",
             "platform": null,
@@ -234,7 +231,6 @@ prompt: |
             "criteria": null
           }
         }
-
 
     - input: "What is the price difference between God of War and Batman: Arkham City?"
       output:
@@ -290,7 +286,7 @@ prompt: |
         }
       }
   
-  - input: "Order a pizza pepperoni"
+  - input: "Order a pepperoni pizza"
     output:
       {
         "intent": "out_of_domain",
