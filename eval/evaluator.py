@@ -1,18 +1,17 @@
-from typing import List, Tuple
+from typing import List, Tuple, Any
 import json
-from models.model import LLMTask
 import os
 
 class Evaluator:
   def __init__(
     self,
-    component: LLMTask,
+    component: Any,
     filepath: str,
     prompt: dict
     ):
     """Initialize evaluator.
     Args:
-      nlu (LLMTask): component to evaluate.
+      nlu (Any): component to evaluate.
       filepath (str): test set filepath.
     """
     # Init compoenent to eval
@@ -41,6 +40,7 @@ class Evaluator:
     """
     try:
       with open(filepath, 'w', encoding='utf-8') as f:
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
         json.dump(metrics, f, indent=2, ensure_ascii=False)
       print(f"Results saved cleanly to {filepath}")
     except Exception as e:
@@ -55,6 +55,7 @@ class Evaluator:
     """
     data = [{"id": idx, "pred": p, "gt": g} for idx, (p,g) in enumerate(zip(preds, gts))]
     try:
+      os.makedirs(os.path.dirname(filepath), exist_ok=True)
       with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     except Exception as e:

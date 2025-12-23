@@ -2,7 +2,7 @@ from typing import Dict
 import json
 from collections import defaultdict
 from eval.evaluator import Evaluator
-from models.model import LLMTask
+from agent.dm import DM
 from tqdm import tqdm
 import os
 
@@ -13,12 +13,12 @@ STATE_PATH = os.path.join(EVAL_DIR, "temp", "dm_state.json")
 class DM_Evaluator(Evaluator):
   def __init__(
     self, 
-    dm: LLMTask,
+    dm: DM,
     filepath: str,
     prompt: Dict):
     """Initialize evaluator.
     Args:
-      nlu (LLMTask): component to evaluate.
+      dm (DM): component to evaluate.
       filepath (str): test set filepath.
       prompt (dict): prompt for the task.
     """
@@ -45,10 +45,7 @@ class DM_Evaluator(Evaluator):
 
     for sample in tqdm(remaining_samples, desc="Evaluating DM", initial=start_idx, total=len(self.test_set)):
       # Adapt prompt based on intent
-      intent = sample["ds"]["intent"]
-      self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
-
-      pred = self.component.generate(json.dumps(sample["ds"]))
+      pred = self.component.generate(sample["ds"], validate = False)
       
       pred_states.append(pred)
       gt_states.append(sample["annotation"])

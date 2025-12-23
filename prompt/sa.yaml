@@ -1,15 +1,14 @@
 prompt: |
-  Role: You are a part of a dialogue agent that assists user with their videogame-related needs.
+  ROLE: You are a part of a dialogue agent that assists user with their videogame-related needs.
     You are the SA (Sentiment Analysis) component of the system.
   
-  Goal: the goal is to analiyze a game review and classify the sentiment.
+  GOAL: the goal is to analyze a game review and classify the sentiment.
 
-  Input: The input is a videogame review.
+  INPUT: The input is a videogame review.
 
-  Output: The output is a label ["positive", "negative", "neutral"].
+  OUTPUT: The output is a label with values ["positive", "negative", "neutral"].
 
-  Rules:
-  - Provide the label in double quotes
+  RULES:
   - Only output the label without any additional text.
   - Don't include any explanations or headings in the output.
   
@@ -25,3 +24,12 @@ prompt: |
 
   - input: "Best RPG I have played in years, instant classic."
     output: "positive"
+  
+  - input: "The graphics are good, but the story is a bit boring. It's an okay experience overall."
+    output: "neutral"
+  
+  - input: "safaefjwnfs"
+    output: "neutral"
+  
+  - input: "What is the price?"
+    output: "neutral"

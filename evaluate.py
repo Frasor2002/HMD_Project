@@ -1,6 +1,5 @@
 import os
 from models.model import LLMTask, ModelLoader
-from agent.utils import RuleBasedDM
 from models.registry import MODELS
 from argparse import ArgumentParser, Namespace
 import torch
@@ -11,6 +10,11 @@ from eval.nlg import NLG_Evaluator
 from typing import Any
 from dotenv import load_dotenv
 from models.utils import login_to_hub
+from agent.preproc import Preproc
+from agent.nlu import NLU
+from agent.dm import DM, RuleBasedDM
+from agent.nlg import NLG
+from agent.sa import SA
 # TODO create code to evaluate each component
 
 PROJ_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -42,7 +46,7 @@ def parse_args() -> Namespace:
   )
   return parser.parse_args()
 
-def get_evaluator(component) -> Any:
+def get_evaluator(component: str) -> Any:
   name_to_class = {
     "nlu": NLU_Evaluator,
     "dm": DM_Evaluator,
@@ -51,6 +55,30 @@ def get_evaluator(component) -> Any:
 
   return name_to_class[component]
 
+def get_component(model_name: str, component_name: str, prompt: dict) -> Any:
+  # Get rule_based
+  if model_name == "rule_based":
+    if component_name != "dm":
+      raise ValueError("Only the dm component has a 'rule-based' option.")
+    rule_dm = RuleBasedDM()
+    return DM(rule_dm, prompt)
+  else: # Initialize LLM
+    load_dotenv()
+    login_to_hub()
+    device = "auto"
+    
+    # Init component
+    model_loader = ModelLoader(model_name, device)
+
+    if component_name == "nlu":
+      return NLU(model_loader, prompt)
+    elif component_name == "dm":
+      return DM(model_loader, prompt)
+    elif component_name == "nlg":
+      return NLG(model_loader, prompt)
+  
+  raise ValueError("Invalid configuration model={model_name}, component={component_name}")
+    
 
 def eval() -> None:
   """Execute the agent."""
@@ -65,23 +93,7 @@ def eval() -> None:
   with open(prompt_path, "r", encoding="utf-8") as file:
     prompt = yaml.safe_load(file)
 
-  # Get rule_based
-  if model_name == "rule_based":
-    if component_name != "dm":
-      raise ValueError("Only the dm component has a 'rule-based' option.")
-    component = RuleBasedDM()
-  else: # Initialize LLM
-    load_dotenv()
-    login_to_hub()
-    device = "auto"
-    
-    # Init component
-    model_loader = ModelLoader(args.model, device)
-
-    if component_name in ["dm", "nlg"]:
-      component = LLMTask(model_loader, prompt["prompt"]["main"])
-    else:
-      component = LLMTask(model_loader, prompt["prompt"])
+  component = get_component(model_name, component_name, prompt)
 
   # Get evaluator class based on which component to evaluate
   eval_class = get_evaluator(component_name)

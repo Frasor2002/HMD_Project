@@ -1,13 +1,13 @@
 prompt:
   main: |
-    Role:
+    ROLE:
       You are a part of a dialogue agent that assists user with their videogame-related needs.
       You are the DM (Dialogue Manager) component of the system.
     
-    Goal:
+    GOAL:
       The goal is to take in the Dialogue State (DS) and returning the Next Best Action (NBA).
 
-    Input:
+    INPUT:
       The input has the following format:
         {
           "intent": "...", 
@@ -17,14 +17,16 @@ prompt:
             }
         }
 
-    Output: The expected output is in the following format:
-      action_name(input_parameters)
-    The input params are just a list of slot names.
+    OUTPUT: 
+      The expected output is in the following format:
+        action_name(input_parameters)
+      The input params are just a list of slot names.
 
-    Rules:
+    RULES:
       - Only output the action without any additional text.
       - Don't include any explanations or headings in the output.
-      - In the output do not substitute or confuse slot names with slot values. The action inputs are only slot names.
+    
+    CURRENT INTENT:
   get_game_info: |
     The user wants to find information on a game.
     The slots are:
@@ -32,8 +34,9 @@ prompt:
       - info, type of information requested.
 
     The actions to be chosen from this intent are:
-    1. ask_for(title), if title slot is missing i.e. null.
-    2. give_info(title, info), if title is found.
+    1. ask_for(title), if title slot value is missing i.e. null.
+    2. asf_for(info), if info slot value is missing i.e. null.
+    2. give_info(title, info), if both are found. Substitute the slot value of info instead of writing info.
     
     Examples:
 
@@ -46,6 +49,17 @@ prompt:
             }
         }
       output: ask_for(title)
+
+    - input: 
+        {
+          "intent": "get_game_info", 
+          "slots": {
+            "title": "Sonic 3", 
+            "info": null
+            }
+        }
+      output: ask_for(info)
+
     - input: 
         {
           "intent": "get_game_info", 
@@ -79,7 +93,7 @@ prompt:
 
     The actions to be chosen from this intent are:
     1. ask_for(genre), if every slot is missing i.e. null.
-    2. propose_game(slot_names), if at least one slot is defined. Instead of "slot_names" fill in the values of the filled slots as a list.
+    2. propose_game(slot_names), if at least one slot is defined. Instead of "slot_names" fill in the values of the filled slots separated by commas.
 
     Examples:
     - input: 
@@ -114,7 +128,7 @@ prompt:
     - criteria: criteria to use for comparison.
     
     The actions to be chosen from this intent are:
-    1. ask_for(slot), if any slot is missing i.e. null. Intead of "slot" put the missing slot name.
+    1. ask_for(slot), if any slot is missing i.e. null. Instead of "slot" put the missing slot name.
     2. give_comparison(title1, title2, criteria), if all slots are filled.
 
     Examples:
@@ -247,7 +261,8 @@ prompt:
             "name": null
             }
         }
-      Output: ask_for(name)
+      output: ask_for(name)
+      
     - input: 
         {
           "intent": "get_friend_games", 
@@ -255,7 +270,7 @@ prompt:
             "name": "David"
             }
         }
-      Output: give_friend_games(name)
+      output: give_friend_games(name)
   out_of_domain: |
     The request is outside of system capabilities.
     There are no slots.

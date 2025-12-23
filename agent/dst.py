@@ -71,9 +71,9 @@ class DST:
     }
     
   
-  def get_ds(self) -> str:
-    """Return the dialogue state as a string."""
-    return json.dumps(self.ds)
+  def get_ds(self) -> dict:
+    """Return the dialogue state."""
+    return self.ds
   
   @staticmethod
   def _normalize_names(name: str) -> str:

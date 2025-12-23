@@ -7,9 +7,9 @@ prompt: |
 
   INPUT: 
     The input is a natural language user request.
-    It can also contain a history of variable lenght.
+    It can also contain a history of variable length.
     The history is also useful for adding context and gathering slots from previous exchanges.
-    Histoy format is:
+    History format is:
     [
       {"role": "system", "content": ...},
       {"role": "user", "content": ...},
@@ -31,7 +31,9 @@ prompt: |
     - Don't include any explainations or headings in the output.
     - Only output the json object without any additional text.
     - If a slot value is not present, set it to null.
-    - Avoid hallucinating missing slots.
+    - Avoid hallucinating non defined slots.
+    - Always output all slots for an intent.
+    - Don't modify slot values, just report them as the user writes them, for example if the user says RPG the slot value should be RPG.
 
   INTENTS AND SLOTS DEFINITION:
 
@@ -39,16 +41,16 @@ prompt: |
       This intent is used when the user wants to search information on a game.
       This intent has the following slots:
       - title, title of a game.
-      - info, type of information requested. Accepted values are [“summary”, “genre”, “mode”, “platform”, “required_age”, “review”, “price”, "publisher", "developer"].
+      - info, type of information requested. Reference values are ["summary", "genre", "mode", "platform", "required_age", "review", "price", "publisher", "developer"].
 
     2. "discover_game":
       This intent is used when the user wants to find a game.
       This intent has the following slots:
-      - genre, genre of the game. Accepted values are ["action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
+      - genre, genre of the game. Reference values are ["action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
       - price, higher bound of the price. Expected numerical float, for example "10.0".
       - release_year, release year of the game. Expect a year in numerical format, for example "2010".
-      - platform, on which platform we want the game to be playable. Accepted values are ["windows", "mac", "linux"].
-      - mode, game modes supported by the game. Accepted values are ["singleplayer", "multiplayer"].
+      - platform, on which platform we want the game to be playable. Reference values are ["windows", "mac", "linux"].
+      - mode, game modes supported by the game. Reference values are ["singleplayer", "multiplayer"].
       - similar_title, title of a similar game to use as reference for the search.
       - required_age, required age to play the game. We expect a integer numerical age, for example "16".
       - publisher, name of the publisher of the game.
@@ -59,7 +61,7 @@ prompt: |
       This intent has the following slots to be extracted from user input:
       - title1: first game to compare.
       - title2: second game to compare.
-      - criteria: criteria to use for comparison. Accepted values are ["price", "review", "genre"].
+      - criteria: criteria to use for comparison. Reference values are ["price", "review", "genre"].
 
     4. "get_term_explained":
       This intent is used when the user wants to get some gaming terminology explained.
@@ -86,7 +88,7 @@ prompt: |
       - name, friend name.
 
 
-    8. "out_of_domain":
+    9. "out_of_domain":
       This intent is used when the user inputs prompts unrelated to the system capabilities.
       This intent has no slots.
 
@@ -126,10 +128,10 @@ prompt: |
       output: 
         {
           "intent": "get_game_info",
-            "slots": {
-              "title": "Dota 2",
-              "info": "publisher"
-            }
+          "slots": {
+            "title": "Dota 2",
+            "info": "publisher"
+          }
         }
 
     - input: "What genre is Balatro?"
@@ -142,12 +144,12 @@ prompt: |
           }
         }
 
-    - input: "I am searching for a RPG game published by Bethesda"
+    - input: "I am searching for a rpg game published by Bethesda"
       output: 
         {
           "intent": "discover_game",
           "slots": {
-            "genre": "RPG",
+            "genre": "rpg",
             "price": null,
             "release_year": null,
             "platform": null,
@@ -166,7 +168,7 @@ prompt: |
           "slots": {
             "genre": null,
             "price": "20.0",
-            "release_year": null
+            "release_year": null,
             "platform": "linux",
             "mode": "singleplayer",
             "similar_title": null,
@@ -193,16 +195,16 @@ prompt: |
           }
         }
 
-    - input: "I want a single-player Indie game from 2021"
+    - input: "I want a singleplayer indie game from 2021"
       output:
         {
           "intent": "discover_game",
           "slots": {
-            "genre": "Indie",
+            "genre": "indie",
             "price": null,
             "release_year": "2021",
             "platform": null,
-            "mode": "single-player",
+            "mode": "singleplayer",
             "similar_title": null,
             "required_age": null,
             "developer": null,
@@ -221,7 +223,7 @@ prompt: |
           }
         }
 
-    - input: "Should I buy Half Life 1 or two?"
+    - input: "Should I buy Half Life 1 or Half Life 2?"
       output:
         {
           "intent": "compare_games",
@@ -250,6 +252,31 @@ prompt: |
         "slots": {}
       }
 
+  - input: "I want to see my games."
+    output:
+      {
+        "intent": "get_wishlist",
+        "slots": {}
+      }
+
+  - input: "Add Spore to the wishlist"
+    output: 
+      {
+        "intent": "add_to_wishlist",
+        "slots":  {
+            "title": "Spore"
+          }
+      }
+  
+  - input: "Add Dark Souls 2 to my list"
+    output: 
+      {
+        "intent": "add_to_wishlist",
+        "slots": {
+          "title": "Dark Souls 2"  
+        }
+      }
+
   - input: "Remove Hollow Knight from my list"
     output:
       {
@@ -258,8 +285,17 @@ prompt: |
           "title": "Hollow Knight"
         }
       }
+  
+  - input: "delete Assassins creed 2 from the wishlist."
+    output: 
+      {
+        "intent": "remove_from_wishlist",
+        "slots": {
+          "title": "Assassins creed 2"
+        }
+      }
 
-  - input: "Does User99 own Left 4 Dead?"
+  - input: "What games does User99 have?"
     output:
       {
         "intent": "get_friend_games",
@@ -267,13 +303,22 @@ prompt: |
           "name": "User99"
         }
       }
+  
+  - input: "Show me Paul's games."
+    output: 
+      {
+        "intent": "get_friend_games",
+        "slots": {
+          "name": "Paul"
+        }
+      }
 
-  - input: "What does MMORPG stand for?"
+  - input: "What does mmorpg stand for?"
     output:
       {
         "intent": "get_term_explained",
         "slots": {
-          "term": "MMORPG"
+          "term": "mmorpg"
         }
       }
 

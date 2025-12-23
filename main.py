@@ -25,12 +25,13 @@ def main() -> None:
   device = "auto"
   n_exchanges = 1
 
-
+  # Models used for every component
   model = {
     "default": "qwen3",
     "preproc": "qwen3",
     "nlu": "qwen3",
-    "dm": "qwen3",
+    "dm": "rule_based",
+    "nlg": "qwen3",
     "sa": "qwen3"
   }
 

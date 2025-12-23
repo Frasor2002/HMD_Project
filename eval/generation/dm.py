@@ -1,6 +1,7 @@
 import json
 import itertools
 import os
+from agent.utils import get_action
 
 GEN_DIR = os.path.dirname(os.path.abspath(__file__))
 EVAL_DIR = os.path.dirname(GEN_DIR)
@@ -68,76 +69,6 @@ intent_schemas = {
   "out_of_domain": []
 }
 
-def get_action(intent: str, slots: dict) -> str:
-  """Given a ds return the action annotation.
-  Args:
-    intent (str): dialogue state intent.
-    slots (dict): dict of dialogue state.
-  Returns:
-    str: next best action annotation based on some rules.
-  """
-  # Get filled slots
-  filled_slots = {k: v for k, v in slots.items() if v is not None}
-
-  match intent:
-    case "get_game_info":
-      if slots.get("title") is None:
-        action = "ask_for(title)"
-      elif slots.get("info") is None:
-        action = "ask_for(info)"
-      else:
-        info_val = slots.get("info")
-        action = f"give_info(title, {info_val})"
-    
-    case "discover_game":
-      if len(filled_slots) < 1:
-        action = "ask_for(genre)"
-      else:
-        action = f"propose_game({', '.join(filled_slots.keys())})"
-    
-    case "compare_games":
-      if slots.get("title1") is None:
-        action = "ask_for(title1)"
-      elif slots.get("title2") is None:
-        action = "ask_for(title2)"
-      elif slots.get("criteria") is None:
-        action = "ask_for(criteria)"
-      else:
-        action = f"give_comparison({', '.join(filled_slots.keys())})"
-    
-    case "get_friend_games":
-      if slots.get("name") is None:
-        action = "ask_for(name)"
-      else:
-        action = "give_friend_games(name)"
-    
-    case "get_term_explained":
-      if slots.get("term") is None:
-        action = "ask_for(term)"
-      else:
-        action = "explain_term(term)"
-    
-    case "add_to_wishlist":
-      if slots.get("title") is None:
-        action = "ask_for(title)"
-      else:
-        action = "add_game(title)"
-    
-    case "remove_from_wishlist":
-      if slots.get("title") is None:
-        action = "ask_for(title)"
-      else:
-        action = "remove_game(title)"
-    
-    case "get_wishlist":
-      action = "give_wishlist()"
-    case "out_of_domain":
-      action = "fallback()"
-    case _:
-      action = "fallback()"
-
-
-  return action
 
 
 def get_strided_combinations(iter_data: itertools.product, limit: int) -> list:

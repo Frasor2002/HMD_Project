@@ -5,7 +5,7 @@ from collections import Counter
 import numpy as np
 import sacrebleu
 
-from models.model import LLMTask
+from agent.nlg import NLG
 import os
 
 EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -13,14 +13,14 @@ RESULTS_PATH = os.path.join(EVAL_DIR, "results", "nlg_results.json")
 STATE_PATH = os.path.join(EVAL_DIR, "temp", "nlg_state.json")
 
 class NLG_Evaluator(Evaluator):
-  def __init__(self, component: LLMTask, filepath: str, prompt: dict) -> None:
+  def __init__(self, nlg: NLG, filepath: str, prompt: dict) -> None:
     """Initialize NLG Evaluator.
     Args:
-      component (LLMTast): model for the nlg task.
+      nlg (LLMTast): model for the nlg task.
       filepath (str): path of the dataset.
       prompt (dict): dict containing prompts for intent.  
     """
-    super().__init__(component, filepath, prompt)
+    super().__init__(nlg, filepath, prompt)
     self.pred_states, self.gt_states = self.get_pred_gt()
 
   def get_pred_gt(self) -> tuple:
@@ -38,9 +38,7 @@ class NLG_Evaluator(Evaluator):
 
     for sample in tqdm(remaining_samples, desc="Evaluating NLG", initial=start_idx, total=len(self.test_set)):
       intent = sample["intent"]
-      self.component.change_system_prompt(self.prompt["prompt"]["main"] + self.prompt["prompt"][intent])
-
-      pred = self.component.generate(json.dumps(sample["input"]))
+      pred = self.component.generate_eval(intent, json.dumps(sample["input"]))
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
 

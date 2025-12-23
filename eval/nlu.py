@@ -2,7 +2,7 @@ from typing import Any, Dict, Tuple, List
 import json
 from collections import defaultdict
 from eval.evaluator import Evaluator
-from models.model import LLMTask
+from agent.nlu import NLU
 from tqdm import tqdm
 import os
 
@@ -13,7 +13,7 @@ STATE_PATH = os.path.join(EVAL_DIR, "temp", "nlu_state.json")
 class NLU_Evaluator(Evaluator):
   def __init__(
     self,
-    nlu: LLMTask,
+    nlu: NLU,
     filepath: str,
     prompt: dict
     ):
@@ -45,7 +45,7 @@ class NLU_Evaluator(Evaluator):
     remaining_samples = self.test_set[start_idx:]
 
     for sample in tqdm(remaining_samples, desc="Evaluating NLU", initial=start_idx, total=len(self.test_set)):
-      pred = self.component.generate(sample["utterance"])
+      pred = self.component.generate(sample["utterance"], validate = False)
       try:
         pred = json.loads(pred)
       except Exception:
