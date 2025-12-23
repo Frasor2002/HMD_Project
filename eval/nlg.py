@@ -38,7 +38,7 @@ class NLG_Evaluator(Evaluator):
 
     for sample in tqdm(remaining_samples, desc="Evaluating NLG", initial=start_idx, total=len(self.test_set)):
       intent = sample["intent"]
-      pred = self.component.generate_eval(intent, json.dumps(sample["input"]))
+      pred = self.component.eval_generate(intent, json.dumps(sample["input"]))
       pred_states.append(pred)
       gt_states.append(sample["annotation"])
 
