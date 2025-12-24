@@ -10,13 +10,13 @@ DATASET_PATH = os.path.join(EVAL_DIR, "test_set", "nlu.json")
 
 # Templates for the data (generated from llm)
 intent_templates = {
-  "get_game_info": ["Tell me about {title}", "I want to know more about {title}", "Search for {title}", "What is the {info} of {title}?"],
-  "discover_game": ["Find me some {genre} games", "I want to play a game on {platform}", "Show me games made by {developer}", "Are there any games from {release_year}?", "I am looking for {mode} games", "Find {genre} games under {price} dollars", "Show me {genre} games playable on {platform}", "I want a {mode} game released in {release_year}", "Do you know any games similar to {similar_title} for {platform}?", "List games by {publisher} that are {genre}","Search for {genre} games on {platform} that cost less than {price}"],
-  "compare_games": ["Compare {title1} and {title2}","What is the difference between {title1} and {title2}?","Which is better, {title1} or {title2}?","Compare the {criteria} of {title1} and {title2}","Which has better {criteria}, {title1} or {title2}?","Tell me about the {criteria} differences between {title1} and {title2}"],
+  "get_game_info": ["I want to know more about {title}", "Search for {title}", "What is the {info} of {title}?"],
+  "discover_game": ["Find me some {genre} games", "I want to play a game on {platform}", "Show me games made by {developer}", "Are there any games from {release_year}?", "I am looking for {mode} games", "Show me {genre} games playable on {platform}", "I want a {mode} game released in {release_year}", "Do you know any games similar to {similar_title} for {platform}?", "List games by {publisher} that are {genre}","Search for {genre} games on {platform} that cost less than {price}", "Find games like {similar_title} that are for age {required_age} and for {platform}"],
+  "compare_games": ["What is the difference between {title1} and {title2}?","Compare the {criteria} of {title1} and {title2}","Tell me about the {criteria} differences between {title1} and {title2}"],
   "get_friend_games": ["What is {name} playing?","Show me the games {name} owns","Does {name} have any recommendations?","List games owned by {name}"],
   "get_term_explained": ["What does {term} mean?","Explain the term {term}","Define {term} in the context of gaming","What is {term}?"],
-  "add_to_wishlist": ["Add {title} to my wishlist","Save {title} for later"],
-  "remove_from_wishlist": ["Remove {title} from my wishlist","Delete {title} from my list","Take {title} off my saved games","I don't want {title} on my wishlist anymore"],
+  "add_to_wishlist": ["Add {title} to my wishlist","Save {title} in my list", "I want to add {title} to my saved games"],
+  "remove_from_wishlist": ["Remove {title} from my wishlist","Delete {title} from my list","Take {title} off my saved games"],
   "get_wishlist": ["Show me my wishlist","What games have I saved?","List my wishlist items","Open my list"],
   "out_of_domain": ["What is the weather like?","Book a table for two","How do I cook pasta?","Who is the president?","Navigate to home"]
 }

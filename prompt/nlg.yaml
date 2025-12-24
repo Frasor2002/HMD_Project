@@ -31,6 +31,7 @@ prompt:
 
     RULES:
       - Don't propose anything outside the knowledge provided.
+      - Don't give any evaluation on the knowledge, for example saying a game is highly rated without checking the reviews is forbidden or saying its cheap without checking the price.
       - Only output the response without any additional text.
       - Don't include any explanations or headings in the output.
       - The response must be polite, concise, and contextually appropriate.
@@ -319,3 +320,15 @@ prompt:
       MI: False
       output:
       I apologize, but I cannot help with that specific request. However, I can help you search for game info, explain terms, or compare titles. What would you like to do?
+  multiresponse1: |
+    ADDITIONAL CONTEXT:
+      This is the first part of a two-part response so:
+      - Keep it under 25 words.
+      - Transition into the next part.
+      - Don't ask questions at the end.
+  multiresponse2: |
+    ADDITIONAL CONTEXT:
+      This is the second part of a two-part response so:
+      - Keep it under 25 words.
+      - Conclude the response naturally.
+      - Propose the user what they could do next, for example searching for a game or getting a gaming term explained.

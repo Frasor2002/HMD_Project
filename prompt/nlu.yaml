@@ -45,14 +45,15 @@ prompt: |
 
     2. "discover_game":
       This intent is used when the user wants to find a game.
+      Remember that all slots are expected in the output. If there is no value in the input, just set them to null.
       This intent has the following slots:
       - genre, genre of the game. Reference values are ["action", "adventure", "casual", "early access", "education", "free to play", "game development", "gore", "indie", "massively multiplayer", "movie",  "rpg", "racing", "simulation", "sports", "strategy", "violent"].
-      - price, higher bound of the price. Expected numerical float, for example "10.0".
-      - release_year, release year of the game. Expect a year in numerical format, for example "2010".
+      - price, higher bound of the price. Expected numerical float, for example 10.0.
+      - release_year, release year of the game. Expect a year in numerical format, for example 2010.
       - platform, on which platform we want the game to be playable. Reference values are ["windows", "mac", "linux"].
       - mode, game modes supported by the game. Reference values are ["singleplayer", "multiplayer"].
       - similar_title, title of a similar game to use as reference for the search.
-      - required_age, required age to play the game. We expect a integer numerical age, for example "16".
+      - required_age, required age to play the game. We expect a integer numerical age, for example 16.
       - publisher, name of the publisher of the game.
       - developer, name of the developer of the game.
 
@@ -167,7 +168,7 @@ prompt: |
           "intent": "discover_game",
           "slots": {
             "genre": null,
-            "price": "20.0",
+            "price": 20.0,
             "release_year": null,
             "platform": "linux",
             "mode": "singleplayer",
@@ -202,7 +203,7 @@ prompt: |
           "slots": {
             "genre": "indie",
             "price": null,
-            "release_year": "2021",
+            "release_year": 2021,
             "platform": null,
             "mode": "singleplayer",
             "similar_title": null,

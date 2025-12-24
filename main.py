@@ -6,13 +6,16 @@ from agent.agent import DialogueAgent
 
 def chat(model):
   """Interactive CLI session."""
-  while True:
+  active = True
+
+  while active:
     user_input = input(f"\nUser: ")
-    if user_input.lower() in {"exit", "quit"}:
+    if user_input.lower() == "quit()":
       print("Closing...")
-      break
-    response = model.chat(user_input)
-    print(f"Assistant: {response}")
+      active = False
+    else:
+      response = model.chat(user_input)
+      print(f"Assistant: {response}")
 
 
 def main() -> None:
@@ -23,7 +26,7 @@ def main() -> None:
   login_to_hub()
 
   device = "auto"
-  n_exchanges = 1
+  n_exchanges = 2
 
   # Models used for every component
   model = {

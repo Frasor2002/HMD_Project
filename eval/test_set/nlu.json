@@ -1,75 +1,5 @@
 [
     {
-        "utterance": "Tell me about Terraria",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Terraria",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about Metal Gear Solid",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Metal Gear Solid",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about Assassin Creed 2",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Assassin Creed 2",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about The Division",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "The Division",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about Far Cry 5",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Far Cry 5",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about Rust",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Rust",
-                "info": null
-            }
-        }
-    },
-    {
-        "utterance": "Tell me about Portal",
-        "annotation": {
-            "intent": "get_game_info",
-            "slots": {
-                "title": "Portal",
-                "info": null
-            }
-        }
-    },
-    {
         "utterance": "I want to know more about Terraria",
         "annotation": {
             "intent": "get_game_info",
@@ -1342,1451 +1272,6 @@
                 "release_year": null,
                 "platform": null,
                 "mode": "multiplayer",
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find action games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "action",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find action games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "action",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find action games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "action",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find action games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "action",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find action games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "action",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find adventure games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "adventure",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find adventure games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "adventure",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find adventure games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "adventure",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find adventure games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "adventure",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find adventure games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "adventure",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find casual games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "casual",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find casual games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "casual",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find casual games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "casual",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find casual games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "casual",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find casual games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "casual",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find early access games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "early access",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find early access games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "early access",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find early access games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "early access",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find early access games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "early access",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find early access games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "early access",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find education games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "education",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find education games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "education",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find education games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "education",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find education games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "education",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find education games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "education",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find free to play games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "free to play",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find free to play games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "free to play",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find free to play games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "free to play",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find free to play games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "free to play",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find free to play games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "free to play",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find game development games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "game development",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find game development games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "game development",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find game development games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "game development",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find game development games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "game development",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find game development games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "game development",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find gore games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "gore",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find gore games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "gore",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find gore games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "gore",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find gore games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "gore",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find gore games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "gore",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find indie games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "indie",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find indie games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "indie",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find indie games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "indie",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find indie games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "indie",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find indie games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "indie",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find massively multiplayer games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "massively multiplayer",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find massively multiplayer games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "massively multiplayer",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find massively multiplayer games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "massively multiplayer",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find massively multiplayer games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "massively multiplayer",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find massively multiplayer games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "massively multiplayer",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find movie games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "movie",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find movie games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "movie",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find movie games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "movie",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find movie games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "movie",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find movie games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "movie",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find rpg games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "rpg",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find rpg games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "rpg",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find rpg games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "rpg",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find rpg games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "rpg",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find rpg games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "rpg",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find racing games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "racing",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find racing games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "racing",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find racing games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "racing",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find racing games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "racing",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find racing games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "racing",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find simulation games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "simulation",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find simulation games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "simulation",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find simulation games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "simulation",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find simulation games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "simulation",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find simulation games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "simulation",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find sports games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "sports",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find sports games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "sports",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find sports games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "sports",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find sports games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "sports",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find sports games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "sports",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find strategy games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "strategy",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find strategy games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "strategy",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find strategy games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "strategy",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find strategy games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "strategy",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find strategy games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "strategy",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find violent games under 0 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "violent",
-                "price": 0,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find violent games under 5 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "violent",
-                "price": 5,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find violent games under 10 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "violent",
-                "price": 10,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find violent games under 15 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "violent",
-                "price": 15,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
-                "similar_title": null,
-                "required_age": null,
-                "publisher": null,
-                "developer": null
-            }
-        }
-    },
-    {
-        "utterance": "Find violent games under 40 dollars",
-        "annotation": {
-            "intent": "discover_game",
-            "slots": {
-                "genre": "violent",
-                "price": 40,
-                "release_year": null,
-                "platform": null,
-                "mode": null,
                 "similar_title": null,
                 "required_age": null,
                 "publisher": null,
@@ -9391,464 +7876,1430 @@
         }
     },
     {
-        "utterance": "Compare Terraria and Metal Gear Solid",
+        "utterance": "Find games like Terraria that are for age 0 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Terraria and Assassin Creed 2",
+        "utterance": "Find games like Terraria that are for age 0 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Terraria and The Division",
+        "utterance": "Find games like Terraria that are for age 0 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Terraria and Far Cry 5",
+        "utterance": "Find games like Terraria that are for age 16 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Terraria and Rust",
+        "utterance": "Find games like Terraria that are for age 16 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Terraria and Portal",
+        "utterance": "Find games like Terraria that are for age 16 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Terraria",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and Terraria",
+        "utterance": "Find games like Terraria that are for age 18 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and Assassin Creed 2",
+        "utterance": "Find games like Terraria that are for age 18 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and The Division",
+        "utterance": "Find games like Terraria that are for age 18 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and Far Cry 5",
+        "utterance": "Find games like Terraria that are for age 21 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and Rust",
+        "utterance": "Find games like Terraria that are for age 21 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Metal Gear Solid and Portal",
+        "utterance": "Find games like Terraria that are for age 21 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Terraria",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and Terraria",
+        "utterance": "Find games like Metal Gear Solid that are for age 0 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and Metal Gear Solid",
+        "utterance": "Find games like Metal Gear Solid that are for age 0 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and The Division",
+        "utterance": "Find games like Metal Gear Solid that are for age 0 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and Far Cry 5",
+        "utterance": "Find games like Metal Gear Solid that are for age 16 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and Rust",
+        "utterance": "Find games like Metal Gear Solid that are for age 16 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Assassin Creed 2 and Portal",
+        "utterance": "Find games like Metal Gear Solid that are for age 16 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Terraria",
+        "utterance": "Find games like Metal Gear Solid that are for age 18 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Metal Gear Solid",
+        "utterance": "Find games like Metal Gear Solid that are for age 18 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Assassin Creed 2",
+        "utterance": "Find games like Metal Gear Solid that are for age 18 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Far Cry 5",
+        "utterance": "Find games like Metal Gear Solid that are for age 21 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Rust",
+        "utterance": "Find games like Metal Gear Solid that are for age 21 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare The Division and Portal",
+        "utterance": "Find games like Metal Gear Solid that are for age 21 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "The Division",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Metal Gear Solid",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and Terraria",
+        "utterance": "Find games like Assassin Creed 2 that are for age 0 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and Metal Gear Solid",
+        "utterance": "Find games like Assassin Creed 2 that are for age 0 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and Assassin Creed 2",
+        "utterance": "Find games like Assassin Creed 2 that are for age 0 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and The Division",
+        "utterance": "Find games like Assassin Creed 2 that are for age 16 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and Rust",
+        "utterance": "Find games like Assassin Creed 2 that are for age 16 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Far Cry 5 and Portal",
+        "utterance": "Find games like Assassin Creed 2 that are for age 16 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and Terraria",
+        "utterance": "Find games like Assassin Creed 2 that are for age 18 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and Metal Gear Solid",
+        "utterance": "Find games like Assassin Creed 2 that are for age 18 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and Assassin Creed 2",
+        "utterance": "Find games like Assassin Creed 2 that are for age 18 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and The Division",
+        "utterance": "Find games like Assassin Creed 2 that are for age 21 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and Far Cry 5",
+        "utterance": "Find games like Assassin Creed 2 that are for age 21 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Rust and Portal",
+        "utterance": "Find games like Assassin Creed 2 that are for age 21 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Rust",
-                "title2": "Portal",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Assassin Creed 2",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and Terraria",
+        "utterance": "Find games like The Division that are for age 0 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "Terraria",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and Metal Gear Solid",
+        "utterance": "Find games like The Division that are for age 0 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "Metal Gear Solid",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and Assassin Creed 2",
+        "utterance": "Find games like The Division that are for age 0 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "Assassin Creed 2",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and The Division",
+        "utterance": "Find games like The Division that are for age 16 and for windows",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "The Division",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and Far Cry 5",
+        "utterance": "Find games like The Division that are for age 16 and for mac",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "Far Cry 5",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
             }
         }
     },
     {
-        "utterance": "Compare Portal and Rust",
+        "utterance": "Find games like The Division that are for age 16 and for linux",
         "annotation": {
-            "intent": "compare_games",
+            "intent": "discover_game",
             "slots": {
-                "title1": "Portal",
-                "title2": "Rust",
-                "criteria": null
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 18 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 18 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 18 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 21 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 21 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like The Division that are for age 21 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "The Division",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 0 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 0 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 0 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 16 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 16 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 16 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 18 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 18 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 18 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 21 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 21 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Far Cry 5 that are for age 21 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Far Cry 5",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 0 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 0 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 0 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 16 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 16 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 16 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 18 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 18 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 18 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 21 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 21 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Rust that are for age 21 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Rust",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 0 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 0 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 0 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 0,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 16 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 16 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 16 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 16,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 18 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 18 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 18 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 18,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 21 and for windows",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "windows",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 21 and for mac",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "mac",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
+            }
+        }
+    },
+    {
+        "utterance": "Find games like Portal that are for age 21 and for linux",
+        "annotation": {
+            "intent": "discover_game",
+            "slots": {
+                "genre": null,
+                "price": null,
+                "release_year": null,
+                "platform": "linux",
+                "mode": null,
+                "similar_title": "Portal",
+                "required_age": 21,
+                "publisher": null,
+                "developer": null
             }
         }
     },
@@ -10305,468 +9756,6 @@
     },
     {
         "utterance": "What is the difference between Portal and Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Terraria or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Metal Gear Solid or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Assassin Creed 2 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, The Division or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Rust",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Far Cry 5 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Rust or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Portal",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Terraria",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Metal Gear Solid",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Assassin Creed 2",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "The Division",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Far Cry 5",
-                "criteria": null
-            }
-        }
-    },
-    {
-        "utterance": "Which is better, Portal or Rust?",
         "annotation": {
             "intent": "compare_games",
             "slots": {
@@ -12153,1392 +11142,6 @@
     },
     {
         "utterance": "Compare the genre of Portal and Rust",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Terraria or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Metal Gear Solid or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Assassin Creed 2 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, The Division or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Far Cry 5 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Rust or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Portal",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Terraria",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Metal Gear Solid",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Assassin Creed 2",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "The Division",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Far Cry 5",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better price, Portal or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Rust",
-                "criteria": "price"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Terraria or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Metal Gear Solid or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Assassin Creed 2 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, The Division or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Far Cry 5 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Rust or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Portal",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Terraria",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Metal Gear Solid",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Assassin Creed 2",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "The Division",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Far Cry 5",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better review, Portal or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Rust",
-                "criteria": "review"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Terraria or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Terraria",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Metal Gear Solid or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Metal Gear Solid",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Assassin Creed 2 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Assassin Creed 2",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, The Division or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "The Division",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or Rust?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Rust",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Far Cry 5 or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Far Cry 5",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Rust or Portal?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Rust",
-                "title2": "Portal",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or Terraria?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Terraria",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or Metal Gear Solid?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Metal Gear Solid",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or Assassin Creed 2?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Assassin Creed 2",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or The Division?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "The Division",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or Far Cry 5?",
-        "annotation": {
-            "intent": "compare_games",
-            "slots": {
-                "title1": "Portal",
-                "title2": "Far Cry 5",
-                "criteria": "genre"
-            }
-        }
-    },
-    {
-        "utterance": "Which has better genre, Portal or Rust?",
         "annotation": {
             "intent": "compare_games",
             "slots": {
@@ -15358,7 +12961,7 @@
         }
     },
     {
-        "utterance": "Save Terraria for later",
+        "utterance": "Save Terraria in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15367,7 +12970,7 @@
         }
     },
     {
-        "utterance": "Save Metal Gear Solid for later",
+        "utterance": "Save Metal Gear Solid in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15376,7 +12979,7 @@
         }
     },
     {
-        "utterance": "Save Assassin Creed 2 for later",
+        "utterance": "Save Assassin Creed 2 in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15385,7 +12988,7 @@
         }
     },
     {
-        "utterance": "Save The Division for later",
+        "utterance": "Save The Division in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15394,7 +12997,7 @@
         }
     },
     {
-        "utterance": "Save Far Cry 5 for later",
+        "utterance": "Save Far Cry 5 in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15403,7 +13006,7 @@
         }
     },
     {
-        "utterance": "Save Rust for later",
+        "utterance": "Save Rust in my list",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15412,7 +13015,70 @@
         }
     },
     {
-        "utterance": "Save Portal for later",
+        "utterance": "Save Portal in my list",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Portal"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Terraria to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Terraria"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Metal Gear Solid to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Metal Gear Solid"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Assassin Creed 2 to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Assassin Creed 2"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add The Division to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "The Division"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Far Cry 5 to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Far Cry 5"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Rust to my saved games",
+        "annotation": {
+            "intent": "add_to_wishlist",
+            "slots": {
+                "title": "Rust"
+            }
+        }
+    },
+    {
+        "utterance": "I want to add Portal to my saved games",
         "annotation": {
             "intent": "add_to_wishlist",
             "slots": {
@@ -15602,69 +13268,6 @@
     },
     {
         "utterance": "Take Portal off my saved games",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Portal"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Terraria on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Terraria"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Metal Gear Solid on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Metal Gear Solid"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Assassin Creed 2 on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Assassin Creed 2"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want The Division on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "The Division"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Far Cry 5 on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Far Cry 5"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Rust on my wishlist anymore",
-        "annotation": {
-            "intent": "remove_from_wishlist",
-            "slots": {
-                "title": "Rust"
-            }
-        }
-    },
-    {
-        "utterance": "I don't want Portal on my wishlist anymore",
         "annotation": {
             "intent": "remove_from_wishlist",
             "slots": {

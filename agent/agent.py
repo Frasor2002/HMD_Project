@@ -11,7 +11,7 @@ from agent.nlu import NLU
 from agent.dm import DM, RuleBasedDM
 from agent.nlg import NLG
 from agent.sa import SA
-
+from typing import Optional
 
 class DialogueAgent:
   def __init__(self, model: Dict[str, str], device: str = "cuda", n_exchanges: int = 3) -> None:
@@ -158,11 +158,12 @@ class DialogueAgent:
     return data
 
 
-  def handle_intent(self, nlu_input: str, mi: bool) -> str:
+  def handle_intent(self, nlu_input: str, mi: bool, nlg_tuning: Optional[str] = None) -> str:
     """Handle a single intent given user input.
     Args:
       user_request (str): request on a single intent.
       mi (bool): flag to tell the system if the user requested multiple intents at once.
+      nlg_tuning (Optional[str]): additional prompt for the nlg.
     Returns:
       str: nlg output.
     """
@@ -187,15 +188,19 @@ class DialogueAgent:
       nba = "fallback()"
       ek = None
 
-    nlg_out = self.nlg.generate(nba, ds, ek, mi)
+    nlg_out = self.nlg.generate(nba, ds, ek, mi, nlg_tuning)
 
     return nlg_out
 
   def handle_two_intents(self, split_input: list) -> str:
     responses = []
-            
-    for sub_input in split_input:
-      nlg_out = self.handle_intent(sub_input, mi=False)
+    
+    add_tunings = ["multiresponse1", "multiresponse2"]
+
+    for i, sub_input in enumerate(split_input):
+      additional_tuining = add_tunings[i]
+
+      nlg_out = self.handle_intent(sub_input, mi=False, nlg_tuning=additional_tuining)
       responses.append(nlg_out)
                 
       # Give context to next request

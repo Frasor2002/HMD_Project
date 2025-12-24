@@ -149,6 +149,9 @@ class NLU_Evaluator(Evaluator):
         gt_val = gt_slots.get(slot)
         pred_val = pred_slots.get(slot)
 
+        #if gt_val is None and pred_val is None:
+        #  continue
+
         # False negative
         if slot in gt_slots and slot not in pred_slots:
           slot_stats[slot]['fn'] += 1
