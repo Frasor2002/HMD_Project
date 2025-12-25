@@ -38,7 +38,11 @@ class ChatGUI(ctk.CTk):
     self.title("HMD Project")
     ctk.set_appearance_mode("Light") 
     self.configure(fg_color=COLOR["FG"])
-    self.iconbitmap(ICON_PATH)
+    try:
+      # On linux wont work
+      self.iconbitmap(ICON_PATH)
+    except Exception as e:
+      print(f"Icon not loaded: {e}.")
 
     # Set window dimention and position
     window_width = 800
@@ -54,11 +58,7 @@ class ChatGUI(ctk.CTk):
     self.grid_columnconfigure(0, weight=1)
 
     # Bot icon
-    try:
-      # Works only on windows
-      self.bot_icon = self.load_circular_icon(BOT_ICON_PATH)
-    except:
-      print("Icon not set.")
+    self.bot_icon = self.load_circular_icon(BOT_ICON_PATH)
 
     # Header
     self.header = ctk.CTkFrame(self, fg_color=COLOR["HEADER"], height=60, corner_radius=0)
