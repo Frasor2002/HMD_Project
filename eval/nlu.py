@@ -5,6 +5,7 @@ from eval.evaluator import Evaluator
 from agent.nlu import NLU
 from tqdm import tqdm
 import os
+import re
 
 EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
 RESULTS_PATH = os.path.join(EVAL_DIR, "results", "nlu_results.json")
@@ -49,7 +50,12 @@ class NLU_Evaluator(Evaluator):
       try:
         pred = json.loads(pred)
       except Exception:
-        pred = {"intent": "invalid_format", "slots": {}}
+        # Gemma gives out output in a different format
+        pattern = r"```json\s*(.*?)\s*```"
+        match = re.search(pattern, pred, re.DOTALL)
+        if match:
+          pred = json.loads(match.group(1))
+        else: pred = {"intent": "invalid_format", "slots": {}}
         
       pred_states.append(pred)
       gt_states.append(sample["annotation"])

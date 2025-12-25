@@ -75,6 +75,13 @@ class DST:
     """Return the dialogue state."""
     return self.ds
   
+  def reset(self) -> None:
+    """Reset the dialogue state to its initial empty state."""
+    self.ds = {
+      "intent": None,
+      "slots": {}
+    }
+
   @staticmethod
   def _normalize_names(name: str) -> str:
     """Game titles, publisher and  developer names must be normalized.

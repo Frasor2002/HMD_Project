@@ -14,7 +14,7 @@ def validate_nlu(nlu_out: str) -> dict:
   fallback_out = {"intent": "out_of_domain", "slots": {}}
   try:
     cleaned_out = nlu_out.strip()
-    # Clean artifacts
+    # Clean artifacts (Gemma)
     if "```" in cleaned_out:
       match = re.search(r"```(?:json)?(.*?)```", cleaned_out, re.DOTALL)
       if match:

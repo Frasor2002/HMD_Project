@@ -1,7 +1,4 @@
-import torch
-from dotenv import load_dotenv
-from models.utils import login_to_hub
-from agent.agent import DialogueAgent
+from agent.agent import load_agent
 
 
 def chat(model):
@@ -21,25 +18,7 @@ def chat(model):
 def main() -> None:
   """Execute the agent."""
 
-  # Load hf 
-  load_dotenv()
-  login_to_hub()
-
-  device = "auto"
-  n_exchanges = 2
-
-  # Models used for every component
-  model = {
-    "default": "qwen3",
-    "preproc": "qwen3",
-    "nlu": "qwen3",
-    "dm": "rule_based",
-    "nlg": "qwen3",
-    "sa": "qwen3"
-  }
-
-  dialogue_agent = DialogueAgent(model, device, n_exchanges)
-
+  dialogue_agent = load_agent()
   chat(dialogue_agent)
 
 if __name__ == "__main__":

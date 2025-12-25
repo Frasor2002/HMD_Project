@@ -12,6 +12,8 @@ from agent.dm import DM, RuleBasedDM
 from agent.nlg import NLG
 from agent.sa import SA
 from typing import Optional
+from dotenv import load_dotenv
+from models.utils import login_to_hub
 
 class DialogueAgent:
   def __init__(self, model: Dict[str, str], device: str = "cuda", n_exchanges: int = 3) -> None:
@@ -88,7 +90,10 @@ class DialogueAgent:
                 
     return prompts
 
-    
+  def clear_history(self) -> None:
+    """Clear conversation history and reset the dialogue state tracker."""
+    self.history.clear()
+    self.dst.reset()
 
   def get_review_sa(self, reviews: list) -> dict:
     """Given list of reviews return a report of positive and negative.
@@ -247,5 +252,25 @@ class DialogueAgent:
     return response
   
 
+def load_agent() -> DialogueAgent:
+  """Load the agent with the recommended configuration."""
+  # Load hf 
+  load_dotenv()
+  login_to_hub()
 
+  device = "auto"
+  n_exchanges = 2
+
+  # Models used for every component
+  model = {
+    "default": "qwen3",
+    "preproc": "qwen3",
+    "nlu": "qwen3",
+    "dm": "rule_based",
+    "nlg": "qwen3",
+    "sa": "qwen3"
+  }
+
+  dialogue_agent = DialogueAgent(model, device, n_exchanges)
+  return dialogue_agent
 
