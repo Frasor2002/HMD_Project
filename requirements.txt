@@ -8,3 +8,6 @@ bitsandbytes
 sacrebleu
 protobuf
 sentencepiece
+customtkinter
+pandas
+pillow

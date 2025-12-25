@@ -6,7 +6,7 @@ import ctypes
 
 # Colors
 COLOR = {
-  "FG": "#d1d1d1",
+  "FG": "#e3e3e3",
   "TEXT": "#050505",
   "DOT": "#505050"
 }

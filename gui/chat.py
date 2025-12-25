@@ -1,9 +1,12 @@
 import customtkinter as ctk
 import threading
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageDraw, ImageOps, ImageTk
 import os
 from gui.loading import LoadingAnimation
 from agent.agent import DialogueAgent
+
+ctk.set_widget_scaling(1.0)
+ctk.set_window_scaling(1.0)
 
 GUI_DIR = os.path.dirname(os.path.abspath(__file__))
 BOT_ICON_PATH = os.path.join(GUI_DIR, "assets", "bot_icon.png")
@@ -51,7 +54,11 @@ class ChatGUI(ctk.CTk):
     self.grid_columnconfigure(0, weight=1)
 
     # Bot icon
-    self.bot_icon = self.load_circular_icon(BOT_ICON_PATH)
+    try:
+      # Works only on windows
+      self.bot_icon = self.load_circular_icon(BOT_ICON_PATH)
+    except:
+      print("Icon not set.")
 
     # Header
     self.header = ctk.CTkFrame(self, fg_color=COLOR["HEADER"], height=60, corner_radius=0)
@@ -99,6 +106,7 @@ class ChatGUI(ctk.CTk):
       border_width=0, 
       border_color=COLOR["MSG_BG"],
       fg_color=COLOR["MSG_BG"],
+      bg_color=COLOR["FG"],
       text_color=COLOR["PLACEHOLDER"],
       corner_radius=20,
       font=("Arial", 14),
@@ -267,7 +275,7 @@ class ChatGUI(ctk.CTk):
   def add_message(self, text, is_bot):
     msg_container = ctk.CTkFrame(self.chat_history, fg_color=COLOR["FG"])
     msg_container.pack(fill="x", pady=5, padx=10)
-    wrap_len = 550 
+    wrap_len = 500 
     if is_bot:
       msg_container.grid_columnconfigure(1, weight=1)
       icon_label = ctk.CTkLabel(msg_container, text="", image=self.bot_icon)
