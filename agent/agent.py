@@ -264,7 +264,7 @@ def load_agent() -> DialogueAgent:
   # Models used for every component
   model = {
     "default": "qwen3",
-    "preproc": "qwen3",
+    "preproc": "gemma",
     "nlu": "qwen3",
     "dm": "rule_based",
     "nlg": "gemma",
