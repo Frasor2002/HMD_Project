@@ -267,7 +267,7 @@ def load_agent() -> DialogueAgent:
     "preproc": "qwen3",
     "nlu": "qwen3",
     "dm": "rule_based",
-    "nlg": "qwen3",
+    "nlg": "gemma",
     "sa": "qwen3"
   }
 

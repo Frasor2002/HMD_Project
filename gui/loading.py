@@ -3,6 +3,7 @@ import tkinter as tk
 from PIL import Image, ImageDraw, ImageTk
 import math
 import ctypes
+from typing import Any
 
 # Colors
 COLOR = {
@@ -13,7 +14,12 @@ COLOR = {
 
 class LoadingAnimation(ctk.CTkFrame):
   """Custom loading animation."""
-  def __init__(self, master, **kwargs):
+  def __init__(self, master, **kwargs: Any) -> None:
+    """Initalize loading animation.
+    Args:
+      master (object): parent widget.
+      **kwargs (Any): Additional keyword arguments passed to CTkFrame.
+    """
     super().__init__(master, fg_color=COLOR["FG"], corner_radius=18, **kwargs)
 
     self.label = ctk.CTkLabel(
@@ -61,13 +67,25 @@ class LoadingAnimation(ctk.CTkFrame):
     self.is_running = True
     self.animate()
 
-  def _get_scaling_factor(self):
+  def _get_scaling_factor(self) -> float:
+    """Retrieve scaling factor for current screen.
+    Returns:
+      float, scaling factor.
+    """
     try:
       return ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
     except:
       return 1.0
 
-  def create_smooth_dot(self, radius, color, scale):
+  def create_smooth_dot(self, radius: int, color: str, scale: float) -> ImageTk.PhotoImage:
+    """Create a circular dot image.
+    Args:
+      radius (int): radius of dot.
+      color (str): color of the dot.
+      scale (float): scaling factor.
+    Returns:
+      PhotoImage, dot image.
+    """
     pixel_radius = int(radius * scale)
     size = pixel_radius * 2
     oversample = 4
@@ -80,7 +98,8 @@ class LoadingAnimation(ctk.CTkFrame):
     img = img.resize((size, size), Image.Resampling.LANCZOS)
     return ImageTk.PhotoImage(img)
 
-  def animate(self):
+  def animate(self) -> None:
+    """Play the animation of the dot."""
     if not self.is_running: return
     self.time += self.speed
     
@@ -93,6 +112,7 @@ class LoadingAnimation(ctk.CTkFrame):
         
     self.after(20, self.animate)
 
-  def stop(self):
+  def stop(self) -> None:
+    """Stop the animation and destroy the widget."""
     self.is_running = False
     self.destroy()

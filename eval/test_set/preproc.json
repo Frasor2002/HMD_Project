@@ -1,0 +1,786 @@
+[
+  {
+    "utterance": "Find games similar to Punch Club.",
+    "annotation": ["Find games similar to Punch Club."]
+  },
+  {
+    "utterance": "First, tell me the mode of Dead Cells, then compare it with Monster Hunter World.",
+    "annotation": ["First, tell me the mode of Dead Cells,", "then compare it with Monster Hunter World."]
+  },
+  {
+    "utterance": "I want to see my wishlist and check if Hades is on sale.",
+    "annotation": [
+      "I want to see my wishlist",
+      "and check if Hades is on sale."
+    ]
+  },
+  {
+    "utterance": "What exactly is a 'nerf'? Also find me a strategy game.",
+    "annotation": [
+      "What exactly is a 'nerf'?",
+      "Also find me a strategy game."
+    ]
+  },
+  {
+    "utterance": "Remove GTA V from my list and show me what my friends are playing.",
+    "annotation": [
+      "Remove GTA V from my list",
+      "and show me what my friends are playing."
+    ]
+  },
+  {
+    "utterance": "Compare the genre of Tekken 8 and Street Fighter 6.",
+    "annotation": [
+      "Compare the genre of Tekken 8 and Street Fighter 6."
+    ]
+  },
+  {
+    "utterance": "I need a recipe for lasagna, but first tell me the release date of Silksong.",
+    "annotation": [
+      "I need a recipe for lasagna,",
+      "but first tell me the release date of Silksong."
+    ]
+  },
+  {
+    "utterance": "Can you explain 'DPS' to me, add Overwatch to my wishlist, and check its rating?",
+    "annotation": [
+      "Can you explain 'DPS' to me,",
+      "add Overwatch to my wishlist,",
+      "and check its rating?"
+    ]
+  },
+  {
+    "utterance": "Find me a horror game under 30 dollars.",
+    "annotation": [
+      "Find me a horror game under 30 dollars."
+    ]
+  },
+  {
+    "utterance": "Is Valorant free to play? Then add it to my wishlist.",
+    "annotation": [
+      "Is Valorant free to play?",
+      "Then add it to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Show me games similar to Zelda and tell me which one is better: TotK or BotW.",
+    "annotation": [
+      "Show me games similar to Zelda",
+      "and tell me which one is better: TotK or BotW."
+    ]
+  },
+  {
+    "utterance": "Delete Minecraft from my wishlist, actually, list all my saved games first.",
+    "annotation": [
+      "Delete Minecraft from my wishlist,",
+      "actually, list all my saved games first."
+    ]
+  },
+  {
+    "utterance": "What are my friends playing right now? Also, who won the Super Bowl?",
+    "annotation": [
+      "What are my friends playing right now?",
+      "Also, who won the Super Bowl?"
+    ]
+  },
+  {
+    "utterance": "I want a multiplayer game with positive reviews, oh and explain what 'aggro' means.",
+    "annotation": [
+      "I want a multiplayer game with positive reviews,",
+      "oh and explain what 'aggro' means."
+    ]
+  },
+  {
+    "utterance": "Check the price of Baldur's Gate 3, compare it to Divinity 2, and add the cheaper one to my cart.",
+    "annotation": [
+      "Check the price of Baldur's Gate 3,",
+      "compare it to Divinity 2,",
+      "and add the cheaper one to my cart."
+    ]
+  },
+  {
+    "utterance": "Tell me about the story of BioShock.",
+    "annotation": [
+      "Tell me about the story of BioShock."
+    ]
+  },
+  {
+    "utterance": "Book me a flight to Paris and look for a French release of Assassin's Creed.",
+    "annotation": [
+      "Book me a flight to Paris",
+      "and look for a French release of Assassin's Creed."
+    ]
+  },
+  {
+    "utterance": "Show me my wishlist, remove the first game, and find me a brand new RPG.",
+    "annotation": [
+      "Show me my wishlist,",
+      "remove the first game,",
+      "and find me a brand new RPG."
+    ]
+  },
+  {
+    "utterance": "What is 'min-maxing'? Can you show me examples in Diablo?",
+    "annotation": [
+      "What is 'min-maxing'?",
+      "Can you show me examples in Diablo?"
+    ]
+  },
+  {
+    "utterance": "Add Apex Legends to my wishlist and tell me if my friend John owns it.",
+    "annotation": [
+      "Add Apex Legends to my wishlist",
+      "and tell me if my friend John owns it."
+    ]
+  },
+  {
+    "utterance": "Is The Witcher 3 better than Skyrim? I want to buy the winner.",
+    "annotation": [
+      "Is The Witcher 3 better than Skyrim?",
+      "I want to buy the winner."
+    ]
+  },
+  {
+    "utterance": "Find a racing game for PS5, check its price, and remove Gran Turismo from my list.",
+    "annotation": [
+      "Find a racing game for PS5,",
+      "check its price,",
+      "and remove Gran Turismo from my list."
+    ]
+  },
+  {
+    "utterance": "I want to know the price of Elden Ring and add it to my wishlist.",
+    "annotation": [
+      "I want to know the price of Elden Ring",
+      "and add it to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Find me a strategy game under 20 dollars released in 2022.",
+    "annotation": [
+      "Find me a strategy game under 20 dollars released in 2022."
+    ]
+  },
+  {
+    "utterance": "What does 'MMO' mean? Also, does my friend Alex play WoW?",
+    "annotation": [
+      "What does 'MMO' mean?",
+      "Also, does my friend Alex play WoW?"
+    ]
+  },
+  {
+    "utterance": "Compare the reviews of FIFA 23 and PES 2023.",
+    "annotation": [
+      "Compare the reviews of FIFA 23 and PES 2023."
+    ]
+  },
+  {
+    "utterance": "Show me my wishlist, actually, remove Cyberpunk first.",
+    "annotation": [
+      "Show me my wishlist,",
+      "actually, remove Cyberpunk first."
+    ]
+  },
+  {
+    "utterance": "I need a game similar to Stardew Valley that is multiplayer and on mac.",
+    "annotation": [
+      "I need a game similar to Stardew Valley that is multiplayer and on mac."
+    ]
+  },
+  {
+    "utterance": "What is the summary of BioShock Infinite? And who is the developer?",
+    "annotation": [
+      "What is the summary of BioShock Infinite?",
+      "And who is the developer?"
+    ]
+  },
+  {
+    "utterance": "Find me an indie game for linux with a required age of 12.",
+    "annotation": [
+      "Find me an indie game for linux with a required age of 12."
+    ]
+  },
+  {
+    "utterance": "How do I make a cake? Also, find me a racing game.",
+    "annotation": [
+      "How do I make a cake?",
+      "Also, find me a racing game."
+    ]
+  },
+  {
+    "utterance": "Check if Starfield is singleplayer and compare its price with No Man's Sky.",
+    "annotation": [
+      "Check if Starfield is singleplayer",
+      "and compare its price with No Man's Sky."
+    ]
+  },
+  {
+    "utterance": "List games owned by Sarah and tell me what 'ganking' stands for.",
+    "annotation": [
+      "List games owned by Sarah",
+      "and tell me what 'ganking' stands for."
+    ]
+  },
+  {
+    "utterance": "I want to remove Valheim from my list, oh wait, add Terraria instead.",
+    "annotation": [
+      "I want to remove Valheim from my list,",
+      "oh wait, add Terraria instead."
+    ]
+  },
+  {
+    "utterance": "Find a free to play RPG published by Ubisoft.",
+    "annotation": [
+      "Find a free to play RPG published by Ubisoft."
+    ]
+  },
+  {
+    "utterance": "What is the required age for GTA V? If it's 18, remove it from my wishlist.",
+    "annotation": [
+      "What is the required age for GTA V?",
+      "If it's 18, remove it from my wishlist."
+    ]
+  },
+  {
+    "utterance": "Tell me the genre of Hollow Knight and show me similar games.",
+    "annotation": [
+      "Tell me the genre of Hollow Knight",
+      "and show me similar games."
+    ]
+  },
+  {
+    "utterance": "I want a casual simulation game. Also, what is the weather in London?",
+    "annotation": [
+      "I want a casual simulation game.",
+      "Also, what is the weather in London?"
+    ]
+  },
+  {
+    "utterance": "Compare the genre of Overwatch 2 and Valorant.",
+    "annotation": [
+      "Compare the genre of Overwatch 2 and Valorant."
+    ]
+  },
+  {
+    "utterance": "Show me what is in my wishlist and calculate 50 plus 20.",
+    "annotation": [
+      "Show me what is in my wishlist",
+      "and calculate 50 plus 20."
+    ]
+  },
+  {
+    "utterance": "Find an adventure game from 2020 on windows.",
+    "annotation": [
+      "Find an adventure game from 2020 on windows."
+    ]
+  },
+  {
+    "utterance": "Add The Witcher 3 to my wishlist, check its price, and explain 'DLC'.",
+    "annotation": [
+      "Add The Witcher 3 to my wishlist,",
+      "check its price,",
+      "and explain 'DLC'."
+    ]
+  },
+  {
+    "utterance": "Find me a simulation game that runs on linux.",
+    "annotation": [
+      "Find me a simulation game that runs on linux."
+    ]
+  },
+  {
+    "utterance": "What is the release year of Red Dead Redemption 2? Also add it to my wishlist.",
+    "annotation": [
+      "What is the release year of Red Dead Redemption 2?",
+      "Also add it to my wishlist."
+    ]
+  },
+  {
+    "utterance": "I want to remove The Sims from my wishlist and see what my friend Mike is playing.",
+    "annotation": [
+      "I want to remove The Sims from my wishlist",
+      "and see what my friend Mike is playing."
+    ]
+  },
+  {
+    "utterance": "Explain the term 'griefing' to me.",
+    "annotation": [
+      "Explain the term 'griefing' to me."
+    ]
+  },
+  {
+    "utterance": "Show me my wishlist and tell me which games are multiplayer.",
+    "annotation": [
+      "Show me my wishlist",
+      "and tell me which games are multiplayer."
+    ]
+  },
+  {
+    "utterance": "Compare the price of Civ VI and Humankind.",
+    "annotation": [
+      "Compare the price of Civ VI and Humankind."
+    ]
+  },
+  {
+    "utterance": "I'm looking for a cheap indie game, maybe something under 5 dollars.",
+    "annotation": [
+      "I'm looking for a cheap indie game, maybe something under 5 dollars."
+    ]
+  },
+  {
+    "utterance": "Who is the publisher of Call of Duty?",
+    "annotation": [
+      "Who is the publisher of Call of Duty?"
+    ]
+  },
+  {
+    "utterance": "Order a burger for me, then find a cooking game.",
+    "annotation": [
+      "Order a burger for me,",
+      "then find a cooking game."
+    ]
+  },
+  {
+    "utterance": "Add Portal 2 to my wishlist, actually, I already have it, so remove it.",
+    "annotation": [
+      "Add Portal 2 to my wishlist,",
+      "actually, I already have it, so remove it."
+    ]
+  },
+  {
+    "utterance": "Find games similar to Factorio but with better graphics.",
+    "annotation": [
+      "Find games similar to Factorio but with better graphics."
+    ]
+  },
+  {
+    "utterance": "Is Fortnite better than PUBG? And is PUBG free to play?",
+    "annotation": [
+      "Is Fortnite better than PUBG?",
+      "And is PUBG free to play?"
+    ]
+  },
+  {
+    "utterance": "List the games that Alice owns.",
+    "annotation": [
+      "List the games that Alice owns."
+    ]
+  },
+  {
+    "utterance": "I want to know the required age for Mortal Kombat 1.",
+    "annotation": [
+      "I want to know the required age for Mortal Kombat 1."
+    ]
+  },
+  {
+    "utterance": "Check the weather in Tokyo and tell me the price of Yakuza 0.",
+    "annotation": [
+      "Check the weather in Tokyo",
+      "and tell me the price of Yakuza 0."
+    ]
+  },
+  {
+    "utterance": "Find me a sports game published by EA.",
+    "annotation": [
+      "Find me a sports game published by EA."
+    ]
+  },
+  {
+    "utterance": "What does 'AOE' mean in strategy games?",
+    "annotation": [
+      "What does 'AOE' mean in strategy games?"
+    ]
+  },
+  {
+    "utterance": "Add Silksong to my wishlist.",
+    "annotation": [
+      "Add Silksong to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Show me reviews for Cyberpunk 2077 and compare it to Starfield.",
+    "annotation": [
+      "Show me reviews for Cyberpunk 2077",
+      "and compare it to Starfield."
+    ]
+  },
+  {
+    "utterance": "I want to find a gore game rated for 18+.",
+    "annotation": [
+      "I want to find a gore game rated for 18+."
+    ]
+  },
+  {
+    "utterance": "Remove all strategy games from my wishlist.",
+    "annotation": [
+      "Remove all strategy games from my wishlist."
+    ]
+  },
+  {
+    "utterance": "Tell me the genre of Rocket League and who developed it.",
+    "annotation": [
+      "Tell me the genre of Rocket League",
+      "and who developed it."
+    ]
+  },
+  {
+    "utterance": "I need to book a taxi, but first add Uber Simulator to my list.",
+    "annotation": [
+      "I need to book a taxi,",
+      "but first add Uber Simulator to my list."
+    ]
+  },
+  {
+    "utterance": "Is League of Legends a MOBA? Also explain what 'MOBA' stands for.",
+    "annotation": [
+      "Is League of Legends a MOBA?",
+      "Also explain what 'MOBA' stands for."
+    ]
+  },
+  {
+    "utterance": "Find a racing game released in 2019 on Xbox.",
+    "annotation": [
+      "Find a racing game released in 2019 on Xbox."
+    ]
+  },
+  {
+    "utterance": "Check my wishlist for any RPGs.",
+    "annotation": [
+      "Check my wishlist for any RPGs."
+    ]
+  },
+  {
+    "utterance": "Add Final Fantasy VII to my wishlist, no wait, the Remake version.",
+    "annotation": [
+      "Add Final Fantasy VII to my wishlist,",
+      "no wait, the Remake version."
+    ]
+  },
+  {
+    "utterance": "Compare the graphics of Doom Eternal and Halo Infinite.",
+    "annotation": [
+      "Compare the graphics of Doom Eternal and Halo Infinite."
+    ]
+  },
+  {
+    "utterance": "What games does my friend Sarah have? I want to buy one of them.",
+    "annotation": [
+      "What games does my friend Sarah have?",
+      "I want to buy one of them."
+    ]
+  },
+  {
+    "utterance": "Find a game with singleplayer mode that costs less than 10 dollars.",
+    "annotation": [
+      "Find a game with singleplayer mode that costs less than 10 dollars."
+    ]
+  },
+  {
+    "utterance": "What is the summary of The Witcher 3?",
+    "annotation": [
+      "What is the summary of The Witcher 3?"
+    ]
+  },
+  {
+    "utterance": "I want to learn how to knit. Also, find me a cozy game.",
+    "annotation": [
+      "I want to learn how to knit.",
+      "Also, find me a cozy game."
+    ]
+  },
+  {
+    "utterance": "Does Apex Legends support cross-play? And add it to my wishlist.",
+    "annotation": [
+      "Does Apex Legends support cross-play?",
+      "And add it to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Remove the last game I added to my wishlist.",
+    "annotation": [
+      "Remove the last game I added to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Find a violent game for windows.",
+    "annotation": [
+      "Find a violent game for windows."
+    ]
+  },
+  {
+    "utterance": "Compare the genre of Terraria and Minecraft.",
+    "annotation": [
+      "Compare the genre of Terraria and Minecraft."
+    ]
+  },
+  {
+    "utterance": "What is 'rubber banding' in racing games?",
+    "annotation": [
+      "What is 'rubber banding' in racing games?"
+    ]
+  },
+  {
+    "utterance": "Show me my wishlist.",
+    "annotation": [
+      "Show me my wishlist."
+    ]
+  },
+  {
+    "utterance": "Find a massively multiplayer game that is free to play.",
+    "annotation": [
+      "Find a massively multiplayer game that is free to play."
+    ]
+  },
+  {
+    "utterance": "Who developed Half-Life? And what is the price of Half-Life 2?",
+    "annotation": [
+      "Who developed Half-Life?",
+      "And what is the price of Half-Life 2?"
+    ]
+  },
+  {
+    "utterance": "I want to listen to music. Then search for a rhythm game.",
+    "annotation": [
+      "I want to listen to music.",
+      "Then search for a rhythm game."
+    ]
+  },
+  {
+    "utterance": "Add God of War to my wishlist, actually, compare it to Assassin's Creed first.",
+    "annotation": [
+      "Add God of War to my wishlist,",
+      "actually, compare it to Assassin's Creed first."
+    ]
+  },
+  {
+    "utterance": "Find me a game similar to Overcooked.",
+    "annotation": [
+      "Find me a game similar to Overcooked."
+    ]
+  },
+  {
+    "utterance": "What platform is Spiderman 2 on?",
+    "annotation": [
+      "What platform is Spiderman 2 on?"
+    ]
+  },
+  {
+    "utterance": "List the games Bob owns and check if he has Rust.",
+    "annotation": [
+      "List the games Bob owns",
+      "and check if he has Rust."
+    ]
+  },
+  {
+    "utterance": "I want to remove Skyrim from my wishlist, wait, explain 'RPG' first.",
+    "annotation": [
+      "I want to remove Skyrim from my wishlist,",
+      "wait, explain 'RPG' first."
+    ]
+  },
+  {
+    "utterance": "Find an early access game on steam.",
+    "annotation": [
+      "Find an early access game on steam."
+    ]
+  },
+  {
+    "utterance": "How much is V-Bucks? Also, find a game like Fortnite.",
+    "annotation": [
+      "How much is V-Bucks?",
+      "Also, find a game like Fortnite."
+    ]
+  },
+  {
+    "utterance": "Show me the reviews for Star Wars Outlaws.",
+    "annotation": [
+      "Show me the reviews for Star Wars Outlaws."
+    ]
+  },
+  {
+    "utterance": "Find a strategy game developed by Paradox.",
+    "annotation": [
+      "Find a strategy game developed by Paradox."
+    ]
+  },
+  {
+    "utterance": "Add Dead Space to my wishlist and find me a similar horror game.",
+    "annotation": [
+      "Add Dead Space to my wishlist",
+      "and find me a similar horror game."
+    ]
+  },
+  {
+    "utterance": "What is the capital of France? And what is the price of Civ 6?",
+    "annotation": [
+      "What is the capital of France?",
+      "And what is the price of Civ 6?"
+    ]
+  },
+  {
+    "utterance": "Compare the reviews of Tekken and Street Fighter.",
+    "annotation": [
+      "Compare the reviews of Tekken and Street Fighter."
+    ]
+  },
+  {
+    "utterance": "Add Diablo from my wishlist.",
+    "annotation": [
+      "Add Diablo from my wishlist."
+    ]
+  },
+  {
+    "utterance": "Explain 'FPS' and show me the best ones.",
+    "annotation": [
+      "Explain 'FPS'",
+      "and show me the best ones."
+    ]
+  },
+  {
+    "utterance": "Find a game released in 2024 that is an adventure.",
+    "annotation": [
+      "Find a game released in 2024 that is an adventure."
+    ]
+  },
+  {
+    "utterance": "I want to buy a new car. Also check if Gran Turismo is on sale.",
+    "annotation": [
+      "I want to buy a new car.",
+      "Also check if Gran Turismo is on sale."
+    ]
+  },
+  {
+    "utterance": "Is Palworld on windows? find similar games on windows.",
+    "annotation": [
+      "Is Palworld on windows?",
+      "find similar games on windows."
+    ]
+  },
+  {
+    "utterance": "Tell me the mode of Among Us.",
+    "annotation": [
+      "Tell me the mode of Among Us."
+    ]
+  },
+  {
+    "utterance": "Find a casual game for my mom.",
+    "annotation": [
+      "Find a casual game for my mom."
+    ]
+  },
+  {
+    "utterance": "I want to see the reviews for Baldur's Gate 3, and if they are good, add it to my wishlist.",
+    "annotation": [
+      "I want to see the reviews for Baldur's Gate 3,",
+      "and if they are good, add it to my wishlist."
+    ]
+  },
+  {
+    "utterance": "Find me a racing game, actually, make it a fighting game.",
+    "annotation": [
+      "Find me a racing game,",
+      "actually, make it a fighting game."
+    ]
+  },
+  {
+    "utterance": "What is the best pizza topping? Also, what is the price of Cyberpunk?",
+    "annotation": [
+      "What is the best pizza topping?",
+      "Also, what is the price of Cyberpunk?"
+    ]
+  },
+  {
+    "utterance": "Show me games similar to Dark Souls that are on sale.",
+    "annotation": [
+      "Show me games similar to Dark Souls that are on sale."
+    ]
+  },
+  {
+    "utterance": "Who developed The Last of Us and on what platforms is it available?",
+    "annotation": [
+      "Who developed The Last of Us",
+      "and on what platforms is it available?"
+    ]
+  },
+  {
+    "utterance": "Clear my wishlist and find me a new RPG to play.",
+    "annotation": [
+      "Clear my wishlist",
+      "and find me a new RPG to play."
+    ]
+  },
+  {
+    "utterance": "Explain what 'camping' means in shooters.",
+    "annotation": [
+      "Explain what 'camping' means in shooters."
+    ]
+  },
+  {
+    "utterance": "Is my friend Dave playing anything right now? If so, tell me what.",
+    "annotation": [
+      "Is my friend Dave playing anything right now?",
+      "If so, tell me what."
+    ]
+  },
+  {
+    "utterance": "I need help with my homework, but first tell me the release date of GTA VI.",
+    "annotation": [
+      "I need help with my homework,",
+      "but first tell me the release date of GTA VI."
+    ]
+  },
+  {
+    "utterance": "Compare the user reviews of Starfield and No Man's Sky, then find me a game like them.",
+    "annotation": [
+      "Compare the user reviews of Starfield and No Man's Sky,",
+      "then find me a game like them."
+    ]
+  },
+  {
+    "utterance": "Add Final Fantasy XVI to my wishlist, check its price, and remove the old Final Fantasy.",
+    "annotation": [
+      "Add Final Fantasy XVI to my wishlist,",
+      "check its price,",
+      "and remove the old Final Fantasy."
+    ]
+  },
+  {
+    "utterance": "Find an educational game for kids under 10 dollars.",
+    "annotation": [
+      "Find an educational game for kids under 10 dollars."
+    ]
+  },
+  {
+    "utterance": "List the games in my wishlist and tell me the total price.",
+    "annotation": [
+      "List the games in my wishlist",
+      "and tell me the total price."
+    ]
+  },
+  {
+    "utterance": "I want to buy a gift for a friend who likes strategy games.",
+    "annotation": [
+      "I want to buy a gift for a friend who likes strategy games."
+    ]
+  },
+  {
+    "utterance": "Is Mario Kart available on PC? Also, who is the publisher?",
+    "annotation": [
+      "Is Mario Kart available on PC?",
+      "Also, who is the publisher?"
+    ]
+  },
+  {
+    "utterance": "Tell me a story about a dragon. Then find me a game with dragons.",
+    "annotation": [
+      "Tell me a story about a dragon.",
+      "Then find me a game with dragons."
+    ]
+  },
+  {
+    "utterance": "Check if Elden Ring is singleplayer, multiplayer, or both.",
+    "annotation": [
+      "Check if Elden Ring is singleplayer, multiplayer, or both."
+    ]
+  }
+]

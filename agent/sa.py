@@ -41,8 +41,7 @@ class SA:
     """Analyze multiple reviews and return a report."""
     report = {"positive": 0, "negative": 0, "neutral": 0}
     for review in reviews:
-      raw_out = self.llm.generate(review)
-      label = validate_sa(raw_out)
+      label = self.generate(review)
       report[label] += 1
     return report
 

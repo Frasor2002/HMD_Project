@@ -7,6 +7,8 @@ import yaml
 from eval.nlu import NLU_Evaluator
 from eval.dm import DM_Evaluator
 from eval.nlg import NLG_Evaluator
+from eval.preproc import PreprocEvaluator
+from eval.sa import SA_Evaluator
 from typing import Any
 from dotenv import load_dotenv
 from models.utils import login_to_hub
@@ -50,7 +52,9 @@ def get_evaluator(component: str) -> Any:
   name_to_class = {
     "nlu": NLU_Evaluator,
     "dm": DM_Evaluator,
-    "nlg": NLG_Evaluator
+    "nlg": NLG_Evaluator,
+    "preproc": PreprocEvaluator,
+    "sa": SA_Evaluator
   }
 
   return name_to_class[component]
@@ -76,6 +80,10 @@ def get_component(model_name: str, component_name: str, prompt: dict) -> Any:
       return DM(model_loader, prompt)
     elif component_name == "nlg":
       return NLG(model_loader, prompt)
+    elif component_name == "preproc":
+      return Preproc(model_loader, prompt)
+    elif component_name == "sa":
+      return SA(model_loader, prompt)
   
   raise ValueError("Invalid configuration model={model_name}, component={component_name}")
     
