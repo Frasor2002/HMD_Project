@@ -59,7 +59,7 @@ class SA_Evaluator(Evaluator):
     Returns:
       bool: true if they are the same, false if not.
     """
-    return str(pred).strip().lower() == str(gt).strip().lower()
+    return str(pred).replace('"', '').replace("'", "").strip().lower() == str(gt).replace('"', '').replace("'", "").strip().lower()
 
   def evaluate(self) -> dict:
     """Evaluate using accuracy of analysis.
