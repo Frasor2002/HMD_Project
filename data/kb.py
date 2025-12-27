@@ -161,7 +161,13 @@ class KnowledgeBase:
 
 
     # Take 5 matches
-    results = filtered_games.head(5)
+    candidates = filtered_games.head(10)
+    sampling_size = min(len(candidates), 5)
+
+    if sampling_size > 0:
+      results = candidates.sample(n=sampling_size)
+    else:
+      results = candidates
 
     if results.empty:
       return {"error": "No matches found with characteristics."}
@@ -327,8 +333,8 @@ if __name__ == "__main__":
   #slots = {"title": "darkwood", "info": "review"}
   #print(kb.get_game_info(**slots))
 
-  #slots = {"genre": None, "price": None, "release_year": None, "platform": None, 
-  #         "mode": "singleplayer", "similar_title": "terraria" ,"required_age": None, 
+  #slots = {"genre": "strategy", "price": None, "release_year": 2010, "platform": None, 
+  #         "mode": "singleplayer", "similar_title": None ,"required_age": None, 
   #         "publisher": None, "developer": None}
   #print(kb.discover_game(**slots))
 
@@ -343,5 +349,4 @@ if __name__ == "__main__":
 
   #slots = {"title": "stardew valley"}
   #print(kb.get_wishlist())
-
 
