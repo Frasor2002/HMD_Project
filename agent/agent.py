@@ -213,7 +213,7 @@ class DialogueAgent:
       self.history.append({"role": "assistant", "content": nlg_out})
 
     # Combine outputs      
-    return "".join(responses)
+    return " ".join(responses)
 
 
   def chat(self, user_input: str) -> str:
@@ -264,10 +264,10 @@ def load_agent() -> DialogueAgent:
   # Models used for every component
   model = {
     "default": "qwen3",
-    "preproc": "gemma",
+    "preproc": "qwen3",
     "nlu": "qwen3",
     "dm": "rule_based",
-    "nlg": "gemma",
+    "nlg": "llama3",
     "sa": "qwen3"
   }
 

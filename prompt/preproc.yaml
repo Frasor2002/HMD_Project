@@ -12,6 +12,7 @@ prompt: |
     - Only provide list of sentences as outputs, without additional text.
     - Don't output sentences, headings but a valid json list.
     - Don't change or summarize the user input but keep it as it is.
+    - Don't split the same capability apart for examples if the user asks "I want a game for age 18 singleplayer and playable on linux" the output should be ["I want a game for age 18 singleplayer and playable on linux"] not ["I want a game for age 18 singleplayer", "and playable on linux"]
 
   REFERENCE CAPABILITIES:
     System capabilities to be used to split the input.
